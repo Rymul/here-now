@@ -28,16 +28,17 @@ router.get('/current', restoreUser, (req, res) => {
     const csrfToken = req.csrfToken();
     res.cookie("CSRF-TOKEN", csrfToken);
   }
-  // console.log(req)
+  // console.log(req.user)
+
   if (!req.user) return res.json(null);
   res.json({
     _id: req.user._id,
-    username: req.user.username,
+    // firstName: req.user.firstName,
     email: req.user.email
   });
 })
 
-module.exports = router;
+
 
 
 
@@ -99,3 +100,4 @@ router.post('/login', validateLoginInput, async (req, res, next) => {
 
 
 
+module.exports = router;

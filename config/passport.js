@@ -51,6 +51,7 @@ options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 options.secretOrKey = secretOrKey;
 
 passport.use(new JwtStrategy(options, async (jwtPayload, done) => {
+  console.log(jwtPayload)
   try {
     const user = await User.findById(jwtPayload._id)
     if (user) {
@@ -69,7 +70,9 @@ exports.requireUser = passport.authenticate('jwt', { session: false });
 
 exports.restoreUser = (req, res, next) => {
     return passport.authenticate('jwt', { session: false }, function(err, user) {
+      // console.log(user)
       if (user) req.user = user;
       next();
     })(req, res, next);
 };
+
