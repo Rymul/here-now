@@ -6,6 +6,9 @@
     "start": "node ./bin/www",
     "dev": "dotenv nodemon ./bin/www --inspect"
   },
+  "engines":{
+    "node": "16.x"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
