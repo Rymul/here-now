@@ -7,6 +7,9 @@ const logger = require('morgan');
 const debug = require('debug');
 const cors = require('cors');
 const csurf = require('csurf');
+const passport = require('passport')
+
+
 
 // import backend routes
 const indexRouter = require('./routes/index');
@@ -15,7 +18,12 @@ const eventsRouter = require('./routes/api/events')
 const csrfRouter = require('./routes/api/csrf');
 
 
+require("./models/User");
+// require('./models/Events');
+require('./config/passport');
+
 const app = express();
+
 
 
 
@@ -24,6 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
 
 const { isProduction } = require('./config/keys');
 
