@@ -73,7 +73,7 @@ router.post('/',
         address: req.body.address,
         lat: req.body.lat,
         lng: req.body.lng,
-        owner: {},
+        owner: req.body.owner,
         attendees: [],
         eventTime: req.body.eventTime
       });
