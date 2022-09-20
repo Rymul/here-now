@@ -113,7 +113,7 @@ var debug = require('debug')('here-and-now:server');
 
 
 router.patch('/:id',
-  // requireUser,
+validateEventInput,
 async (req, res, next) => {
   try {
     const event = await Event.findById(req.params.id)
@@ -138,12 +138,3 @@ async (req, res, next) => {
 )
 
 module.exports = router;
-
-// {
-//     "title": "test event",
-//     "description": "req.body.description",
-//     "address": "req.body.address",
-//     "lat": 121,
-//     "lng": 1212,
-//    "eventTime": "2018-05-12 08:00:00+00:00"
-// }
