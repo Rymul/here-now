@@ -22,8 +22,8 @@ const eventSchema = Schema({
         type: Number,
         required: true
     },
-    owner: {
-        type: Object,
+    ownerId: {
+        type: String,
         required: true
     },
     attendees: {
