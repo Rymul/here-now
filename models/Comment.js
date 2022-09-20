@@ -6,8 +6,8 @@ const commentSchema = Schema({
         type: String,
         required: true
     },
-    commenterId: {
-        type: String,
+    commenter: {
+        type: Object,
         required: true
     }
 
