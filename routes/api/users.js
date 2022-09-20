@@ -22,6 +22,11 @@ const { isProduction } = require('../../config/keys');
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.find()
+      .select('firstName')
+      .select('lastName')
+      .select('email')
+      .select('events')
+      .select('birthDay')
     return res.json(users);
   }
   catch(err) {
@@ -51,6 +56,27 @@ router.get('/current', restoreUser, (req, res) => {
     birthday: req.user.birthday
   });
 })
+
+
+/* GET user ex user show */
+router.get('/:userId', async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.userId)
+      .select('firstName')
+      .select('lastName')
+      .select('email')
+      .select('events')
+      .select('birthDay')
+    return res.json(user);
+  }
+  catch(_err) {
+    const err = new Error('Event not found');
+    err.statusCode = 404;
+    err.errors = { message: "No event found with that id" };
+    return next(err);
+  }
+});
+
 
 
 /* POST Signup user */
@@ -106,6 +132,7 @@ router.patch('/:userId', validateRegisterInput, async (req, res, next) => {
       user.lastName = req.body.lastName || user.lastName;
       user.email = req.body.email || user.email;
       user.birthDay = req.body.birthDay || user.birthDay;
+      user.events = req.body.events || user.events;
     }
     if (req.body.password) {
       bcrypt.genSalt(10, (err, salt) => {
@@ -160,6 +187,9 @@ router.delete('/:userId', async (req, res) => {
   })
   .catch(err => next(err))
 });
+
+
+
 
 
 // GET all messaged to or from userId
