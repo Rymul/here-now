@@ -31,12 +31,12 @@ export const createEvent = (payload) => async dispatch => {
 }
 
 export const updateEvent = (event) => async dispatch => {
-  const response = await jwtFetch(`/api/events/${event.id}`, {
+  const response = await jwtFetch(`/api/events/${event._id}`, {
     method: 'PATCH',
     body: JSON.stringify(event)
   })
   const payload = await response.json();
-  dispatch(setEvents(payload))
+  dispatch(setEvent(payload))
 }
 
 export const deleteEvent = (eventId) => async dispatch => {
