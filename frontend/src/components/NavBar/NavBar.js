@@ -41,7 +41,7 @@ function NavBar () {
 
       <div className="nav-bar">
         <div id="nav-bar-hamburger-subdiv" className="nav-bar-subdiv">
-          <FcMenu className="nav-bar-hamburger" />
+          <FcMenu className="nav-bar-hamburger" onClick={logoutUser}/>
         </div>
         <div id="nav-bar-subdiv-logo" className="nav-bar-subdiv">
           <img className="nav-logo" src="/logo.svg" alt="logo" />
