@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
+import { Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 
 import SplashPage from './components/SplashPage/SplashPage';
