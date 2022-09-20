@@ -6,8 +6,12 @@ const passport = require('passport');
 const { loginUser, restoreUser } = require('../../config/passport');
 const validateRegisterInput = require('../../validation/register.js');
 const validateLoginInput = require('../../validation/login.js');
+const validateMessageInput = require('../../validation/messages.js');
 
 
+
+require('../../models/Message');
+const Message = mongoose.model('Message');
 
 require('../../models/User')
 
@@ -42,7 +46,9 @@ router.get('/current', restoreUser, (req, res) => {
     _id: req.user._id,
     firstName: req.user.firstName,
     lastName: req.user.lastName,
-    email: req.user.email
+    email: req.user.email,
+    events: req.user.events,
+    birthday: req.user.birthday
   });
 })
 
@@ -154,6 +160,48 @@ router.delete('/:userId', async (req, res) => {
   })
   .catch(err => next(err))
 });
+
+
+// GET all messaged to or from userId
+router.get('/messages/:userId', async (req, res) => {
+  try{
+    const messages = await Message.find(
+      { $or: [
+        { authorId: req.params.userId }, 
+        { recipientId: req.params.userId }
+        ]
+      }
+    );
+    return res.json(messages);
+  }
+  catch(err) {
+    return res.json([]);
+  }
+   
+});
+
+//POST a message by author to recipient
+router.post('/messages', validateMessageInput,
+  async (req, res, next) => {
+    try {
+      const newMessage = new Message({
+        body: req.body.body,
+        author: req.body.author,
+        recipient: req.body.recipient,
+        seen: false
+      });
+
+      let message = await newMessage.save();
+      return res.json(message);
+    }
+    catch (err) {
+      next(err);
+    }
+  }
+)
+
+
+
 
 
 module.exports = router;
