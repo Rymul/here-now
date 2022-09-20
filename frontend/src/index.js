@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/store';
 
 let store = configureStore({});
-window.store = store
+window.store = store;
 
 function Root() {
   return (

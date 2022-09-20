@@ -94,8 +94,8 @@ router.post('/',
         address: req.body.address,
         lat: req.body.lat,
         lng: req.body.lng,
-        ownerId: req.body.ownerId,
-        attendees: [],
+        owner: req.body.owner,
+        attendees:{},
         eventTime: req.body.eventTime
       });
 
@@ -128,7 +128,7 @@ async (req, res, next) => {
       event.attendees =  req.body.attendees || event.attendees;
       event.eventTime = req.body.eventTime || event.eventTime;
     }
- 
+    await Event.findByIdAndUpdate(req.params.id, event)
     return res.json(event);
   }
   catch(err) {
