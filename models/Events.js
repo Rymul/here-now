@@ -22,12 +22,12 @@ const eventSchema = Schema({
         type: Number,
         required: true
     },
-    ownerId: {
-        type: String,
+    owner: {
+        type: Object,
         required: true
     },
     attendees: {
-        type: Array,
+        type: Object,
         required: true
     },
     eventTime: {
