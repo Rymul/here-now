@@ -95,7 +95,8 @@ router.post('/',
         lat: req.body.lat,
         lng: req.body.lng,
         owner: req.body.owner,
-        attendees:{},
+        attendees:req.body.attendees,
+        comments: req.body.comments || {},
         eventTime: req.body.eventTime
       });
 
@@ -124,7 +125,7 @@ async (req, res, next) => {
       event.address = req.body.address || event.address;
       event.lat = req.body.lat || event.lat;
       event.lng = req.body.lng || event.lng;
-      event.ownerId = req.body.ownerId || event.ownerId;
+      event.owner = req.body.owner || event.owner;
       event.attendees =  req.body.attendees || event.attendees;
       event.eventTime = req.body.eventTime || event.eventTime;
     }
@@ -138,3 +139,78 @@ async (req, res, next) => {
 )
 
 module.exports = router;
+
+// Example Users
+// "6328af2a622ab8b31b2ae063": {
+//                    "_id": "6328af2a622ab8b31b2ae063",
+//                    "firstName":"Zoltan",
+//                    "lastName": "Master Z",
+//                    "email": "Zol@tan.io",
+//                    "birthDay" :"2022-09-19T18:04:03.000+00:00"
+//                   }
+
+// "632903a7f8c092514deb41c4": {
+//                    "_id": "632903a7f8c092514deb41c4",
+//                    "firstName":"Test",
+//                    "lastName": "User",
+//                    "email": "test@user.io",
+//                    "birthDay" :"2022-09-19T18:04:03.000+00:00"
+//                   }
+
+
+
+// {
+//   "title": "Test Event 1",
+//    "description": "Party at Jaybles House",
+//    "address": "516 Ellis, apt 408",
+//     "lat": 121,
+//    "lng": 200,
+//    "owner": { "6328af2a622ab8b31b2ae063": {
+//                  "_id": "6328af2a622ab8b31b2ae063",
+//                  "firstName":"Zoltan",
+//                  "lastName": "Master Z",
+//                  "email": "Zol@tan.io",
+//                  "birthDay" :"2022-09-19T18:04:03.000+00:00"
+
+//                 }
+//              },
+//    "attendees":{
+//                     "6328af2a622ab8b31b2ae063": {
+//                       "_id": "6328af2a622ab8b31b2ae063",
+//                       "firstName":"Zoltan",
+//                       "lastName": "Master Z",
+//                       "email": "Zol@tan.io",
+//                       "birthDay" :"2022-09-19T18:04:03.000+00:00"
+//                     },
+
+//                     "632903a7f8c092514deb41c4": {
+//                       "_id": "632903a7f8c092514deb41c4",
+//                       "firstName":"Test",
+//                       "lastName": "User",
+//                       "email": "test@user.io",
+//                       "birthDay" :"2022-09-19T18:04:03.000+00:00"
+//                      }
+//                  },
+//    "comments": { "632a03073bd585a192c642a8" : { "_id ": "632a03073bd585a192c642a8",
+//                                                  "body": "Zoltan is the BESTTTTTTT",
+//                                                  "commenter" : {
+//                                                                       "_id": "6328af2a622ab8b31b2ae063",
+//                                                                       "firstName":"Zoltan",
+//                                                                       "lastName": "Master Z",
+//                                                                       "email": "Zol@tan.io",
+//                                                                       "birthDay" :"2022-09-19T18:04:03.000+00:00"
+//                                                                     }
+//                                                      }
+
+//                  },
+//    "eventTime": "2018-05-12T08:00:00.000Z"
+// }
+  
+
+
+// _id
+// 632a03073bd585a192c642a8
+// body
+// "updatedcomment"
+// commenterId
+// "6328af2a622ab8b31b2ae063"

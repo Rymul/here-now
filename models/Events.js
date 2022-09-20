@@ -30,6 +30,10 @@ const eventSchema = Schema({
         type: Object,
         required: true
     },
+    comments: {
+        type: Object,
+        required: true
+    },
     eventTime: {
         type: Date,
         required: true
