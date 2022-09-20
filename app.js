@@ -16,6 +16,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const eventsRouter = require('./routes/api/events')
 const csrfRouter = require('./routes/api/csrf');
+const commentsRouter = require('./routes/api/comments'); /// BANANA
 
 
 require("./models/User");
@@ -58,6 +59,7 @@ app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/events', eventsRouter);
 app.use('/api/csrf', csrfRouter);
+app.use('/api/comments', commentsRouter); /// BANANA
 
 
 // Express custom middleware for catching all requests that haven't gotten
