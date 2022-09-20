@@ -59,7 +59,7 @@ router.get('/current', restoreUser, (req, res) => {
 
 
 /* GET user ex user show */
-router.get('/:userId', async (req, res) => {
+router.get('/:userId', async (req, res, next) => {
   try {
     const user = await User.findById(req.params.userId)
       .select('firstName')
@@ -69,20 +69,14 @@ router.get('/:userId', async (req, res) => {
       .select('birthDay')
     return res.json(user);
   }
-  catch(err) {
-    return res.json([]);
+  catch(_err) {
+    const err = new Error('Event not found');
+    err.statusCode = 404;
+    err.errors = { message: "No event found with that id" };
+    return next(err);
   }
 });
-//   if (!req.user) return res.json(null);
-//   res.json({
-//     _id: req.user._id,
-//     firstName: req.user.firstName,
-//     lastName: req.user.lastName,
-//     email: req.user.email,
-//     events: req.user.events,
-//     birthday: req.user.birthday
-//   });
-// })
+
 
 
 /* POST Signup user */
@@ -138,6 +132,7 @@ router.patch('/:userId', validateRegisterInput, async (req, res, next) => {
       user.lastName = req.body.lastName || user.lastName;
       user.email = req.body.email || user.email;
       user.birthDay = req.body.birthDay || user.birthDay;
+      user.events = req.body.events || user.events;
     }
     if (req.body.password) {
       bcrypt.genSalt(10, (err, salt) => {
@@ -192,6 +187,9 @@ router.delete('/:userId', async (req, res) => {
   })
   .catch(err => next(err))
 });
+
+
+
 
 
 // GET all messaged to or from userId

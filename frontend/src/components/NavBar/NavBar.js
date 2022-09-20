@@ -34,7 +34,7 @@ function NavBar () {
 
   return (
     <>
-      <h1>Here & Now</h1>
+      <h1>Chirper</h1>
       { getLinks() }
     </>
   );
