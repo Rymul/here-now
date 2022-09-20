@@ -5,9 +5,11 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/store';
+import * as user from "./store/users"
 
 let store = configureStore({});
 window.store = store;
+window.user = user;
 
 function Root() {
   return (

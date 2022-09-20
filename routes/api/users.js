@@ -22,6 +22,11 @@ const { isProduction } = require('../../config/keys');
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.find()
+      .select('firstName')
+      .select('lastName')
+      .select('email')
+      .select('events')
+      .select('birthDay')
     return res.json(users);
   }
   catch(err) {
@@ -51,6 +56,33 @@ router.get('/current', restoreUser, (req, res) => {
     birthday: req.user.birthday
   });
 })
+
+
+/* GET user ex user show */
+router.get('/:userId', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId)
+      .select('firstName')
+      .select('lastName')
+      .select('email')
+      .select('events')
+      .select('birthDay')
+    return res.json(user);
+  }
+  catch(err) {
+    return res.json([]);
+  }
+});
+//   if (!req.user) return res.json(null);
+//   res.json({
+//     _id: req.user._id,
+//     firstName: req.user.firstName,
+//     lastName: req.user.lastName,
+//     email: req.user.email,
+//     events: req.user.events,
+//     birthday: req.user.birthday
+//   });
+// })
 
 
 /* POST Signup user */
