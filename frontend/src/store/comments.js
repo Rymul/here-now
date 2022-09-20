@@ -83,9 +83,9 @@ export const updateComment = comment => async dispatch => {
     }
 }
 
-window.createComment = createComment;
-window.updateComment = updateComment;
-window.deleteComment = deleteComment;
+// window.createComment = createComment;
+// window.updateComment = updateComment;
+// window.deleteComment = deleteComment;
 
 
 
