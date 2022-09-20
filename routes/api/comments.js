@@ -58,9 +58,9 @@ router.patch('/:id', async (req,res,next) => {
 
         if (comment) {
             comment.body = req.body.body || comment.body;
-            comment.commenterId = req.body.commenterId || comment.commenterId;
+            // comment.commenterId = req.body.commenterId || comment.commenterId;
         }
-
+        await Comment.findByIdAndUpdate(req.params.id, comment)
         return res.json(comment)
     }
     catch(err) {
