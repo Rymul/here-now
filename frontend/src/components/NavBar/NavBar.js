@@ -35,7 +35,7 @@ function NavBar () {
   //     );
   //   }
   // }
-
+if (loggedIn) {
   return (
     <>
       {/* <h1>Chirper</h1>
@@ -68,6 +68,11 @@ function NavBar () {
       </div>
     </>
   );
+          } else {
+            return (
+              null
+            )
+          }
 }
 
 export default NavBar;
