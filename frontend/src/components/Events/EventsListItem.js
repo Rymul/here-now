@@ -5,7 +5,6 @@ import './EventsListItem.css'
 const EventsListItem = ({event}) => {
     const history = useHistory();
     const handleClick = (e) => {
-        e.preventDefaults()
         history.push(`/events/${event['_id']}`)
     }
 
