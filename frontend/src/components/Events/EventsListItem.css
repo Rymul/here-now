@@ -2,15 +2,31 @@
     width: 100px;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 2px 4px 0px;
 }
 
 .event-list-item-img > img {
-    width: 50px;
-    align-content:center;
-    align-items: center;
+   width:120%;
 
 }
 
 .event-list-item-container {
     display:flex;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(200,200,200)
+}
+
+.event-list-item-info {
+    padding-left: 20px;
+}
+
+.event-list-item-title {
+    font-size: 20px;
+    font-weight: bold;
 }

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import DateTimePicker from 'react-datetime-picker';
 import { useDispatch, useSelector } from 'react-redux';
 import TimeKeeper from 'react-timekeeper';
 import { createEvent } from '../../store/events';

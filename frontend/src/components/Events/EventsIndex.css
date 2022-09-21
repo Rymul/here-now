@@ -1,0 +1,15 @@
+.events-index-page {
+    padding-top: 10vh;
+}
+
+.events-index-list-container {
+    padding: 20px 0 0 20px
+}
+
+.events-index-map-container {
+    width: 50%;
+}
+
+.events-index-list {
+    width: 50%;
+}

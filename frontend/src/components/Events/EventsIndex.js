@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllEvents } from '../../store/events';
 import EventsListItem from './EventsListItem';
+import './EventsIndex.css'
 
 const EventsIndex = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const EventsIndex = () => {
                             {events.map((event) => (<li key={event['_id']}><EventsListItem event={event}/></li>))}
                     </ul>
                 </div>
-                <div className='events-map'></div>
+                <div className='events-index-map-container'></div>
             </div>
         </div>
         </>
