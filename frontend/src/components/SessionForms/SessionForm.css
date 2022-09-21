@@ -2,3 +2,38 @@
     margin-top: 20px;
     margin-left: 300px;
 }
+
+
+
+
+
+
+
+#log-in-form-input {
+    width: 45%;
+    height: 40px;
+    border-radius: 20px;
+}
+
+#submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: #f9f9f9;
+    color: #f9f9f9;
+    width: 45%;
+    height: 40px;
+    font-weight: 500;
+    font-size: 16px;
+    /* background-color: #12ADC1; */
+    background-color: #0295A9;
+    padding: 14px;
+    border-radius: 20px;
+}
+
+#submit-button:hover {
+    border: 1px solid #12ADC1;
+    background-color: #f9f9f9;
+    color:#12ADC1
+}
