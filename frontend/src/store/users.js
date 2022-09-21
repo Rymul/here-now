@@ -102,7 +102,8 @@ const usersReducer = (state = {}, action) => {
     const newState = { ...state }
     switch (action.type) {
         case RECEIVE_USER:
-            const user = action.payload.user;
+            const user = action.payload;
+            // debugger
             newState[user._id] = user;
             return newState;
         case RECEIVE_USERS:

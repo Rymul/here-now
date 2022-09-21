@@ -9,8 +9,10 @@ import NavBar from './components/NavBar/NavBar';
 import SplashPage from './components/SplashPage/SplashPage';
 import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
+import EventsIndex from './components/Events/EventsIndex';
 
 import { getCurrentUser } from './store/session';
+import UserShow from './components/Users/UserShow';
 import { NewEventForm } from './components/Events/NewEventForm';
 
 function App() {
@@ -28,11 +30,13 @@ function App() {
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
         <ProtectedRoute exact path="/events/new" component={NewEventForm} />
+        <ProtectedRoute exact path="/events" component={EventsIndex} />
         {/* <ProtectedRoute exact path="/feed" component={EventsIndex}/>
         <ProtectedRoute exact path="/events/:eventId" component={EventShow} />
+        <ProtectedRoute exact path="/events/new" component={NewEventForm} /> */}
         <ProtectedRoute exact path="/users/:userId" component={UserShow} />
-        <ProtectedRoute exact path="/users/:userId/messages" component={UserMessages} />
-        <ProtectedRoute exact path="/users/:userId/messages/:senderId" component={Conversation} /> */}
+        {/* <ProtectedRoute exact path="/users/:userId/messages" component={UserMessages} />
+        {/* <ProtectedRoute exact path="/users/:userId/messages/:senderId" component={Conversation} /> */}
         <Redirect to="/" />
       </Switch>
     </>
