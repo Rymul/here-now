@@ -1,0 +1,16 @@
+.event-list-item-img {
+    width: 100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.event-list-item-img > img {
+    width: 50px;
+    align-content:center;
+    align-items: center;
+
+}
+
+.event-list-item-container {
+    display:flex;
+}

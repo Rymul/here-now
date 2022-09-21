@@ -22,12 +22,20 @@ export const setEvent = (payload) => ({
 })
 
 export const createEvent = (payload) => async dispatch => {
-  const response = await jwtFetch(`/api/events`, {
-    method: 'POST',
-    body: JSON.stringify(payload)
-  })
-  const data = await response.json();
-  dispatch(setEvents(data.event))
+  try{
+    const response = await jwtFetch(`/api/events`, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+      const data = await response.json();
+      dispatch(setEvents(data.event))
+  } catch(err){
+    const res = await err.json();
+    debugger
+    if (res.statusCode === 400){
+      return res
+    }
+  }
 }
 
 export const updateEvent = (event) => async dispatch => {

@@ -5,6 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/store';
+import './reset.css'
 import * as event from "./store/events"
 import * as user from "./store/users"
 import * as comment from "./store/comments"
