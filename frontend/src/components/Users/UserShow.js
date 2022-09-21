@@ -6,6 +6,7 @@ import { BiEdit } from 'react-icons/bi'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { deleteUser, fetchUser, getUser } from "../../store/users";
 import './UserShow.css'
+import { calcAge, createdAgoTimeParser } from "../../utils/utils";
 
 
 const UserShow = () => {
@@ -22,6 +23,7 @@ const UserShow = () => {
     if (!user) return null
 
     return(
+
         <div className="user-show-component">
             <div className="user-show-info">
                 <div className="user-show-top">
@@ -29,11 +31,11 @@ const UserShow = () => {
                 </div>
                 <div className="user-show-bottom">
                     <h1 id="user-show-name">{user.firstName} {user.lastName[0]}.</h1>
-                    <p id="user-show-birthday">{user.birthDay}</p>
-                    <p id="user-show-join-date">{user.createdAt}</p>
+                    <p id="user-show-birthday">Age: {calcAge(user.birthDay)}</p>
+                    <p id="user-show-join-date">Member Since: {user.createdAt.slice(0,4)}</p>
                 </div>
                 <div className="user-show-buttons">
-                <Link to={`/user/${user._id}`} id='user-show-update'>
+                <Link to={`/user/update/${user._id}`} id='user-show-update'>
                     {/* <BiEdit />  */}
                     Edit Profile
                 </Link>

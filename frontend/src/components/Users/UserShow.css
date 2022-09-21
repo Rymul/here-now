@@ -40,10 +40,16 @@
 #user-show-name {
     font-size: 30px;
     margin-bottom: 10px;
+    color: #004049;
 }
 
 #user-show-birthday {
+    color: #728f93;
+    margin-bottom: 5px;
+}
 
+#user-show-join-date {
+    color: #728f93;
 }
 
 .user-show-buttons {

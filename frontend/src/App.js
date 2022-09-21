@@ -14,6 +14,7 @@ import EventsIndex from './components/Events/EventsIndex';
 import { getCurrentUser } from './store/session';
 import UserShow from './components/Users/UserShow';
 import { NewEventForm } from './components/Events/NewEventForm';
+import UpdateUserForm from './components/Users/UpdateUserForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,6 +37,7 @@ function App() {
         <ProtectedRoute exact path="/events/:eventId" component={EventShow} />
         <ProtectedRoute exact path="/events/new" component={NewEventForm} /> */}
         <ProtectedRoute exact path="/users/:userId" component={UserShow} />
+        <ProtectedRoute exact path="/users/update/:userId" component={UpdateUserForm} />
         {/* <ProtectedRoute exact path="/users/:userId/messages" component={UserMessages} />
         {/* <ProtectedRoute exact path="/users/:userId/messages/:senderId" component={Conversation} /> */}
         <Redirect to="/" />
