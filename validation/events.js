@@ -19,7 +19,6 @@ const validateEventInput = [
         .withMessage('Address must be between 5 and 60 characters'),
     check('eventTime')
         .exists({ checkFalsy: true })
-        // .isDate()
         .isISO8601()
         .withMessage('Event time must be a valid date and time'),    
     handleValidationErrors

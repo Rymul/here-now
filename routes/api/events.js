@@ -81,6 +81,7 @@ router.delete('/:id', async (req, res, next) => {
 // Attach requireUser as a middleware before the route handler to gain access
   // to req.user (will return error response if no current user)
 // Attach validateTweetInput as a middleware before the route handler
+var debug = require('debug')('here-and-now:server');
 
 // Create an event
 router.post('/',
@@ -96,22 +97,19 @@ router.post('/',
         lng: req.body.lng,
         owner: req.body.owner,
         attendees:req.body.attendees,
-        comments: req.body.comments || {},
+        comments: req.body.comments,
         eventTime: req.body.eventTime
       });
 
       let event = await newEvent.save();
-    //   tweet = await tweet.populate('author', '_id, username');
       return res.json(event);
     }
     catch(err) {
+      debug(err)
       next(err);
     }
   }
 )
-
-var debug = require('debug')('here-and-now:server');
-
 
 router.patch('/:id',
 validateEventInput,
