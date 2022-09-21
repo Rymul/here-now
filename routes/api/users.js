@@ -67,6 +67,7 @@ router.get('/:userId', async (req, res, next) => {
       .select('email')
       .select('events')
       .select('birthDay')
+      .select('createdAt')
     return res.json(user);
   }
   catch(_err) {
