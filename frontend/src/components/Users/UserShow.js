@@ -2,8 +2,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-// import { BiEdit } from 'react-icons/bi'
-// import { AiOutlineDelete } from 'react-icons/ai'
+import { BiEdit } from 'react-icons/bi'
+import { AiOutlineDelete } from 'react-icons/ai'
 import { deleteUser, fetchUser, getUser } from "../../store/users";
 import './UserShow.css'
 
@@ -23,14 +23,14 @@ const UserShow = () => {
         <div className="user-show-component">
             <div className="user-show-buttons">
                 <Link to={`/user/${user._id}`} id='user-show-update'>
-                    {/* <BiEdit /> Edit Profile */}
+                    <BiEdit /> Edit Profile
                     Edit Profile
                 </Link>
                 <button
                     onClick={() => dispatch(deleteUser(user._id))}
                     id="user-show-delete"
                 >
-                    {/* <AiOutlineDelete /> Delete Profile */}
+                    <AiOutlineDelete /> Delete Profile
                     Delete Profile
                 </button>
             </div>

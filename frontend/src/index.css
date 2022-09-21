@@ -6,3 +6,7 @@ form > .errors {
     display: flex;
     align-items: center;
   }
+
+.site-container {
+  padding-top: 70px;
+}

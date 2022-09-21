@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
-import { Route } from 'react-router-dom';
+
 import NavBar from './components/NavBar/NavBar';
 
 import SplashPage from './components/SplashPage/SplashPage';
@@ -24,6 +24,7 @@ function App() {
   return loaded && (
     <>
       <NavBar />
+      <div className='site-container'>
       <Switch>
         <Route exact path="/" component={SplashPage} />
         <AuthRoute exact path="/login" component={LoginForm} />
@@ -36,6 +37,7 @@ function App() {
         {/* <ProtectedRoute exact path="/users/:userId/messages/:senderId" component={Conversation} /> */}
         <Redirect to="/" />
       </Switch>
+      </div>
     </>
   );
 }
