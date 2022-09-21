@@ -14,7 +14,7 @@ import EventsIndex from './components/Events/EventsIndex';
 import { getCurrentUser } from './store/session';
 import UserShow from './components/Users/UserShow';
 import { NewEventForm } from './components/Events/NewEventForm';
-
+import EventShow from './components/Events/EventShow';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -31,8 +31,8 @@ function App() {
         <AuthRoute exact path="/signup" component={SignupForm} />
         <ProtectedRoute exact path="/events/new" component={NewEventForm} />
         <ProtectedRoute exact path="/events" component={EventsIndex} />
-        {/* <ProtectedRoute exact path="/feed" component={EventsIndex}/>
         <ProtectedRoute exact path="/events/:eventId" component={EventShow} />
+        {/* <ProtectedRoute exact path="/feed" component={EventsIndex}/>
         <ProtectedRoute exact path="/events/new" component={NewEventForm} /> */}
         <ProtectedRoute exact path="/users/:userId" component={UserShow} />
         {/* <ProtectedRoute exact path="/users/:userId/messages" component={UserMessages} />

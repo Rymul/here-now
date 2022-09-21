@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
-import DateTimePicker from 'react-datetime-picker';
+import { useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import TimeKeeper from 'react-timekeeper';
 import { createEvent } from '../../store/events';
+import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
 import './NewEventForm.css'
 
 export const NewEventForm = (props) => {
@@ -12,28 +14,54 @@ export const NewEventForm = (props) => {
     const [lat, setLat] = useState(37.8);
     const [lng, setLng] = useState(122.4);
     const user = useSelector(state=> state.session.user)
-    const [owner, setOwner] = useState(user)
-    const [attendees, setAttendees] = useState({ [user._id]: user})
-    const [eventTime, setEventTime] = useState();
+    const [eventTime, setEventTime] = useState('12:30');
     const [errors, setErrors] = useState(null)
+    const [tomorrow, setTomorrow] = useState(false)
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const updatedEventTime = getNewDate(tomorrow, eventTime)
         const event = {
             title,
             description,
             address,
             lat,
             lng,
-            owner,
-            attendees,
-            eventTime
+            owner: user,
+            attendees: {[user._id]: user},
+            eventTime: updatedEventTime
         }
         
         dispatch(createEvent(event))
             .then( res => {
-                if (res.errors) setErrors(Object.values(res.errors))
+                if (res) {
+                    const updatedErrors = [];
+                    Object.keys(res.errors).forEach( error => {
+                        switch (error){
+                            case 'title':
+                                updatedErrors
+                                    .push(capitalizeFirstLetter(error) + ' must be between 5 and 50 characters')
+                                break;
+                            case 'description':
+                                updatedErrors
+                                    .push(capitalizeFirstLetter(error) + ' must be between 5 and 150 characters')
+                                break;
+                            case 'address':
+                                updatedErrors
+                                    .push(capitalizeFirstLetter(error) + ' must be between 5 and 50 characters')
+                                break;
+                            case 'eventTime':
+                                break;
+                            default:
+                                break;
+                        }
+                    })
+                    setErrors(updatedErrors)
+                } else {
+                    history.push('/events')
+                }
             })
     
     }
@@ -41,7 +69,8 @@ export const NewEventForm = (props) => {
     if(!user) return null;
     return (
         <>
-            <h1>{owner.firstName}</h1>
+        <div className='new-event-form-outter-container'>
+            <h1>{user.firstName}</h1>
             <h1>Create a new event</h1>
 
             <form className='new-event-form-form' onSubmit={handleSubmit}>
@@ -60,6 +89,14 @@ export const NewEventForm = (props) => {
                 <input type="text" placeholder='Address' 
                     onChange={e=>setAddress(e.target.value)}
                 />
+
+
+                <label> Today
+                    <input type="radio" name="tomorrow" checked/>
+                </label> 
+                <label for="">Tomorrow
+                    <input type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
+                </label>
            
              
                 <TimeKeeper 
@@ -79,6 +116,8 @@ export const NewEventForm = (props) => {
                     </div>)
                 : null}
             </form>
+
+        </div>
         </>
     )
 }
