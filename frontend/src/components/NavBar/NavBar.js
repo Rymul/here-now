@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
 import { logout } from '../../store/session';
@@ -19,12 +19,13 @@ function NavBar () {
       history.push(`/`)
   }
 
-  const handleProfileClick = () => {
-    history.push(`/users/${sessionUser._id}`)
+
+  const handleLogoClick = () => {
+    history.push(`/events`)
   }
 
-  const handleHomeClick = () => {
-    history.push(`/events`)
+  const handleProfPicClick = () => {
+    history.push(`/users/${sessionUser._id}`)
   }
 
   // const getLinks = () => {
@@ -58,19 +59,20 @@ if (loggedIn) {
         </div> */}
         <div className="nav-bar-text-container">
           <div id="nav-bar-subdiv-logo" className="nav-bar-subdiv">
-            <img className="nav-logo" src="/logo.svg" alt="logo" />
+            <img className="nav-logo" src="/logo.svg" alt="logo"onClick={handleLogoClick}/>
           </div>
           <div id="nav-bar-subdiv-profpic" className="nav-bar-subdiv">
-            <button className='nav-bar-profpic'><img className="nav-bar-huey" src="/demoprofpic.png" alt="prof" /></button>
+            <button className='nav-bar-profpic' onClick={handleProfPicClick}><img className="nav-bar-huey" src="/demoprofpic.png" alt="prof" /></button>
+            <span className="nav-bar-profpic-name">{sessionUser.firstName}</span>
           </div>
           <div className="nav-bar-links-container">
             {/* <div className="nav-bar-links-spacer"></div>
             <div className="nav-bar-links-spacer"></div>
             <div className="nav-bar-links-spacer"></div> */}
 
-            <div className="nav-bar-links" onClick={handleHomeClick}>Home</div>
-            <div className="nav-bar-links" onClick={handleProfileClick}>Profile</div>
-            <div className="nav-bar-links">Inbox</div>
+            <NavLink className="nav-bar-links" to='/events'>Home</NavLink>
+            <NavLink className="nav-bar-links" to={`/users/${sessionUser._id}`}>Profile</NavLink>
+            <NavLink className="nav-bar-links" to={"/messages"}>Inbox</NavLink>
           </div>
           <div className="nav-bar-logout">
             <div id="nav-bar-logout" onClick={logoutUser}><button className='nav-bar-logout-button'><ImExit /></button>Log Out</div>
