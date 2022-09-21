@@ -27,11 +27,10 @@ export const createEvent = (payload) => async dispatch => {
       method: 'POST',
       body: JSON.stringify(payload)
     })
-      const data = await response.json();
-      dispatch(setEvents(data.event))
+      const event = await response.json();
+      dispatch(setEvents(event))
   } catch(err){
     const res = await err.json();
-    debugger
     if (res.statusCode === 400){
       return res
     }
