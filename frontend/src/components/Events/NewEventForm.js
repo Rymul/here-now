@@ -92,7 +92,7 @@ export const NewEventForm = (props) => {
 
 
                 <label> Today
-                    <input type="radio" name="tomorrow" checked/>
+                    <input type="radio" name="tomorrow" defaultChecked/>
                 </label> 
                 <label for="">Tomorrow
                     <input type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
