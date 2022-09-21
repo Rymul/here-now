@@ -5,9 +5,10 @@ import './EventsListItem.css'
 const EventsListItem = ({event}) => {
     const history = useHistory();
     const handleClick = (e) => {
-        e.preventDefaults()
-        history.push(`/events/${event['_id']}`)
+        history.push(`/events/${event._id}`)
     }
+
+    let eventTime = new Date(event.eventTime)
 
     return(
         <>
@@ -18,9 +19,10 @@ const EventsListItem = ({event}) => {
                 <div className="event-list-item-info">
                     <ul>
                         <li className='event-list-item-title'>{event.title}</li>
-                        <li className='event-list-item-address'>{event.address}</li>
-                        <li className='event-list-item-description'>{event.description}</li>
-                        <li>{Object.values(event.attendees).length} people attending </li>
+                        <li className='event-list-item-address'><span>WHERE: </span>{event.address}</li>
+                        <li className='event-list-item-when'><span>WHEN: </span>{`${(eventTime.getUTCHours() % 12) === 0 ? 12 : eventTime.getUTCHours() % 12}:${('0' + eventTime.getUTCMinutes()).slice(-2) } ${eventTime.getUTCHours() >=12 ? "PM" : "AM"}`}</li>
+                        <li className='event-list-item-description'><span>WHAT: </span>{event.description}</li>
+                        <li>{Object.values(event.attendees).length} attending </li>
                     </ul>
                 </div>
             </div>
