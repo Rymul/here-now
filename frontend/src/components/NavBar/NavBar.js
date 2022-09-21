@@ -8,6 +8,7 @@ import { FcMenu } from 'react-icons/fc'
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user)
   
   const logoutUser = e => {
       e.preventDefault();
@@ -40,15 +41,26 @@ function NavBar () {
       { getLinks() } */}
 
       <div className="nav-bar">
-        <div id="nav-bar-hamburger-subdiv" className="nav-bar-subdiv">
+        {/* <div id="nav-bar-hamburger-subdiv" className="nav-bar-subdiv">
           <FcMenu className="nav-bar-hamburger" onClick={logoutUser}/>
-        </div>
+        </div> */}
         <div id="nav-bar-subdiv-logo" className="nav-bar-subdiv">
           <img className="nav-logo" src="/logo.svg" alt="logo" />
         </div>
+        <br />
         <div id="nav-bar-subdiv-profpic" className="nav-bar-subdiv">
           <button className='nav-bar-profpic'><img className="nav-bar-huey" src="/demoprofpic.png" alt="prof" /></button>
         </div>
+        <div className="nav-bar-links-container">
+          {/* <div className="nav-bar-links-spacer"></div>
+          <div className="nav-bar-links-spacer"></div>
+          <div className="nav-bar-links-spacer"></div> */}
+
+          <div className="nav-bar-links">Home</div>
+          <div className="nav-bar-links">Profile</div>
+          <div className="nav-bar-links">Inbox</div>
+        </div>
+        div.
       </div>
     </>
   );
