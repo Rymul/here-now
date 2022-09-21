@@ -1,4 +1,13 @@
 .new-event-form-form{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 20%;
+}
+
+.new-event-form-outter-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

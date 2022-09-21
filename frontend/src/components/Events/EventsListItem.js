@@ -13,13 +13,13 @@ const EventsListItem = ({event}) => {
         <>
             <div className="event-list-item-container" onClick={handleClick}>
                 <div className="event-list-item-img">
-                    {Object.values(event.attendees).map(attendee => (<img key={attendee._id} src={blankProfilePic}  />)) }
+                    <img src="./ConservOfFlowers.jpg" alt="" />
                 </div>
                 <div className="event-list-item-info">
                     <ul>
-                        <li>{event.title}</li>
-                        <li>{event.address}</li>
-                        <li>{event.description}</li>
+                        <li className='event-list-item-title'>{event.title}</li>
+                        <li className='event-list-item-address'>{event.address}</li>
+                        <li className='event-list-item-description'>{event.description}</li>
                         <li>{Object.values(event.attendees).length} people attending </li>
                     </ul>
                 </div>

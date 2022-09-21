@@ -4,16 +4,27 @@ import './NavBar.css';
 import { logout } from '../../store/session';
 import { FcMenu } from 'react-icons/fc'
 import { ImExit } from 'react-icons/im'
+import { useHistory } from 'react-router-dom';
 
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user)
-  
+  const history = useHistory();
+
   const logoutUser = e => {
       e.preventDefault();
       dispatch(logout());
+      history.push(`/`)
+  }
+
+  const handleProfileClick = () => {
+    history.push(`/users/${sessionUser._id}`)
+  }
+
+  const handleHomeClick = () => {
+    history.push(`/events`)
   }
 
   // const getLinks = () => {
@@ -35,7 +46,7 @@ function NavBar () {
   //     );
   //   }
   // }
-
+if (loggedIn) {
   return (
     <>
       {/* <h1>Chirper</h1>
@@ -57,8 +68,8 @@ function NavBar () {
             <div className="nav-bar-links-spacer"></div>
             <div className="nav-bar-links-spacer"></div> */}
 
-            <div className="nav-bar-links">Home</div>
-            <div className="nav-bar-links">Profile</div>
+            <div className="nav-bar-links" onClick={handleHomeClick}>Home</div>
+            <div className="nav-bar-links" onClick={handleProfileClick}>Profile</div>
             <div className="nav-bar-links">Inbox</div>
           </div>
           <div className="nav-bar-logout">
@@ -68,6 +79,11 @@ function NavBar () {
       </div>
     </>
   );
+          } else {
+            return (
+              null
+            )
+          }
 }
 
 export default NavBar;
