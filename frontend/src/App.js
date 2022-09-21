@@ -26,7 +26,6 @@ function App() {
   return loaded && (
     <>
       <NavBar />
-      <div className='site-container'>
       <Switch>
         <Route exact path="/" component={SplashPage} />
         <AuthRoute exact path="/login" component={LoginForm} />
@@ -42,7 +41,6 @@ function App() {
         {/* <ProtectedRoute exact path="/users/:userId/messages/:senderId" component={Conversation} /> */}
         <Redirect to="/" />
       </Switch>
-      </div>
     </>
   );
 }
