@@ -4,6 +4,7 @@ import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
+import { Link } from 'react-router-dom';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -14,7 +15,7 @@ function SignupForm () {
   const [password2, setPassword2] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
@@ -67,68 +68,86 @@ function SignupForm () {
   }
 
   return (
+    <div className='session-form-container'>
     <form className="session-form" onSubmit={usernameSubmit}>
-      <h2>Sign Up Form</h2>
+      <h2 id="session-form-title">Sign Up</h2>
       <div className="errors">{errors?.firstName}</div>
-      <label>
+      
+      
         {/* <span>First Name</span> */}
-        <input type="text"
+        <input 
+          id="signin-form-input"
+          type="text"
           value={firstName}
           onChange={update('firstName')}
           placeholder="First Name"
         />
-      </label>
       <div className="errors">{errors?.lastName}</div>
-      <label>
+      
+      
         {/* <span>Last Name</span> */}
-        <input type="text"
+        <input 
+          id="signin-form-input"
+          type="text"
           value={lastName}
           onChange={update('lastName')}
           placeholder="Last Name"
         />
-      </label>
       <div className="errors">{errors?.email}</div>
-      <label>
+      
+      
         {/* <span>Email</span> */}
-        <input type="text"
+        <input 
+          id="signin-form-input"
+          type="text"
           value={email}
           onChange={update('email')}
           placeholder="Email"
         />
-      </label>
-      <div className='birthday'></div>
-      <label>
-        <span>Birthday</span>
-        <Calendar 
-          onChange={handleDate}
-        />
-      </label>
+      
       <div className="errors">{errors?.password}</div>
-      <label>
+      
+      
         {/* <span>Password</span> */}
-        <input type="password"
+        <input 
+          id="signin-form-input"
+          type="password"
           value={password}
           onChange={update('password')}
           placeholder="Password"
         />
-      </label>
       <div className="errors">
         {password !== password2 && 'Confirm Password field must match'}
       </div>
-      <label>
+      
+      
         {/* <span>Confirm Password</span> */}
-        <input type="password"
+        <input 
+          id="signin-form-input"
+          type="password"
           value={password2}
           onChange={update('password2')}
           placeholder="Confirm Password"
         />
-      </label>
-      <input
-        type="submit"
-        value="Sign Up"
-        disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
-      />
+        <div className='birthday'>
+          <span id="birthday-text">Select your Birthday</span>
+          <Calendar 
+            onChange={handleDate}
+            id="calendar"
+          />
+        </div>
+        <input
+          id="session-form-submit-button"
+          type="submit"
+          value="Sign Up"
+          disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
+        />
     </form>
+    <div className="session-form-footer">
+        <span className='session-form-footer-title'>Have an account?</span>
+        <Link className="to-signup-button" to={'/login'}> Log in!</Link>
+    </div>
+    </div>
   );
 }
 

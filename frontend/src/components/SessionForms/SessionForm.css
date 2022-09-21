@@ -1,39 +1,125 @@
+.session-form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+}
+
 .session-form {
-    margin-top: 20px;
-    margin-left: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    /* height: 50%; */
+    margin-top: 5vh;
+
 }
 
 
 
 
+#session-form-title {
+    font-size: 30px;
+    color: #004049;
+}
 
 
 
-#log-in-form-input {
-    width: 45%;
+#session-form-input {
+    width: 25vw;
     height: 40px;
+    border-radius: 20px;
+    border: #a8a8a8 solid 1px;
+    align-items: center;
+    margin: 15px;
+    padding-left: 20px;
+    
+}
+
+#session-form-input::placeholder {
+    color:#728F93;
+}
+
+#session-form-input:focus {
+    outline: none;
+}
+
+#signin-form-input {
+    width: 25vw;
+    height: 40px;
+    border-radius: 20px;
+    border: #a8a8a8 solid 1px;
+    align-items: center;
+    /* margin: 5px; */
+    padding-left: 20px;
+}
+
+#signin-form-input::placeholder {
+    color:#728F93;
+}
+
+#signin-form-input:focus {
+    outline: none;
+}
+
+.birthday {
+    margin: 10px;
+}
+
+#birthday-text {
+    color: #004049;
+    margin-left: 5px;
+}
+
+.react-calendar {
+    margin-top: 5px;
     border-radius: 20px;
 }
 
-#submit-button {
+#session-form-submit-button {
+    margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
     border: #f9f9f9;
     color: #f9f9f9;
-    width: 45%;
-    height: 40px;
+    width: 26.5vw;
+    height: 45px;
     font-weight: 500;
     font-size: 16px;
-    /* background-color: #12ADC1; */
-    background-color: #0295A9;
+    background-color: #12ADC1;
+    /* background-color: #0295A9; */
     padding: 14px;
     border-radius: 20px;
 }
 
-#submit-button:hover {
-    border: 1px solid #12ADC1;
+#session-form-submit-button:hover {
     background-color: #f9f9f9;
-    color:#12ADC1
+    color:#12ADC1;
+    border: 1px solid #12ADC1;
 }
+
+.session-form-footer {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px;    
+}
+
+.session-form-footer-title {
+    color: #004049;
+}
+
+.to-signup-button {
+    text-decoration: none;
+    color: #004049;
+    font-weight: 700;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+
+.to-signup-button:hover{
+    border-bottom: 1px solid #004049;
+} 
