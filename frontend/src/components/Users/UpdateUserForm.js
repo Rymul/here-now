@@ -8,10 +8,10 @@ import { fetchUser, getUser, updateUser } from '../../store/users';
 import { useParams } from 'react-router-dom';
 
 function UpdateUserForm () {
-    const [email, setEmail] = useState(user.email);
-    const [firstName, setFirstName] = useState(user.firstName);
-    const [lastName, setLastName] = useState(user.lastName);
-    const [birthDay, setBirthDay] = useState(user.birthDay);
+    const [email, setEmail] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [birthDay, setBirthDay] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
     const errors = useSelector(state => state.errors.session);
@@ -86,68 +86,83 @@ function UpdateUserForm () {
 
   if(!user) return null
   return (
+    <div className='session-form-container'>
     <form className="session-form" onSubmit={usernameSubmit}>
-      <h2>Update Profile</h2>
+      <h2 id="session-form-title">Update Profile</h2>
       <div className="errors">{errors?.firstName}</div>
-      <label>
+      
+      
         {/* <span>First Name</span> */}
-        <input type="text"
+        <input 
+          id="signin-form-input"
+          type="text"
           value={firstName}
           onChange={update('firstName')}
-        //   placeholder="First Name"
+          placeholder="First Name"
         />
-      </label>
       <div className="errors">{errors?.lastName}</div>
-      <label>
+      
+      
         {/* <span>Last Name</span> */}
-        <input type="text"
+        <input 
+          id="signin-form-input"
+          type="text"
           value={lastName}
           onChange={update('lastName')}
-        //   placeholder="Last Name"
+          placeholder="Last Name"
         />
-      </label>
       <div className="errors">{errors?.email}</div>
-      <label>
+      
+      
         {/* <span>Email</span> */}
-        <input type="text"
+        <input 
+          id="signin-form-input"
+          type="text"
           value={email}
           onChange={update('email')}
           placeholder="Email"
         />
-      </label>
-      <div className='birthday'></div>
-      <label>
-        <span>Birthday</span>
-        <Calendar 
-          onChange={handleDate}
-        />
-      </label>
+      
       <div className="errors">{errors?.password}</div>
-      <label>
+      
+      
         {/* <span>Password</span> */}
-        <input type="password"
+        <input 
+          id="signin-form-input"
+          type="password"
           value={password}
           onChange={update('password')}
           placeholder="Password"
         />
-      </label>
       <div className="errors">
         {password !== password2 && 'Confirm Password field must match'}
       </div>
-      <label>
+      
+      
         {/* <span>Confirm Password</span> */}
-        <input type="password"
+        <input 
+          id="signin-form-input"
+          type="password"
           value={password2}
           onChange={update('password2')}
           placeholder="Confirm Password"
         />
-      </label>
-      <input
-        type="submit"
-        value="Update Profile"
-        disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
-      />
+        <div className='birthday'>
+          <span id="birthday-text">Select your Birthday</span>
+          <Calendar 
+            onChange={handleDate}
+            id="calendar"
+            defaultValue={birthDay}
+          />
+        </div>
+        <input
+          id="session-form-submit-button"
+          type="submit"
+          value="Update Profile"
+          disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
+        />
     </form>
+    </div>
   );
 }
 

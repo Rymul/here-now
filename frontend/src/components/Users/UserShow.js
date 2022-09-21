@@ -35,7 +35,7 @@ const UserShow = () => {
                     <p id="user-show-join-date">Member Since: {user.createdAt.slice(0,4)}</p>
                 </div>
                 <div className="user-show-buttons">
-                <Link to={`/user/update/${user._id}`} id='user-show-update'>
+                <Link to={`/users/update/${user._id}`} id='user-show-update'>
                     {/* <BiEdit />  */}
                     Edit Profile
                 </Link>
