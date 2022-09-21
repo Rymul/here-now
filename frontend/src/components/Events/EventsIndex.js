@@ -21,13 +21,15 @@ const EventsIndex = () => {
     return (
         <>
         <div className='events-index-page'>
+                <h1>Nearby Events</h1>
             <div className='events-index-list-container'>
                 <div className='events-index-list'>
+                    
                     <ul>
                             {events.map((event) => (<li key={event['_id']}><EventsListItem event={event}/></li>))}
                     </ul>
                 </div>
-                <div className='events-index-map-container'></div>
+                <div className='events-index-map-container'><img src="./MapsImage.png" alt="" /></div>
             </div>
         </div>
         </>

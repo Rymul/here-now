@@ -1,5 +1,5 @@
 .event-list-item-img {
-    width: 100px;
+    width: 130px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -9,6 +9,7 @@
     overflow: hidden;
     border-radius: 12px;
     box-shadow: rgb(0 0 0 / 25%) 0px 2px 4px 0px;
+
 }
 
 .event-list-item-img > img {
@@ -18,8 +19,16 @@
 
 .event-list-item-container {
     display:flex;
-    padding: 10px 0;
-    border-bottom: 1px solid rgb(200,200,200)
+    background-color: #FFFFFF;;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px 0px;
+    color: #004049
+}
+
+.event-list-item-container:hover {
+
 }
 
 .event-list-item-info {
