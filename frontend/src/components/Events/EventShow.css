@@ -1,0 +1,6 @@
+.event-show-outter-container{
+    margin-left: 225px;
+    background-color: aqua;
+    width: calc(100% - 225px);
+    height: 100vh;
+}

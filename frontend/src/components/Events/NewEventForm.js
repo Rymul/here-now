@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import DateTimePicker from 'react-datetime-picker';
+import { useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import TimeKeeper from 'react-timekeeper';
 import { createEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
@@ -13,12 +14,11 @@ export const NewEventForm = (props) => {
     const [lat, setLat] = useState(37.8);
     const [lng, setLng] = useState(122.4);
     const user = useSelector(state=> state.session.user)
-    const [owner, setOwner] = useState(user)
-    const [attendees, setAttendees] = useState({ [user._id]: user})
     const [eventTime, setEventTime] = useState('12:30');
     const [errors, setErrors] = useState(null)
     const [tomorrow, setTomorrow] = useState(false)
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,8 +29,8 @@ export const NewEventForm = (props) => {
             address,
             lat,
             lng,
-            owner,
-            attendees,
+            owner: user,
+            attendees: {[user._id]: user},
             eventTime: updatedEventTime
         }
         
@@ -38,7 +38,7 @@ export const NewEventForm = (props) => {
             .then( res => {
                 if (res) {
                     const updatedErrors = [];
-                    Object.keys(res.errors).map( error => {
+                    Object.keys(res.errors).forEach( error => {
                         switch (error){
                             case 'title':
                                 updatedErrors
@@ -59,6 +59,8 @@ export const NewEventForm = (props) => {
                         }
                     })
                     setErrors(updatedErrors)
+                } else {
+                    history.push('/events')
                 }
             })
     
@@ -67,7 +69,8 @@ export const NewEventForm = (props) => {
     if(!user) return null;
     return (
         <>
-            <h1>{owner.firstName}</h1>
+        <div className='new-event-form-outter-container'>
+            <h1>{user.firstName}</h1>
             <h1>Create a new event</h1>
 
             <form className='new-event-form-form' onSubmit={handleSubmit}>
@@ -113,6 +116,8 @@ export const NewEventForm = (props) => {
                     </div>)
                 : null}
             </form>
+
+        </div>
         </>
     )
 }
