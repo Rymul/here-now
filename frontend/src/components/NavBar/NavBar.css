@@ -35,6 +35,10 @@
     height: 35%;
     width: 100%;
 }
+
+.nav-logo:hover {
+    cursor: pointer;
+}
 #nav-bar-subdiv-profpic {
     display: flex;
     align-items: center;
@@ -93,7 +97,8 @@
     opacity: 0.7;
     padding-left: 65px;
     border-left: 5px solid transparent;
-    color: #004049
+    color: #004049;
+    text-decoration: none;
 
 }
 
@@ -101,9 +106,10 @@
     cursor: pointer;
 }
 
-.nav-bar-links:active {
-    border-left: 5px solid rgb(40,40,40);
+.nav-bar-links.active {
+    border-left: 5px solid #004049;
     opacity: 1;
+    text-decoration: none;
 }
 
 .nav-bar-links-container {
