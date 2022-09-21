@@ -27,12 +27,15 @@ function LoginForm () {
   }
 
   return (
+    <div className='login-form-container'>
     <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Log In Form</h2>
+      <h2>Log In</h2>
       <div className="errors">{errors?.email}</div>
       <label>
-        <span>Email</span>
-        <input type="text"
+        {/* <span>Email</span> */}
+        <input 
+          id="log-in-form-input"
+          type="text"
           value={email}
           onChange={update('email')}
           placeholder="Email"
@@ -40,19 +43,23 @@ function LoginForm () {
       </label>
       <div className="errors">{errors?.password}</div>
       <label>
-        <span>Password</span>
-        <input type="password"
+        {/* <span>Password</span> */}
+        <input 
+          id="log-in-form-input"
+          type="password"
           value={password}
           onChange={update('password')}
           placeholder="Password"
         />
       </label>
       <input
+        id="submit-button"
         type="submit"
         value="Log In"
         disabled={!email || !password}
       />
     </form>
+    </div>
   );
 }
 
