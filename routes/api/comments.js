@@ -25,7 +25,7 @@ router.get('/', async (_req, res) => {
       try {
         const newComment = new Comment({
           body: req.body.body,
-          commenterId: req.body.commenterId
+          commenter: req.body.commenter
         });
   
         let comment = await newComment.save();
