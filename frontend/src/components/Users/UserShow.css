@@ -1,0 +1,102 @@
+.user-show-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-show-info {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.user-show-top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+
+}
+
+#user-show-profile-pic {
+    width: 60%;
+    height: 100%;
+    clip-path: circle();
+    /* clip-path: circle(39% at 50% 50%); */
+}
+
+.user-show-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+
+}
+
+#user-show-name {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+#user-show-birthday {
+
+}
+
+.user-show-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+
+}
+
+#user-show-update {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: #f9f9f9;
+    color: #f9f9f9;
+    width: 45%;
+    height: 40px;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #12ADC1;
+    padding: 14px;
+    border-radius: 20px;
+    
+    
+
+}
+
+#user-show-update:hover {
+    border: 1px solid #12ADC1;
+    background-color: #f9f9f9;
+    color:#12ADC1
+}
+
+#user-show-delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: #f9f9f9;
+    color: #f9f9f9;
+    width: 45%;
+    height: 40px;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #12ADC1;
+    padding: 14px;
+    border-radius: 20px;
+}
+
+#user-show-delete:hover {
+    border: 1px solid #12ADC1;
+    background-color: #f9f9f9;
+    color:#12ADC1
+}
