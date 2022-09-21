@@ -4,12 +4,12 @@ import { useDispatch } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
-import { Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 
 import SplashPage from './components/SplashPage/SplashPage';
 import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
+import EventsIndex from './components/Events/EventsIndex';
 
 import { getCurrentUser } from './store/session';
 import UserShow from './components/Users/UserShow';
@@ -28,11 +28,12 @@ function App() {
         <Route exact path="/" component={SplashPage} />
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
-        {/* <ProtectedRoute exact path="/feed" component={EventsIndex}/> */}
-        {/* <ProtectedRoute exact path="/events/:eventId" component={EventShow} /> */}
-        {/* <ProtectedRoute exact path="/events/new" component={NewEventForm} /> */}
+        <ProtectedRoute exact path="/events" component={EventsIndex} />
+        {/* <ProtectedRoute exact path="/feed" component={EventsIndex}/>
+        <ProtectedRoute exact path="/events/:eventId" component={EventShow} />
+        <ProtectedRoute exact path="/events/new" component={NewEventForm} /> */}
         <ProtectedRoute exact path="/users/:userId" component={UserShow} />
-        {/* <ProtectedRoute exact path="/users/:userId/messages" component={UserMessages} /> */}
+        {/* <ProtectedRoute exact path="/users/:userId/messages" component={UserMessages} />
         {/* <ProtectedRoute exact path="/users/:userId/messages/:senderId" component={Conversation} /> */}
         <Redirect to="/" />
       </Switch>
