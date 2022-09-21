@@ -24,7 +24,7 @@ function App() {
 
   return loaded && (
     <>
-      {/* <NavBar /> */}
+      <NavBar />
       <Switch>
         <Route exact path="/" component={SplashPage} />
         <AuthRoute exact path="/login" component={LoginForm} />
