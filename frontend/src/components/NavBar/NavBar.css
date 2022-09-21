@@ -1,12 +1,13 @@
 .nav-bar {
-    height: 10vh;
-    width: 100vw;
+    height: 100vh;
+    width: 225px;
     background-color: floralwhite;
     position: fixed;
     top: 0;
     left: 0;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -15,24 +16,25 @@
 }
 
 #nav-bar-subdiv-logo {
-    width: 200px;
+    height: 100px;
+    width: 175px;
 }
 
 .nav-logo {
     height: 100%;
     width: 100%;
-    scale: 1.0;
 }
 #nav-bar-subdiv-profpic {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 10%;
+    height: 50px;
+    /* width: 10%; */
 }
 .nav-bar-profpic {
     border-radius: 50%;
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
     border: 0.1px solid rgb(40,40,40);
     opacity: 0.7;
 }
@@ -57,5 +59,36 @@
 }
 
 .nav-bar-hamburger {
-    font-size: 40px;
+    font-size: 50px;
 }
+
+.nav-bar-links, .nav-bar-links-spacer {
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 22px;
+    opacity: 0.7;
+    padding-left: 30px;
+    border-left: 5px solid transparent;
+
+}
+
+.nav-bar-links:hover {
+    cursor: pointer;
+}
+
+.nav-bar-links:active {
+    border-left: 5px solid rgb(40,40,40);
+    opacity: 1;
+}
+
+.nav-bar-links-container {
+    background-color: transparent;
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
