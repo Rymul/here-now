@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TimeKeeper from 'react-timekeeper';
 import { createEvent } from '../../store/events';
+import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
 import './NewEventForm.css'
 
 export const NewEventForm = (props) => {
@@ -13,12 +14,14 @@ export const NewEventForm = (props) => {
     const user = useSelector(state=> state.session.user)
     const [owner, setOwner] = useState(user)
     const [attendees, setAttendees] = useState({ [user._id]: user})
-    const [eventTime, setEventTime] = useState();
+    const [eventTime, setEventTime] = useState('12:30');
     const [errors, setErrors] = useState(null)
+    const [tomorrow, setTomorrow] = useState(false)
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const updatedEventTime = getNewDate(tomorrow, eventTime)
         const event = {
             title,
             description,
@@ -27,12 +30,35 @@ export const NewEventForm = (props) => {
             lng,
             owner,
             attendees,
-            eventTime
+            eventTime: updatedEventTime
         }
         
         dispatch(createEvent(event))
             .then( res => {
-                if (res.errors) setErrors(Object.values(res.errors))
+                if (res) {
+                    const updatedErrors = [];
+                    Object.keys(res.errors).map( error => {
+                        switch (error){
+                            case 'title':
+                                updatedErrors
+                                    .push(capitalizeFirstLetter(error) + ' must be between 5 and 50 characters')
+                                break;
+                            case 'description':
+                                updatedErrors
+                                    .push(capitalizeFirstLetter(error) + ' must be between 5 and 150 characters')
+                                break;
+                            case 'address':
+                                updatedErrors
+                                    .push(capitalizeFirstLetter(error) + ' must be between 5 and 50 characters')
+                                break;
+                            case 'eventTime':
+                                break;
+                            default:
+                                break;
+                        }
+                    })
+                    setErrors(updatedErrors)
+                }
             })
     
     }
@@ -59,6 +85,14 @@ export const NewEventForm = (props) => {
                 <input type="text" placeholder='Address' 
                     onChange={e=>setAddress(e.target.value)}
                 />
+
+
+                <label> Today
+                    <input type="radio" name="tomorrow" checked/>
+                </label> 
+                <label for="">Tomorrow
+                    <input type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
+                </label>
            
              
                 <TimeKeeper 

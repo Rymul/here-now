@@ -1,14 +1,25 @@
 .nav-bar {
     height: 100vh;
     width: 225px;
-    background-color: floralwhite;
+    background-color: white;
     position: fixed;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+}
+
+.nav-bar-text-container {
+    height: 90%;
+    width: 225px;
+    /* background-color: white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 1px solid rgba(192, 190, 190, 0.3);
 }
 
 .nav-bar-subdiv {
@@ -28,7 +39,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
+    height: 0px;
+    margin-top: -65px;
     /* width: 10%; */
 }
 .nav-bar-profpic {
@@ -51,6 +63,16 @@
     height: 100%;
 }
 
+#nav-bar-logout {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 18px;
+    opacity: 0.7;
+    width: 50%;
+}
+
 #nav-bar-hamburger-subdiv {
     display: flex;
     align-items: center;
@@ -63,14 +85,15 @@
 }
 
 .nav-bar-links, .nav-bar-links-spacer {
-    height: 25%;
+    height: 30%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     font-size: 22px;
     opacity: 0.7;
-    padding-left: 30px;
+    padding-left: 65px;
     border-left: 5px solid transparent;
+    color: #004049
 
 }
 
@@ -90,5 +113,33 @@
     display: flex;
     flex-direction: column;
 
+}
+
+.nav-bar-logout-button {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #0295A9;
+}
+
+.nav-bar-logout-button:hover {
+    opacity: 1.0;
+}
+
+.nav-bar-logout {
+    height: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    color: #004049
+}
+
+.nav-bar-logout:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
