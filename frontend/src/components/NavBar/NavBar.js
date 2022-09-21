@@ -63,6 +63,7 @@ if (loggedIn) {
           </div>
           <div id="nav-bar-subdiv-profpic" className="nav-bar-subdiv">
             <button className='nav-bar-profpic' onClick={handleProfPicClick}><img className="nav-bar-huey" src="/demoprofpic.png" alt="prof" /></button>
+            <span className="nav-bar-profpic-name">{sessionUser.firstName}</span>
           </div>
           <div className="nav-bar-links-container">
             {/* <div className="nav-bar-links-spacer"></div>
