@@ -1,10 +1,8 @@
 .event-list-item-img {
     width: 130px;
+    height: 130px;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    align-content: center;
-    justify-items: center;
     justify-content: center;
     overflow: hidden;
     border-radius: 12px;
@@ -13,18 +11,21 @@
 }
 
 .event-list-item-img > img {
-   width:120%;
+    object-fit: cover;
+    width: 130px;
 
+    height: 130px;   
 }
 
 .event-list-item-container {
     display:flex;
     background-color: #FFFFFF;;
     padding: 10px;
-    margin: 20px;
+    margin: 0 20px 20px 20px;
     border-radius: 12px;
     box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px 0px;
-    color: #004049
+    color: #004049;
+    cursor: pointer;
 }
 
 .event-list-item-container:hover {
@@ -33,9 +34,19 @@
 
 .event-list-item-info {
     padding-left: 20px;
+    width: calc( 100% - 130px)
+}
+
+.event-list-item-info li {
+    padding-top: 10px
 }
 
 .event-list-item-title {
     font-size: 20px;
     font-weight: bold;
+}
+
+.event-list-item-info span {
+    color: rgb(200,200,200) ;
+    font-size: 14px;
 }
