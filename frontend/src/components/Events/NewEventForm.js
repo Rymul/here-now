@@ -12,7 +12,7 @@ export const NewEventForm = (props) => {
     const [description, setDescription] = useState(null);
     const [address,setAddress] = useState(null);
     const [lat, setLat] = useState(37.8);
-    const [lng, setLng] = useState(122.4);
+    const [lng, setLng] = useState(-122.4);
     const user = useSelector(state=> state.session.user)
     const [eventTime, setEventTime] = useState('12:30');
     const [errors, setErrors] = useState(null)
@@ -31,7 +31,8 @@ export const NewEventForm = (props) => {
             lng,
             owner: user,
             attendees: {[user._id]: user},
-            eventTime: updatedEventTime
+            eventTime: updatedEventTime,
+            comments: 'hello'
         }
         
         dispatch(createEvent(event))
