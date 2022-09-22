@@ -5,6 +5,7 @@ const EventIndexMap = ({latlng}) => {
     const [map, setMap] = useState(null);
     const [pinsDropped, setPinsDropped] = useState(false);
 
+    
     const eventsObj = useSelector(state => state.events)
     let events;
     if (eventsObj) {
@@ -17,7 +18,16 @@ const EventIndexMap = ({latlng}) => {
 
     const mapRef = useRef(null)
 
-    
+    const handleNavigateBack = () => {
+        
+    }
+
+    useEffect(() => {
+        document.addEventListener('popstate', handleNavigateBack);
+        return () => {
+            document.removeEventListener('popstate', handleNavigateBack)
+        }
+    }, [handleNavigateBack])
 
     
     useEffect(() => {

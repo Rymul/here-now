@@ -4,14 +4,22 @@ import { fetchAllEvents } from '../../store/events';
 import EventsListItem from './EventsListItem';
 import './EventsIndex.css'
 import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
+import { updateGeolocation } from '../../store/geolocation';
+import { FaPlus } from 'react-icons/fa'
+import { useHistory } from 'react-router-dom';
 
 const EventsIndex = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
+    
     useEffect(()=>{
         dispatch(fetchAllEvents());
     },[dispatch])
 
-    const [latlng, setLatLng] = useState({lat:null, lng:null})
+
+    const latlng = useSelector(state => state.geolocation)
+
+    // const [latlng, setLatLng] = useState({lat:null, lng:null})
     const [denied, setDenied] = useState(false) 
 
     const eventsObj = useSelector(state => state.events)
@@ -35,7 +43,8 @@ const EventsIndex = () => {
     //     )
     // }
     navigator.geolocation.getCurrentPosition(function (position) {
-        setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude })
+        // setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude })
+        dispatch(updateGeolocation({ lat: position.coords.latitude, lng: position.coords.longitude}))
     }, (error)=>{
         if (error.code == error.PERMISSION_DENIED) {
             setDenied(true);
@@ -49,6 +58,10 @@ const EventsIndex = () => {
         )
     }
 
+    const handleClick = () => {
+        history.push('/events/new')
+    }
+
     return (
         <>
         <div className='events-index-page'>
@@ -57,6 +70,16 @@ const EventsIndex = () => {
                 <div className='events-index-list'>
                     
                     <ul>
+                        <li>
+                            <div className="event-index-container" onClick={handleClick}>
+                                <div className="event-list-item-info">
+                                    <ul>
+                                            <li className='event-list-item-title'><FaPlus /> <h2>Create an Event</h2></li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
                             {events.map((event) => (<li key={event['_id']}><EventsListItem event={event}/></li>))}
                     </ul>
                 </div>

@@ -5,13 +5,15 @@ import errors from './errors'
 import comments from './comments'
 import users from './users'
 import events from './events'
+import geolocation from './geolocation'
 
 const rootReducer = combineReducers({
   session,
   errors,
   events,
   comments,
-  users
+  users,
+  geolocation
 });
 
 let enhancer;
