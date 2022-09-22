@@ -28,6 +28,11 @@ function LoginForm () {
     dispatch(login({ email, password })); 
   }
 
+  const handleDemoLogin = (e) => {
+    e.preventDefault()
+    dispatch(login({email: 'demo@user.me',password: 'password'}))
+  }
+
   return (
     <div className='session-form-container'>
     <form className="session-form" onSubmit={handleSubmit}>
@@ -60,6 +65,8 @@ function LoginForm () {
         value="Log In"
         disabled={!email || !password}
       />
+
+      <input type="button" value='Demo Log In' id="session-form-submit-button" onClick={handleDemoLogin}/>
     </form>
     <div className="session-form-footer">
         <span className='session-form-footer-title'>Don't have an account?</span>
