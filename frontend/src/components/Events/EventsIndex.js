@@ -12,6 +12,7 @@ const EventsIndex = () => {
     },[dispatch])
 
     const [latlng, setLatLng] = useState({lat:null, lng:null})
+    const [denied, setDenied] = useState(false) 
 
     const eventsObj = useSelector(state => state.events)
     let events;
@@ -23,25 +24,31 @@ const EventsIndex = () => {
 
     if (!events) {return null;}
 
-    if (latlng.lat===null) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude })
-        })
-        return (
-            <div className='events-index-geolocate-request'>
-                <p>Please enable browser location to use here&amp;now</p>
-            </div>
-        )
-    }
+    // if (latlng.lat===null) {
+    //     navigator.geolocation.getCurrentPosition(function (position) {
+    //         setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude })
+    //     })
+    //     return (
+    //         <div className='events-index-geolocate-request'>
+    //             <p>Please enable browser location to use here&amp;now</p>
+    //         </div>
+    //     )
+    // }
     navigator.geolocation.getCurrentPosition(function (position) {
         setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude })
     }, (error)=>{
+        if (error.code == error.PERMISSION_DENIED) {
+            setDenied(true);
+        }
+    })
+    if (denied) {
         return (
             <div className='events-index-geolocate-request'>
-                <p>Please enable browser location to use here&amp;now</p>
+                <p>Please enable browser location and refresh your page to use here&amp;now</p>
             </div>
         )
-    })
+    }
+
     return (
         <>
         <div className='events-index-page'>
@@ -54,7 +61,7 @@ const EventsIndex = () => {
                     </ul>
                 </div>
                 <div className='events-index-map-container'>
-                        <EventsIndexMapWrapper apiKey={process.env.MAPS_API_KEY} laglng={latlng}/>
+                        <EventsIndexMapWrapper apiKey={process.env.MAPS_API_KEY} latlng={latlng}/>
                 </div>
             </div>
         </div>

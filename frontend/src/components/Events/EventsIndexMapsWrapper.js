@@ -1,13 +1,14 @@
 import { Wrapper } from "@googlemaps/react-wrapper";
-import EventIndexMap from "./EventIndexMap";
+import EventIndexMap from "./EventsIndexMap";
 
-function EventsIndexMapWrapper({ apiKey, laglng }) {
+
+function EventsIndexMapWrapper({ apiKey, latlng }) {
 
 
     return (
         <>
             <Wrapper apiKey={apiKey} latlng={latlng}>
-                <EventIndexMap spot={spot} />
+                <EventIndexMap latlng={latlng} />
             </Wrapper>
         </>
     )
