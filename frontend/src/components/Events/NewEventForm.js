@@ -100,14 +100,14 @@ export const NewEventForm = (props) => {
                 </label>
            
              
-                <TimeKeeper 
+                {/* <TimeKeeper 
                     switchToMinuteOnHourSelect={true}
                     closeOnMinuteSelect={true}
                     onChange={(newTime) => setEventTime(newTime.formatted24)}
                     coarseMinutes={15}
                     forceCoarseMinutes
                     time={eventTime}
-                />
+                /> */}
             
                 <button>Create that event boy</button>
                 {errors ? 
