@@ -20,7 +20,7 @@ const commentsRouter = require('./routes/api/comments'); /// BANANA
 
 
 require("./models/User");
-// require('./models/Events');
+require('./models/Events');
 require('./config/passport');
 
 const app = express();
