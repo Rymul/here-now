@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import TimeKeeper from 'react-timekeeper';
+
 import { createEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
 import './NewEventForm.css'
@@ -54,6 +54,8 @@ export const NewEventForm = (props) => {
                                     .push(capitalizeFirstLetter(error) + ' must be between 5 and 50 characters')
                                 break;
                             case 'eventTime':
+                                updatedErrors
+                                .push('Event time must be between 5 and 50 characters')
                                 break;
                             default:
                                 break;
@@ -100,14 +102,7 @@ export const NewEventForm = (props) => {
                 </label>
            
              
-                {/* <TimeKeeper 
-                    switchToMinuteOnHourSelect={true}
-                    closeOnMinuteSelect={true}
-                    onChange={(newTime) => setEventTime(newTime.formatted24)}
-                    coarseMinutes={15}
-                    forceCoarseMinutes
-                    time={eventTime}
-                /> */}
+                <input type="time" value={eventTime} onChange={(e)=>setEventTime(e.target.value)} />
             
                 <button>Create that event boy</button>
                 {errors ? 
