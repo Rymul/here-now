@@ -39,3 +39,21 @@
     padding: 20px 0;
     font-size: 30px;
 }
+
+.events-index-geolocate-request {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    padding-left: 225px;
+    height: 100vh;
+}
+
+.events-index-geolocate-request p {
+   width: 500px;
+   font-size: 40px;
+   text-align: center;
+
+}

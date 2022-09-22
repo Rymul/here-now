@@ -16,7 +16,17 @@ const EventsIndex = () => {
         events = Object.values(eventsObj);
     }
 
+
+
     if (!events) {return null;}
+
+    if ("geolocation" in navigator) {
+        return (
+            <div className='events-index-geolocate-request'>
+                <p>Please enable browser location to use here&amp;now</p>
+            </div>
+        )
+    }
 
     return (
         <>
