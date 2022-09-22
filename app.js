@@ -17,6 +17,7 @@ const usersRouter = require('./routes/api/users');
 const eventsRouter = require('./routes/api/events')
 const csrfRouter = require('./routes/api/csrf');
 const commentsRouter = require('./routes/api/comments'); /// BANANA
+const s3Router = require('./routes/api/s3');
 
 
 require("./models/User");
@@ -60,6 +61,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/events', eventsRouter);
 app.use('/api/csrf', csrfRouter);
 app.use('/api/comments', commentsRouter); /// BANANA
+app.use('/api/s3', s3Router)
 
 
 if (isProduction) {
