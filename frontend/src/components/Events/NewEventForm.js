@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import TimeKeeper from 'react-timekeeper';
+// import TimeKeeper from 'react-timekeeper';
 import { createEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
 import './NewEventForm.css'
@@ -12,7 +12,7 @@ export const NewEventForm = (props) => {
     const [description, setDescription] = useState(null);
     const [address,setAddress] = useState(null);
     const [lat, setLat] = useState(37.8);
-    const [lng, setLng] = useState(122.4);
+    const [lng, setLng] = useState(-122.4);
     const user = useSelector(state=> state.session.user)
     const [eventTime, setEventTime] = useState('12:30');
     const [errors, setErrors] = useState(null)
@@ -33,7 +33,8 @@ export const NewEventForm = (props) => {
             lng,
             owner: user,
             attendees: {[user._id]: user},
-            eventTime: updatedEventTime
+            eventTime: updatedEventTime,
+            comments: 'hello'
         }
         
         dispatch(createEvent(event))
@@ -131,14 +132,14 @@ export const NewEventForm = (props) => {
                 </label>
            
              
-                <TimeKeeper 
+                {/* <TimeKeeper 
                     switchToMinuteOnHourSelect={true}
                     closeOnMinuteSelect={true}
                     onChange={(newTime) => setEventTime(newTime.formatted24)}
                     coarseMinutes={15}
                     forceCoarseMinutes
                     time={eventTime}
-                />
+                /> */}
             
                 <button>Create that event boy</button>
                 {errors ? 
