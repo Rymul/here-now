@@ -54,7 +54,7 @@ function SignupForm () {
     setBirthDay(nextValue)
   }
 
-  const usernameSubmit = e => {
+  const userSubmit = e => {
     e.preventDefault();
     const user = {
       email,
@@ -69,7 +69,7 @@ function SignupForm () {
 
   return (
     <div className='session-form-container'>
-    <form className="session-form" onSubmit={usernameSubmit}>
+    <form className="session-form" onSubmit={userSubmit}>
       <h2 id="session-form-title">Sign Up</h2>
       <div className="errors">{errors?.firstName}</div>
       
