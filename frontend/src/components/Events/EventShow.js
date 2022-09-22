@@ -19,17 +19,17 @@ const EventShow = () => {
             <div className="event-show-outter-container">
                 <h1>Welcome to {event.owner.firstName}'s {event.title}</h1>
                 <div className='event-show-attendees-outter-container'>
-                    <div className='event-show-attendees-headers'>
-                        <div className='show-organizer-header'>Organizer</div>
-                        <div className='show-attendees-header'>Attendees</div>
-                    </div>
+     
                     <div className='event-show-attendees-container'>
                         {/* <div className='event-show-owner-container'> */}
                         {/* </div> */}
                         <div className='event-show-nonowner-container'>
                             <div className='show-attendees' id='event-show-owner'>
+                                <div className='hover-organizer'>  </div>
+                                <div className='hover-text'>Organizer</div>
                                 <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
                             </div>
+
                             <div className='show-attendees'>
                                 <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
                             </div>
