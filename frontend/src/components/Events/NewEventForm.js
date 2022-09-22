@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import TimeKeeper from 'react-timekeeper';
+// import TimeKeeper from 'react-timekeeper';
 import { createEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
 import './NewEventForm.css'
@@ -100,14 +100,14 @@ export const NewEventForm = (props) => {
                 </label>
            
              
-                <TimeKeeper 
+                {/* <TimeKeeper 
                     switchToMinuteOnHourSelect={true}
                     closeOnMinuteSelect={true}
                     onChange={(newTime) => setEventTime(newTime.formatted24)}
                     coarseMinutes={15}
                     forceCoarseMinutes
                     time={eventTime}
-                />
+                /> */}
             
                 <button>Create that event boy</button>
                 {errors ? 
