@@ -12,7 +12,7 @@ const EventsListItem = ({event}) => {
 
     return(
         <>
-            <div className="event-list-item-container" onClick={handleClick}>
+            <div className="event-list-item-container" id={event._id} onClick={handleClick}>
                 <div className="event-list-item-img">
                     <img src="./ConservOfFlowers.jpg" alt="" />
                 </div>
