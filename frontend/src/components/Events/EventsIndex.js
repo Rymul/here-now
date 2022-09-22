@@ -1,14 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllEvents } from '../../store/events';
 import EventsListItem from './EventsListItem';
 import './EventsIndex.css'
+import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
 
 const EventsIndex = () => {
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(fetchAllEvents());
     },[dispatch])
+
+    const [latlng, setLatLng] = useState({lat:null, lng:null})
 
     const eventsObj = useSelector(state => state.events)
     let events;
@@ -20,14 +23,25 @@ const EventsIndex = () => {
 
     if (!events) {return null;}
 
-    if ("geolocation" in navigator) {
+    if (latlng.lat===null) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude })
+        })
         return (
             <div className='events-index-geolocate-request'>
                 <p>Please enable browser location to use here&amp;now</p>
             </div>
         )
     }
-
+    navigator.geolocation.getCurrentPosition(function (position) {
+        setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude })
+    }, (error)=>{
+        return (
+            <div className='events-index-geolocate-request'>
+                <p>Please enable browser location to use here&amp;now</p>
+            </div>
+        )
+    })
     return (
         <>
         <div className='events-index-page'>
@@ -39,7 +53,9 @@ const EventsIndex = () => {
                             {events.map((event) => (<li key={event['_id']}><EventsListItem event={event}/></li>))}
                     </ul>
                 </div>
-                <div className='events-index-map-container'><img src="./MapsImage.png" alt="" /></div>
+                <div className='events-index-map-container'>
+                        <EventsIndexMapWrapper apiKey={process.env.MAPS_API_KEY} laglng={latlng}/>
+                </div>
             </div>
         </div>
         </>

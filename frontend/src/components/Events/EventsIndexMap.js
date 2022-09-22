@@ -1,5 +1,5 @@
 
-const EventIndexMap = () => {
+const EventIndexMap = ({latlng}) => {
     const [map, setMap] = useState(null)
     const mapRef = useRef(null)
 
