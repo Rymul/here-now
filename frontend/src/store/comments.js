@@ -69,7 +69,8 @@ export const createComment = comment => async dispatch => {
 
 
 export const updateComment = comment => async dispatch => {
-    const res = await jwtFetch(`/api/comments/${comment.id}`, {
+
+    const res = await jwtFetch(`/api/comments/${comment._id}`, {
         method: "PATCH",
         body: JSON.stringify(comment),
         headers: {
@@ -80,13 +81,15 @@ export const updateComment = comment => async dispatch => {
     
     if (res.ok) {
         const payload = await res.json();
-        dispatch(changeComment(payload.comment));
+        // debugger
+        // dispatch(changeComment(payload));
+        return payload
     }
 }
 
-window.createComment = createComment;
-window.updateComment = updateComment;
-window.deleteComment = deleteComment;
+// window.createComment = createComment;
+// window.updateComment = updateComment;
+// window.deleteComment = deleteComment;
 
 
 
@@ -94,8 +97,12 @@ window.deleteComment = deleteComment;
 
 
 const commentsReducer = (state = {}, action) => {
+    // switch(action.type){
+    //     case 
 
-    return state
+    //     default:
+        return state
+    // }
 }
 
 export default commentsReducer;
