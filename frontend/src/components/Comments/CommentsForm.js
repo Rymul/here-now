@@ -6,13 +6,13 @@ import { fetchEvent, updateEvent } from '../../store/events';
 import './CommentsForm.css'
 
 
-const CommentsForm = (eventInput) => {
+const CommentsForm = ({event}) => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    const { eventId } = useParams(); /////
+    // const { eventId } = useParams(); /////
     const [body, setBody] = useState();
-    const event = useSelector(state => state.events) /////
-    // const eventId = event._id
+    // const event = useSelector(state => state.events) /////
+    const eventId = event._id
 
     useEffect(()=> {
         dispatch(fetchEvent(eventId))
@@ -28,7 +28,8 @@ const CommentsForm = (eventInput) => {
 
         let commentId;
         let commentData;
-        let updatedEvent = event[eventId]
+        let updatedEvent = event
+        updateEvent["comments"] = "hello"
         dispatch(createComment(comment)).then(res => {
             commentId = res._id
             commentData = res
@@ -36,6 +37,8 @@ const CommentsForm = (eventInput) => {
             updatedEvent.comments[commentId] = commentData
             dispatch(updateEvent(updatedEvent))
         })
+        const bodyInput = document.getElementById('comment-body-input');
+        bodyInput.value = ''
     }
 
     const handleChange = (e) => {
@@ -49,7 +52,7 @@ const CommentsForm = (eventInput) => {
                     <input 
                         id="comment-body-input"
                         type="text"
-                        value={body}
+                        // value={body}
                         placeholder="Enter a comment"
                         onChange={handleChange}
                     />

@@ -20,7 +20,7 @@ const commentsRouter = require('./routes/api/comments'); /// BANANA
 
 
 require("./models/User");
-// require('./models/Events');
+require('./models/Events');
 require('./config/passport');
 
 const app = express();
@@ -83,6 +83,7 @@ if (isProduction) {
     );
   });
 }
+
 
 // Express custom middleware for catching all requests that haven't gotten
 // matched and formatting a 404 error to be sent as the response
