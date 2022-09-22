@@ -13,7 +13,8 @@
     "build": "npm run backend-install && npm run frontend-install && npm run frontend-build"
   },
   "engines": {
-    "node": "16.x"
+    "node": "16.x",
+    "npm": "8.x"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
