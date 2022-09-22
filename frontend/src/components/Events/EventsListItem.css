@@ -28,8 +28,13 @@
     cursor: pointer;
 }
 
-.event-list-item-container:hover {
+.event-list-item-container.active {
+background-color: #c5553c;
+color: #FFFFFF;
+}
 
+.event-list-item-container.active li, .event-list-item-container.active span {
+    color: #FFFFFF;
 }
 
 .event-list-item-info {
