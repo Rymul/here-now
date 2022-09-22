@@ -34,10 +34,11 @@ const CommentsForm = ({event}) => {
             commentId = res._id
             commentData = res
         }).then(res => {
-            debugger
             updatedEvent.comments[commentId] = commentData
             dispatch(updateEvent(updatedEvent))
         })
+        const bodyInput = document.getElementById('comment-body-input');
+        bodyInput.value = ''
     }
 
     const handleChange = (e) => {
@@ -51,7 +52,7 @@ const CommentsForm = ({event}) => {
                     <input 
                         id="comment-body-input"
                         type="text"
-                        value={body}
+                        // value={body}
                         placeholder="Enter a comment"
                         onChange={handleChange}
                     />
