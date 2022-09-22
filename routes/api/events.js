@@ -97,7 +97,7 @@ router.post('/',
         lng: req.body.lng,
         owner: req.body.owner,
         attendees:req.body.attendees,
-        comments: {},
+        comments: {test: "test"},
         eventTime: req.body.eventTime
       });
 

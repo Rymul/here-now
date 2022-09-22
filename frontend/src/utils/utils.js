@@ -39,3 +39,9 @@ export const getNewDate = (tomorrow, eventTime) => {
     return year + "-" + month + "-" + day + 'T' + eventTime + ':00Z';
 
 }
+
+
+export const handleAttend = () => {
+    console.log('we are in attend')
+
+}
