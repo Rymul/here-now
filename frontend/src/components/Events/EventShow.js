@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { deleteEvent, fetchEvent } from '../../store/events';
-import { handleAttend } from '../../utils/utils';
 import CommentsForm from '../Comments/CommentsForm';
+import { deleteEvent, fetchEvent, updateEvent } from '../../store/events';
+
 import './EventShow.css'
 const EventShow = () => {
     const dispatch = useDispatch();
@@ -18,6 +18,12 @@ const EventShow = () => {
 
     const handleDelete = (e) => {
         dispatch(deleteEvent(eventId)).then(res => history.push('/events'))
+    }
+
+    const handleAttend = (e) => {
+        e.preventDefault();
+        event.attendees[sessionUser._id] = sessionUser;
+        dispatch(updateEvent(event));
     }
     
     
