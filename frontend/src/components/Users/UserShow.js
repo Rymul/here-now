@@ -48,6 +48,7 @@ const UserShow = () => {
                 </button>
             </div>
             </div>
+                {/* <input type="file" placeholder="upload pic"></input> */}
         </div>
     )
 }

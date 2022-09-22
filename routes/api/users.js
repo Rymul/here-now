@@ -7,6 +7,7 @@ const { loginUser, restoreUser } = require('../../config/passport');
 const validateRegisterInput = require('../../validation/register.js');
 const validateLoginInput = require('../../validation/login.js');
 const validateMessageInput = require('../../validation/messages.js');
+const AWS = require('aws-sdk');
 
 
 
@@ -17,6 +18,18 @@ require('../../models/User')
 
 const User = mongoose.model('User');
 const { isProduction } = require('../../config/keys');
+
+//testing AWS setup
+const creds = new AWS.Credentials(process.env.AWS_ACCESS_KEY_ID, process.env.AWS_SECRET_ACCESS_KEY_ID)
+const S3 = new AWS.S3();
+router.get('/s3', async() => await(S3.putObject({
+  Body: "hello world",
+  Bucket: "here-and-now-s3",
+  Key: "my-file.txt",
+
+}).promise() ))
+
+//
 
 /* GET users listing. */
 router.get('/', async (req, res, next) => {

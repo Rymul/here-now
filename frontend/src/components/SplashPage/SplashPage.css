@@ -4,6 +4,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation-name: fadeout;
+    animation-duration: 3.5s;
+    animation-timing-function: ease-in-out;
 }
 
 .splash-page-logo {
@@ -87,4 +90,10 @@
     80% { transform: translateX(calc(50vw + 30px));}
     100% { transform: translateX(0vw);}
 
+}
+
+@keyframes fadeout {
+    0% {opacity: 1;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
 }

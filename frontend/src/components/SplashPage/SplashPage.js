@@ -10,6 +10,8 @@ function SplashPage() {
   if (loggedIn) {
     history.push('/events')
   }
+ 
+  {setTimeout(() => history.push(`/login`), 3500)}
     return (
       <div className='splash-page-container'>
         {/* <p>SplashPage Log in or LEAVE!</p>
@@ -26,7 +28,7 @@ function SplashPage() {
           <div className="pin-shadow"></div>
           </div>
         <img className="splash-page-now" src="/now.svg" alt="now" onClick={() => {history.push(`/login`)}} />
-        {/* <img src="/logo.svg" alt="logo" className="splash-page-logo" onClick={() => {history.push(`/login`)}} /> */}
+        
       </div> 
     );
   }
