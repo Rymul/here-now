@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import TimeKeeper from 'react-timekeeper';
+// import TimeKeeper from 'react-timekeeper';
 import { createEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
 import './NewEventForm.css'
