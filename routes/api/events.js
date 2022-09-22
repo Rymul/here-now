@@ -126,6 +126,7 @@ async (req, res, next) => {
       event.owner = req.body.owner || event.owner;
       event.attendees =  req.body.attendees || event.attendees;
       event.eventTime = req.body.eventTime || event.eventTime;
+      event.comments = req.body.comments || event.comments;
     }
     await Event.findByIdAndUpdate(req.params.id, event)
     return res.json(event);

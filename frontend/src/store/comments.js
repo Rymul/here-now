@@ -63,6 +63,7 @@ export const createComment = comment => async dispatch => {
     if (res.ok) {
     const payload = await res.json();
     dispatch(makeComment(payload));
+    return payload
     }
 }
 
@@ -83,9 +84,9 @@ export const updateComment = comment => async dispatch => {
     }
 }
 
-// window.createComment = createComment;
-// window.updateComment = updateComment;
-// window.deleteComment = deleteComment;
+window.createComment = createComment;
+window.updateComment = updateComment;
+window.deleteComment = deleteComment;
 
 
 

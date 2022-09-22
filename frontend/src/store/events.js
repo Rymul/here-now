@@ -44,6 +44,7 @@ export const updateEvent = (event) => async dispatch => {
   })
   const payload = await response.json();
   dispatch(setEvent(payload))
+  return payload
 }
 
 export const deleteEvent = (eventId) => async dispatch => {
