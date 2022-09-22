@@ -183,7 +183,7 @@
 }
 
 .event-show-right {
-    height: 75%;
+    height: 700px;
     width: 38%;
     margin-right: 11%;
 }
@@ -313,6 +313,24 @@
     color:#728F93;
     margin-left: 5px;
     font-size: 15px;
+    margin-bottom: 3px;
 }
 
+#comment-time {
+    color:#728F93;
+    margin-left: 5px;
+    margin-bottom: 3px;
+}
 
+#event-show-edit {
+    color:#004049;;
+    margin-left: 5px;
+}
+
+#event-show-edit-button:hover {
+    color:#728F93;
+}
+
+#event-show-delete-button:hover {
+    color:#728F93;
+}

@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import CommentsForm from '../Comments/CommentsForm';
 import { deleteEvent, fetchEvent, updateEvent } from '../../store/events';
-
+import { AiOutlineDelete } from 'react-icons/ai'
+import { BiEdit } from 'react-icons/bi'
 import './EventShow.css'
 
 import EventShowMapWrapper from './EventsShowMapWrapper';
 import { createdAgoTimeParser } from '../../utils/utils';
+import { updateComment } from '../../store/comments';
 
 const EventShow = () => {
     const dispatch = useDispatch();
@@ -31,7 +33,24 @@ const EventShow = () => {
         event.attendees[sessionUser._id] = sessionUser;
         dispatch(updateEvent(event));
     }
-    
+
+    const handleButton = (comment) => {
+
+        comment['body'] = "Deleted comment"
+        let commentId;
+        let commentData;
+        let updatedEvent = event
+        dispatch(updateComment(comment)).then(res => {
+            commentId = res._id
+            commentData = res
+        }).then(res => {
+            updatedEvent.comments[commentId] = commentData
+           
+            dispatch(updateEvent(updatedEvent))
+        })
+        // const bodyInput = document.getElementById('comment-body-input');
+        // bodyInput.value = ''
+    }
     
     if (!event) return null;
     let eventTime = new Date(event.eventTime)
@@ -121,14 +140,19 @@ const EventShow = () => {
                             {Object.values(event.comments).reverse().map(comment =>{
                                 if (comment !== 'test') { return (
                                 <div id="event-show-single-comment" key={comment._id}>
-                                    {console.log(comment.commenter.firstName)}
                                     <p id='commenter'>{comment.commenter.firstName} {comment.commenter.lastName[0]}.</p> 
                                     <p id='comment-body'>{comment.body}</p>
                                     <p id='comment-time'>{createdAgoTimeParser(comment.createdAt)} ago</p>
+                                    <div id="event-show-edit">
+                                        <button onClick={()=> handleButton(comment)}>
+                                            <BiEdit id='event-show-edit-button' />
+                                        </button>
+                                        <button onClick={()=> handleButton(comment)}>
+                                            <AiOutlineDelete id='event-show-delete-button' />
+                                        </button>
+                                    </div>
                                 </div>
-                            
                             )}})}
-
                         </div>
                     </div>
                     
