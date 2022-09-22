@@ -9,12 +9,12 @@ export const updatePayload = (payload) => {
 export const createdAgoTimeParser = (timeAsString) => {
     const rightNow = new Date();
     const timeDiffInSeconds = Math.ceil((rightNow -  (new Date(timeAsString)))/1000)
-    if (timeDiffInSeconds < 60) return String(timeDiffInSeconds) + "s";
-    if (timeDiffInSeconds < 3600) return String(Math.ceil(timeDiffInSeconds/60)) + "m";
-    if (timeDiffInSeconds < 216000) return String(Math.ceil(timeDiffInSeconds/3600)) + "h";
-    if (timeDiffInSeconds < 5184000) return String(Math.ceil(timeDiffInSeconds/86400)) + "d";
-    if (timeDiffInSeconds < 155520000) return String(Math.ceil(timeDiffInSeconds/5184000)) + "m"
-    if (timeDiffInSeconds >= 1866240000) return String(Math.ceil(timeDiffInSeconds/155520000)) + "y"
+    if (timeDiffInSeconds < 60) return String(timeDiffInSeconds) + " seconds";
+    if (timeDiffInSeconds < 3600) return String(Math.ceil(timeDiffInSeconds/60)) + " minutes";
+    if (timeDiffInSeconds < 216000) return String(Math.ceil(timeDiffInSeconds/3600)) + " hours";
+    if (timeDiffInSeconds < 5184000) return String(Math.ceil(timeDiffInSeconds/86400)) + " days";
+    if (timeDiffInSeconds < 155520000) return String(Math.ceil(timeDiffInSeconds/5184000)) + " months"
+    if (timeDiffInSeconds >= 1866240000) return String(Math.ceil(timeDiffInSeconds/155520000)) + " years"
 }
 
 export const calcAge = (birthDay) => {

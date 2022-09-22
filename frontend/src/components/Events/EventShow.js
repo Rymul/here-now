@@ -5,7 +5,10 @@ import CommentsForm from '../Comments/CommentsForm';
 import { deleteEvent, fetchEvent, updateEvent } from '../../store/events';
 
 import './EventShow.css'
-import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
+
+import EventShowMapWrapper from './EventsShowMapWrapper';
+import { createdAgoTimeParser } from '../../utils/utils';
+
 const EventShow = () => {
     const dispatch = useDispatch();
     const {eventId} = useParams();
@@ -32,7 +35,7 @@ const EventShow = () => {
     
     if (!event) return null;
     let eventTime = new Date(event.eventTime)
-
+    
     return (
         <>
             {/* {console.log(event)}
@@ -75,6 +78,11 @@ const EventShow = () => {
                 <h1 id="event-show-title">Welcome to {event.owner.firstName}'s {event.title}</h1>
                 <div className='event-show-page-splitter-parent'>
                 <div className='event-show-page-splitter'>
+                    <div className='event-show-right'>
+                        <div className='event-show-map-container'>
+                            <EventShowMapWrapper apiKey={process.env.MAPS_API_KEY} latlng={latlng} event={event}/>
+                        </div>
+                    </div>
                     <div className='event-show-left'>
                         <div className='event-show-details'>
                             <div className='event-show-details-left'>
@@ -110,23 +118,20 @@ const EventShow = () => {
                         </div>
                         <div className='event-show-comments'>
                             <CommentsForm id="event-show-comments-form" event={event}/>
-                            {Object.values(event.comments).map(comment =>{
+                            {Object.values(event.comments).reverse().map(comment =>{
                                 if (comment !== 'test') { return (
                                 <div id="event-show-single-comment" key={comment._id}>
                                     {console.log(comment.commenter.firstName)}
                                     <p id='commenter'>{comment.commenter.firstName} {comment.commenter.lastName[0]}.</p> 
                                     <p id='comment-body'>{comment.body}</p>
+                                    <p id='comment-time'>{createdAgoTimeParser(comment.createdAt)} ago</p>
                                 </div>
                             
                             )}})}
 
                         </div>
                     </div>
-                    <div className='event-show-right'>
-                        {/* <div className='event-show-map-container'> */}
-                            <EventsIndexMapWrapper apiKey={process.env.MAPS_API_KEY} latlng={latlng}/>
-                        {/* </div> */}
-                    </div>
+                    
                 </div>
                 </div>
             </div>
