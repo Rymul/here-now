@@ -56,12 +56,12 @@ const CommentsForm = ({event}) => {
                         placeholder="Enter a comment"
                         onChange={handleChange}
                     />
-                    <input 
+                    {/* <input 
                         type="submit" 
                         value="Create Comment"
                         id="comment-form-submit-button"
                         disabled={!body}
-                    />
+                    /> */}
                 </form>
             </div>
         </div>
