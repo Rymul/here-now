@@ -9,6 +9,7 @@ export const updatePayload = (payload) => {
 export const createdAgoTimeParser = (timeAsString) => {
     const rightNow = new Date();
     const timeDiffInSeconds = Math.ceil((rightNow -  (new Date(timeAsString)))/1000)
+    if (timeDiffInSeconds < 0) return String(0) + " seconds";
     if (timeDiffInSeconds < 60) return String(timeDiffInSeconds) + " seconds";
     if (timeDiffInSeconds < 3600) return String(Math.ceil(timeDiffInSeconds/60)) + " minutes";
     if (timeDiffInSeconds < 216000) return String(Math.ceil(timeDiffInSeconds/3600)) + " hours";
@@ -41,7 +42,3 @@ export const getNewDate = (tomorrow, eventTime) => {
 }
 
 
-export const handleAttend = () => {
-    console.log('we are in attend')
-
-}
