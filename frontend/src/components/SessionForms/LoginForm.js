@@ -30,7 +30,7 @@ function LoginForm () {
 
   const handleDemoLogin = (e) => {
     e.preventDefault()
-    dispatch(login({email: 'demo@user.me',password: 'password'}))
+    dispatch(login({email: 'demo@user.io',password: 'password'}))
   }
 
   return (
