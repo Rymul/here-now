@@ -7,6 +7,7 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import { deleteUser, fetchUser, getUser } from "../../store/users";
 import './UserShow.css'
 import { calcAge, createdAgoTimeParser } from "../../utils/utils";
+import jwtFetch from "../../store/jwt";
 
 
 const UserShow = () => {
@@ -18,7 +19,45 @@ const UserShow = () => {
     }, [userId])
     const user = useSelector(getUser(userId))
     const today = new Date()
+
+    const getSignedRequest = async (file) =>  {
+        const res = await fetch(`/api/s3/sign-s3?file-name=${file.name}&file-type=${file.type}`)
+        const urls = await res.json();
+        uploadFile(file, urls.signedRequest, urls.url)
+    }
+
+    const uploadFile = async (file, signedRequest, url) => {
+        console.log(signedRequest);
+        jwtFetch(signedRequest,{
+            method:'PUT',
+            body: file
+        })
+    }
+
+    useEffect(() => {
+        
+           if(document.getElementById("file-input")) {
+            document.getElementById("file-input").onChange = () => {
+                alert()
+              const files = document.getElementById('file-input').files;
+              const file = files[0];
+              if(file == null){
+                return alert('No file selected.');
+              }
+              getSignedRequest(file);
+            };
+        }
+    }, [])
     
+    const handleClick = (e) => {
+        e.preventDefault();
+        const files = document.getElementById('file-input').files;   
+              const file = files[0];
+              if(file == null){
+                return alert('No file selected.');
+              }
+              getSignedRequest(file);
+    }
 
     if (!user) return null
 
@@ -48,6 +87,9 @@ const UserShow = () => {
                 </button>
             </div>
             </div>
+            <input type="file" id="file-input" /><button onClick={handleClick}>Upload</button>
+                <p id="status">Please select a file</p>
+            <img id="preview" src="/images/default.png"/>
         </div>
     )
 }
