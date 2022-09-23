@@ -124,10 +124,9 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
 
 
 /* PATCH update user */
-router.patch('/:userId', validateRegisterInput, async (req, res, next) => {
+router.patch('/:userId', async (req, res, next) => {
   try {
     const user = await User.findById(req.params.userId);
-  
     if (user) {
       user.firstName = req.body.firstName || user.firstName;
       user.lastName = req.body.lastName || user.lastName;
@@ -151,8 +150,8 @@ router.patch('/:userId', validateRegisterInput, async (req, res, next) => {
         })
       });
     }
+    await User.findByIdAndUpdate(req.params.userId, user)
     return res.json(user);
-
   }
   catch(err) {
     next(err)

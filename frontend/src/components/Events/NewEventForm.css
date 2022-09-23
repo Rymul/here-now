@@ -1,13 +1,115 @@
-.new-event-form-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 20%;
-}
 
 .new-event-form-outter-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 10vh;
+}
+
+#owner-name {
+    font-size: 30px;
+    color: #004049;
+    margin-bottom: 15px;
+}
+
+#new-event-title {
+    color: #004049;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+
+.new-event-form-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+#new-event-form-input {
+    width: 26vw;
+    height: 40px;
+    border-radius: 15px;
+    border: #a8a8a8 solid 1px;
+    align-items: center;
+    margin: 15px;
+    padding-left: 20px;
+}
+
+#new-event-form-input::placeholder {
+    color:#728F93;
+}
+
+#new-event-form-input:focus {
+    outline: none;
+}
+
+#new-event-form-description {
+    width: 25vw;
+    height: 60px;
+    border-radius: 20px;
+    border: #a8a8a8 solid 1px;
+    align-items: center;
+    margin: 15px;
+    padding: 20px;
+
+}
+
+
+#new-event-form-description::placeholder {
+    color:#728F93;
+}
+
+#new-event-form-description:focus {
+    outline: none;
+}
+
+#new-event-when {
+    width: 55%;
+    display: flex;
+    justify-content: space-around;
+    margin: 15px;
+}
+
+#new-event-time {
+    width: 10vw;
+    height: 40px;
+    border-radius: 15px;
+    border: #a8a8a8 solid 1px;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+
+
+#new-event-time:focus {
+    outline: none;
+}
+
+#new-event-button {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: #f9f9f9;
+    color: #f9f9f9;
+    width: 27vw;
+    height: 45px;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #12ADC1;
+    /* background-color: #0295A9; */
+    padding: 14px;
+    border-radius: 15px;
+}
+
+#new-event-button:hover {
+    background-color: #f9f9f9;
+    color:#12ADC1;
+    border: 1px solid #12ADC1;
 }

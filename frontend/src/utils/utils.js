@@ -42,7 +42,3 @@ export const getNewDate = (tomorrow, eventTime) => {
 }
 
 
-export const handleAttend = () => {
-    console.log('we are in attend')
-
-}
