@@ -9,7 +9,7 @@ const EventsListItem = ({event}) => {
     }
 
     let eventTime = new Date(event.eventTime)
-
+    if (!event || !event.attendees) return null;
     return(
         <>
             <div className="event-list-item-container" id={event._id} onClick={handleClick}>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllEvents } from '../../store/events';
+import { deleteEvent, fetchAllEvents } from '../../store/events';
 import EventsListItem from './EventsListItem';
 import './EventsIndex.css'
 import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
@@ -23,6 +23,9 @@ const EventsIndex = () => {
     const [denied, setDenied] = useState(false) 
 
     const eventsObj = useSelector(state => state.events)
+
+
+
     let events;
     if (eventsObj) {
         events = Object.values(eventsObj);

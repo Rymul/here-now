@@ -100,6 +100,7 @@
     background-color: #f9f9f9;
     color:#12ADC1;
     border: 1px solid #12ADC1;
+    cursor: pointer;
 }
 
 .session-form-footer {
@@ -122,4 +123,5 @@
 
 .to-signup-button:hover{
     border-bottom: 1px solid #004049;
+    cursor: pointer;
 } 
