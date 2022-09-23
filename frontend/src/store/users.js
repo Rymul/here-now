@@ -70,7 +70,8 @@ export const fetchUsers = () => async dispatch => {
 
 
 export const updateUser = (user) => async dispatch => {
-    const res = await jwtFetch(`/api/users/${user.id}`, {
+
+    const res = await jwtFetch(`/api/users/${user._id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -79,7 +80,8 @@ export const updateUser = (user) => async dispatch => {
         body: JSON.stringify(user)
     });
     const data = await res.json();
-    dispatch(addUser(data.user));
+
+    dispatch(addUser(data));
     
     return res;
 }
@@ -90,7 +92,7 @@ export const deleteUser = (userId) => async dispatch => {
         method: 'DELETE',
     });
     const data = await res.json();
-    dispatch(removeUser(data.user));
+    dispatch(removeUser(data));
     return res;
 }
 

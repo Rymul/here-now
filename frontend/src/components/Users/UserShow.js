@@ -1,21 +1,22 @@
 // import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { BiEdit } from 'react-icons/bi'
-import { AiOutlineDelete } from 'react-icons/ai'
+import { Link, useHistory, useParams } from "react-router-dom";
 import { deleteUser, fetchUser, getUser } from "../../store/users";
 import './UserShow.css'
-import { calcAge, createdAgoTimeParser } from "../../utils/utils";
+import { calcAge } from "../../utils/utils";
 
 
 const UserShow = () => {
     const sessionUser = useSelector(state => state.session.user);
     const { userId } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
+
     useEffect(()=> {
         dispatch(fetchUser(userId))
     }, [userId])
+
     const user = useSelector(getUser(userId))
     const today = new Date()
     
@@ -34,19 +35,23 @@ const UserShow = () => {
                     <p id="user-show-birthday">Age: {calcAge(user.birthDay)}</p>
                     <p id="user-show-join-date">Member Since: {user.createdAt.slice(0,4)}</p>
                 </div>
+            {user._id === sessionUser._id ? 
                 <div className="user-show-buttons">
-                <Link to={`/users/update/${user._id}`} id='user-show-update'>
-                    {/* <BiEdit />  */}
-                    Edit Profile
-                </Link>
-                <button
-                    onClick={() => dispatch(deleteUser(user._id))}
-                    id="user-show-delete"
-                >
-                    {/* <AiOutlineDelete />  */}
-                    Delete Profile
-                </button>
-            </div>
+                    <Link to={`/users/update/${user._id}`} id='user-show-update'>
+                        Edit Profile
+                    </Link>
+                    <button
+                        onClick={() => {
+                            if (window.confirm('Are you sure you want to delete your profile?')) {
+                                dispatch(deleteUser(user._id)).then(res => history.push('/'))}
+                            }
+                        }
+                        id="user-show-delete"
+                    >
+                        Delete Profile
+                    </button>
+                </div>
+            : null}
             </div>
         </div>
     )
