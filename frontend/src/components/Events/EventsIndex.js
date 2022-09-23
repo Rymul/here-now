@@ -28,7 +28,17 @@ const EventsIndex = () => {
 
     let events;
     if (eventsObj) {
-        events = Object.values(eventsObj);
+        events = Object.values(eventsObj).sort((a, b)=> new Date(a.eventTime) - new Date(b.eventTime));
+        console.log(events, "EVNEFNEJEFN")
+    }
+
+
+    const deleteExpiredEvent = () => {
+        events.map(event => {
+            if (new Date().toLocaleDateString() > event.eventTime.toLocaleDateString()) {
+                dispatch(deleteEvent(event._id))
+            } 
+        })
     }
 
 
