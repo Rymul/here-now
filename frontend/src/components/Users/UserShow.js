@@ -92,7 +92,7 @@ const UserShow = () => {
                 </div>
             : null}
             </div>
-            <input type="file" id="file-input" /><button onClick={handleClick}>Upload</button>
+            <input type="file" id="file-input" /><button className="upload" onClick={handleClick}>Upload</button>
                 <p id="status">Please select a file</p>
             <img id="preview" src="/images/default.png"/>
         </div>
