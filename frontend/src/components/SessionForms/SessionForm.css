@@ -117,11 +117,13 @@
     text-decoration: none;
     color: #004049;
     font-weight: 700;
-    border-bottom: 1px solid #e1e1e1;
+    /* border-bottom: 1px solid #e1e1e1; */
 }
 
 
 .to-signup-button:hover{
-    border-bottom: 1px solid #004049;
+    text-decoration: underline;
+    /* border-bottom: 1px solid #004049; */
     cursor: pointer;
+    /* text-decoration: none; */
 } 
