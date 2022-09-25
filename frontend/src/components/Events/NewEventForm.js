@@ -81,14 +81,14 @@ export const NewEventForm = (props) => {
             {
                 types: ['establishment'],
                 fields: ['formatted_address', 'geometry', 'photos'],
-                bounds:bounds,
-                componentRestrictions: {'country':['US']}
+                bounds: bounds,
+                componentRestrictions: { 'country': ['US'] }
             }
         )
         autocomplete.addListener('place_changed', onPlaceChanged);
     }
 
-    const onPlaceChanged= () => {
+    const onPlaceChanged = () => {
         const place = autocomplete.getPlace();
 
         if (!place.geometry) {
@@ -97,7 +97,7 @@ export const NewEventForm = (props) => {
             setDetails(place)
         }
     }
-
+    
     if(!user) return null;
     return (
         <>
