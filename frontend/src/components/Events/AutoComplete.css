@@ -1,0 +1,9 @@
+.autocomplete {
+width: 26vw;
+    height: 40px;
+    border-radius: 15px;
+    border: #a8a8a8 solid 1px;
+    align-items: center;
+    margin: 15px;
+    padding-left: 20px;
+}
