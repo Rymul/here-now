@@ -7,8 +7,9 @@ const EventsListItem = ({event}) => {
     const handleClick = (e) => {
         history.push(`/events/${event._id}`)
     }
-
+    console.log(new Date().toLocaleDateString())
     let eventTime = new Date(event.eventTime)
+    console.log(eventTime.toLocaleDateString(), "EVENT")
     if (!event || !event.attendees) return null;
     return(
         <>
@@ -20,7 +21,10 @@ const EventsListItem = ({event}) => {
                     <ul>
                         <li className='event-list-item-title'>{event.title}</li>
                         <li className='event-list-item-address'><span>WHERE: </span>{event.address}</li>
+                        {console.log(new Date().toLocaleDateString().slice(2,4) - eventTime.toLocaleDateString().slice(2,4))}
+                        {new Date().toLocaleDateString() > eventTime.toLocaleDateString() ? <li className='event-list-item-when-expired'><span>WHEN: </span>Expired</li> : 
                         <li className='event-list-item-when'><span>WHEN: </span>{`${(eventTime.getUTCHours() % 12) === 0 ? 12 : eventTime.getUTCHours() % 12}:${('0' + eventTime.getUTCMinutes()).slice(-2) } ${eventTime.getUTCHours() >=12 ? "PM" : "AM"}`}</li>
+                            }
                         <li className='event-list-item-description'><span>WHAT: </span>{event.description}</li>
                         <li>{Object.values(event.attendees).length} attending </li>
                     </ul>

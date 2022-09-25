@@ -120,15 +120,7 @@ const UserShow = () => {
                 </div>
             : null}
             </div>
-            <input
-                name="profilePicture"
-                type="file"
-                accept="image/png, image/jpeg"
-                onChange={(e) => {
-                    handleFileUpload(e.target.files[0] );
-                }}
-            />
-            {/* <button onClick={handleClick}>Upload</button> */}
+            <input type="file" id="file-input" /><button className="upload" onClick={handleClick}>Upload</button>
                 <p id="status">Please select a file</p>
             <img id="preview" src="/images/default.png"/>
         </div>
