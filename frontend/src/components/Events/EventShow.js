@@ -6,10 +6,10 @@ import { deleteEvent, fetchEvent, updateEvent } from '../../store/events';
 import { AiOutlineDelete } from 'react-icons/ai'
 import { BiEdit } from 'react-icons/bi'
 import './EventShow.css'
-
 import EventShowMapWrapper from './EventsShowMapWrapper';
 import { createdAgoTimeParser } from '../../utils/utils';
 import { updateComment } from '../../store/comments';
+import CommentItem from '../Comments/CommentItem';
 
 
 
@@ -148,13 +148,16 @@ const EventShow = () => {
                         </div>
                         <div className='event-show-buttons'>
                             <div className='event-show-attend'>
-                                {}
+                                
+
+                            { sessionUser._id === event.owner._id ? null :
                                 <input
                                     onClick={handleAttend}
                                     id="event-show-button"
                                     type="button"
                                     value= {attending ? 'Leave Event' : 'Attend Event'}
                                 />
+                            }
                             </div>
                             { sessionUser._id === event.owner._id ? 
                             <div className='event-show-cancel-event'>
@@ -169,37 +172,9 @@ const EventShow = () => {
                         </div>
                         <div className='event-show-comments'>
                             <CommentsForm id="event-show-comments-form" event={event}/>
-                            {Object.values(event.comments).reverse().map(comment =>{
-                                if (comment !== 'test') { return (
-                                <div id="event-show-single-comment" key={comment._id}>
-                                   <Link to={`/users/${comment.commenter._id}`} id='commenter'><p id='commenter'>{comment.commenter.firstName} {comment.commenter.lastName[0]}.</p>  </Link> 
-                                    {edit && comment.commenter._id === sessionUser._id && editId === comment._id ? 
-                                        <form id='event-show-comments-form' onSubmit={(e)=>commentEditSubmit(e, comment)}>
-                                            <input id='comment-body-input' type="text" value={commentData} onChange={(e)=>setCommentData(e.target.value)}  /> 
-                                        </form>
-                                        : 
-                                        <p id='comment-body'>{comment.body}</p>
-                                    }
-
-                                    <p id='comment-time'>{createdAgoTimeParser(comment.createdAt)} ago</p>
-                                    
-                                    {sessionUser._id === comment.commenter._id && comment.body !== 'Deleted comment' ? 
-                                        <div id="event-show-edit">
-                                            {edit ? null :
-                                                <button className='transparent-button' id={comment._id} value={comment._id} onClick={(e)=> handleCommentEditButton(e, comment)}>
-                                                    <BiEdit id='event-show-edit-button' />
-                                                </button>
-                                            }
-                                            {edit ? null :
-                                                <button className='transparent-button' onClick={()=> handleButton(comment)}>
-                                                    <AiOutlineDelete id='event-show-delete-button' />
-                                                </button>
-                                             }
-                                        </div>
-                                    : null}
-
-                                </div>
-                            )}})}
+                            {Object.values(event.comments).reverse().map(comment =>(
+                                <CommentItem comment={comment} key={comment._id} />
+                            ))}
                         </div>
                     </div>
                     
