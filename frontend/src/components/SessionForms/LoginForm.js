@@ -68,9 +68,11 @@ function LoginForm () {
 
       <input type="button" value='Demo Log In' id="session-form-submit-button" onClick={handleDemoLogin}/>
     </form>
+    <br />
+    <br />
     <div className="session-form-footer">
-        <span className='session-form-footer-title'>Don't have an account?</span>
-        <Link className="to-signup-button" to={'/signup'}> Sign up!</Link>
+        <span className='session-form-footer-title'>Don't have an account? </span>
+        <Link className="to-signup-button" to={'/signup'}>Sign up!</Link>
     </div>
     </div>
   );

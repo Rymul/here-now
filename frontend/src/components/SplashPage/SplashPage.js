@@ -10,7 +10,7 @@ function SplashPage() {
   if (loggedIn) {
     history.push('/events')
   }
-  setTimeout(() => {history.push('/login')}, 3500)
+  setTimeout(() => {history.push('/login')}, 4500)
     return (
       <div className='splash-page-container'>
         {/* <p>SplashPage Log in or LEAVE!</p>
