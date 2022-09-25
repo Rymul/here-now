@@ -35,13 +35,13 @@ const EventsIndex = () => {
 
     const deleteExpiredEvent = () => {
         events.map(event => {
-            if (new Date().toLocaleDateString() > event.eventTime.toLocaleDateString()) {
+            if (new Date().toLocaleDateString() > new Date(event.eventTime).toLocaleDateString()) {
                 dispatch(deleteEvent(event._id))
             } 
         })
     }
 
-
+    deleteExpiredEvent()
 
     if (!events) {return null;}
 
