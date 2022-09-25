@@ -99,8 +99,7 @@ const EventShow = () => {
                     <div className='event-show-attendees-container'>
                         <div className='event-show-nonowner-container'>
                             <div className='show-attendees' id='event-show-owner'>
-                                <div className='hover-organizer'>  </div>
-                                <div className='hover-text'>Organizer</div>
+                                <div className='hover-text'>Event Organizer</div>
                                 <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
                             </div>
 
