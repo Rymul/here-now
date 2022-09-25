@@ -113,3 +113,7 @@
     color:#12ADC1;
     border: 1px solid #12ADC1;
 }
+
+.today-label, .tomorrow-label{
+    cursor: pointer;
+}

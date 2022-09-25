@@ -16,22 +16,28 @@ const EventsIndex = () => {
         dispatch(fetchAllEvents());
     },[dispatch])
 
-
     const latlng = useSelector(state => state.geolocation)
-
+    
     // const [latlng, setLatLng] = useState({lat:null, lng:null})
     const [denied, setDenied] = useState(false) 
-
+    
     const eventsObj = useSelector(state => state.events)
-
-
-
+    
+    
+    
     let events;
     if (eventsObj) {
         events = Object.values(eventsObj).sort((a, b)=> new Date(a.eventTime) - new Date(b.eventTime));
         console.log(events, "EVNEFNEJEFN")
     }
+    
+    const deleteAllEvents = () => {
+          if (events)  events.map(event => {
+                dispatch(deleteEvent(event._id))
+            })
+    }
 
+    // deleteAllEvents(); // If you want to delete all events, uncomment this line
 
     const deleteExpiredEvent = () => {
         events.map(event => {

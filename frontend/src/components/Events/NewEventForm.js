@@ -129,11 +129,11 @@ export const NewEventForm = (props) => {
                 /> */}
 
                 <div id='new-event-when'>
-                    <label> Today
-                        <input type="radio" name="tomorrow" defaultChecked/>
+                    <label className='today-label' htmlFor='today'> Today
+                        <input id='today' type="radio" name="tomorrow" defaultChecked/>
                     </label> 
-                    <label for="">Tomorrow
-                        <input type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
+                    <label className='tomorrow-label' htmlFor='tomorrow'>Tomorrow
+                        <input id='tomorrow' type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
                     </label>
                 </div>
              
