@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import { createEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
+import AutoComplete from './AutoComplete';
 import './NewEventForm.css'
 
 export const NewEventForm = (props) => {
@@ -19,6 +20,8 @@ export const NewEventForm = (props) => {
     const [tomorrow, setTomorrow] = useState(false)
     const dispatch = useDispatch();
     const history = useHistory();
+    // const latlng = useSelector(state => state.geolocation);
+    // const [details, setDetails] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -68,6 +71,35 @@ export const NewEventForm = (props) => {
             })
     
     }
+    // let bounds = new window.google.maps.LatLngBounds();
+    // bounds.extend(new window.google.maps.LatLng(latlng.lat + 1, latlng.lng + 1))
+    // bounds.extend(new window.google.maps.LatLng(latlng.lat + 1, latlng.lng - 1))
+    // bounds.extend(new window.google.maps.LatLng(latlng.lat - 1, latlng.lng + 1))
+    // bounds.extend(new window.google.maps.LatLng(latlng.lat - 1, latlng.lng - 1))
+
+    // let autocomplete;
+    // const initAutoComplete = () => {
+    //     autocomplete = new window.google.maps.places.Autocomplete(
+    //         document.getElementById('autocomplete'),
+    //         {
+    //             types: ['establishment'],
+    //             fields: ['formatted_address', 'geometry', 'photos'],
+    //             bounds: bounds,
+    //             componentRestrictions: { 'country': ['US'] }
+    //         }
+    //     )
+    //     autocomplete.addListener('place_changed', onPlaceChanged);
+    // }
+
+    // const onPlaceChanged = () => {
+    //     const place = autocomplete.getPlace();
+
+    //     if (!place.geometry) {
+    //         document.getElementById('autocomplete').placeholder = "Enter a place"
+    //     } else {
+    //         setDetails(place)
+    //     }
+    // }
     
     if(!user) return null;
     return (
@@ -88,18 +120,20 @@ export const NewEventForm = (props) => {
                     onChange={e=>setDescription(e.target.value)}
                 />
               
+                {/* <input id="autocomplete" placeholder="Enter a place" type="text" /> */}
+                    <AutoComplete setLat={setLat} setLng={setLng} setAddress={setAddress} />
 
-                <input id="new-event-form-input"
+                {/* <input id="new-event-form-input"
                     type="text" placeholder='Address' 
                     onChange={e=>setAddress(e.target.value)}
-                />
+                /> */}
 
                 <div id='new-event-when'>
-                    <label> Today
-                        <input type="radio" name="tomorrow" defaultChecked/>
+                    <label className='today-label' htmlFor='today'> Today
+                        <input id='today' type="radio" name="tomorrow" defaultChecked/>
                     </label> 
-                    <label for="">Tomorrow
-                        <input type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
+                    <label className='tomorrow-label' htmlFor='tomorrow'>Tomorrow
+                        <input id='tomorrow' type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
                     </label>
                 </div>
              

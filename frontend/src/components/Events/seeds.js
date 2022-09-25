@@ -5,7 +5,7 @@
         description: "Let's go walk our corgi friends at Golden Gate Park together and talk about how great and difficult it can sometimes be to be a Corgi owner!",
         address: "Golden Gate Park Dog Play Area Main Entrance",
         lat: 37.5,
-        lng: 122.3,
+        lng: -122.3,
         owner: {
             "_id": "632cfb723fee210de997a88a",
             "firstName": "Ryan",

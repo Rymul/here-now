@@ -14,34 +14,46 @@ const EventsIndex = () => {
     const dispatch = useDispatch();
     
     
-    const eventsObj = useSelector(state => state.events)
-
-
-    let events;
-    if (eventsObj) {
-        events = Object.values(eventsObj).sort((a, b)=> new Date(a.eventTime) - new Date(b.eventTime));
-    }
     useEffect(()=>{
         dispatch(fetchAllEvents());
     },[dispatch])
     
-//     const banana = () => {
-//         if (events.length >= 5) {
-//          return null;
-//     } else {
-//          dispatch(createEvent(event1))
-//     }
-// }
-
-    // banana();
+    //     const banana = () => {
+        //         if (events.length >= 5) {
+            //          return null;
+            //     } else {
+                //          dispatch(createEvent(event1))
+                //     }
+                // }
+                
+                // banana();
 
     const latlng = useSelector(state => state.geolocation)
-
+    
     // const [latlng, setLatLng] = useState({lat:null, lng:null})
     const [denied, setDenied] = useState(false) 
 
     
     
+    
+    const eventsObj = useSelector(state => state.events)
+    
+    
+    
+    let events;
+    if (eventsObj) {
+        events = Object.values(eventsObj).sort((a, b)=> new Date(a.eventTime) - new Date(b.eventTime));
+        console.log(events, "EVNEFNEJEFN")
+    }
+    
+    const deleteAllEvents = () => {
+          if (events)  events.map(event => {
+                dispatch(deleteEvent(event._id))
+            })
+    }
+
+    // deleteAllEvents(); // If you want to delete all events, uncomment this line
+
     const deleteExpiredEvent = () => {
         events.map(event => {
             if (new Date().toLocaleDateString() > new Date(event.eventTime).toLocaleDateString()) {
@@ -89,6 +101,7 @@ const EventsIndex = () => {
        
     
     
+
     return (
         <>
         <div className='events-index-page'>
@@ -112,7 +125,7 @@ const EventsIndex = () => {
                     </ul>
                 </div>
                 <div className='events-index-map-container'>
-                        <EventsIndexMapWrapper apiKey={process.env.MAPS_API_KEY} latlng={latlng}/>
+                        <EventsIndexMapWrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} latlng={latlng}/>
                 </div>
             </div>
         </div>
