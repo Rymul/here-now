@@ -81,6 +81,8 @@ const EventsIndex = () => {
         history.push('/events/new')
     }
 
+    
+
     return (
         <>
         <div className='events-index-page'>
@@ -103,7 +105,7 @@ const EventsIndex = () => {
                     </ul>
                 </div>
                 <div className='events-index-map-container'>
-                        <EventsIndexMapWrapper apiKey={process.env.MAPS_API_KEY} latlng={latlng}/>
+                        <EventsIndexMapWrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} latlng={latlng}/>
                 </div>
             </div>
         </div>
