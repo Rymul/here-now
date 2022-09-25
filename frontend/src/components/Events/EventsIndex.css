@@ -73,6 +73,12 @@
     color: white;
     cursor: pointer;
     background-color: #c5553c;
+    transition: 0.2s ease-in-out
+}
+
+.event-index-container:hover {
+    color: #c5553c;
+    background-color: white;
 }
 
 .event-index-container ul li {
@@ -82,3 +88,4 @@
 .event-index-container svg {
     padding-right: 10px;
 }
+
