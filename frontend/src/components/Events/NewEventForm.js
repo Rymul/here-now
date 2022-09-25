@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import TimeKeeper from 'react-timekeeper';
+
 import { createEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
 import './NewEventForm.css'
@@ -56,6 +56,8 @@ export const NewEventForm = (props) => {
                                     .push(capitalizeFirstLetter(error) + ' must be between 5 and 50 characters')
                                 break;
                             case 'eventTime':
+                                updatedErrors
+                                .push('Event time must be between 5 and 50 characters')
                                 break;
                             default:
                                 break;
@@ -102,46 +104,40 @@ export const NewEventForm = (props) => {
     return (
         <>
         <div className='new-event-form-outter-container'>
-            <h1>{user.firstName}</h1>
-            <h1>Create a new event</h1>
+            <h1 id="owner-name">Hello {user.firstName}</h1>
+            <h1 id='new-event-title'>Create a new event!</h1>
 
             <form className='new-event-form-form' onSubmit={handleSubmit}>
-                <input id='new-form-title' placeholder='Title' type="text" 
+                <input id='new-event-form-input' placeholder='Title' type="text" 
                     value={title}
                     onChange={(e)=> setTitle(e.target.value)}
                     />
             
   
-                <textarea id="new-form-description" 
-                    cols="30" rows="10" placeholder='Description' 
+                <textarea id="new-event-form-description" 
+                    cols="40" rows="5" placeholder='Description' 
                     onChange={e=>setDescription(e.target.value)}
                 />
               
                 <input id="autocomplete" placeholder="Enter a place" type="text" />
 
-                <input type="text" placeholder='Address' 
+                <input id="new-event-form-input"
+                    type="text" placeholder='Address' 
                     onChange={e=>setAddress(e.target.value)}
                 />
 
-
-                <label> Today
-                    <input type="radio" name="tomorrow" defaultChecked/>
-                </label> 
-                <label for="">Tomorrow
-                    <input type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
-                </label>
-           
+                <div id='new-event-when'>
+                    <label> Today
+                        <input type="radio" name="tomorrow" defaultChecked/>
+                    </label> 
+                    <label for="">Tomorrow
+                        <input type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
+                    </label>
+                </div>
              
-                {/* <TimeKeeper 
-                    switchToMinuteOnHourSelect={true}
-                    closeOnMinuteSelect={true}
-                    onChange={(newTime) => setEventTime(newTime.formatted24)}
-                    coarseMinutes={15}
-                    forceCoarseMinutes
-                    time={eventTime}
-                /> */}
+                <input id="new-event-time" type="time" value={eventTime} onChange={(e)=>setEventTime(e.target.value)} />
             
-                <button>Create that event boy</button>
+                <button id='new-event-button'>Create your event!</button>
                 {errors ? 
                     errors.map( (error, i) => 
                     <div key={i}>

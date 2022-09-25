@@ -26,6 +26,13 @@
     box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px 0px;
     color: #004049;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+
+
+.event-list-item-container:hover {
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px 0px
 }
 
 .event-list-item-container.active {
@@ -88,9 +95,39 @@ color: #FFFFFF;
     /* color: #728F93; */
     color: #004049;
 }
-
+/* .event-list-item-when-expired{
+    color: rgb(157, 3, 3);
+} */
 .event-list-item-description {
     /* color: #728F93; */
     color: #004049;
 
+}
+
+.event-list-item-attendees-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.event-list-item-attendees {
+
+}
+
+.attending-icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.event-list-item-you-attending {
+    padding-top: 3px;
+    color: #016e7d;
+    /* color: #c5553c; */
+}
+
+.attending-icon {
+    color: #016e7d;
+    margin-left: 5px;
+    /* top: 5px; */
 }

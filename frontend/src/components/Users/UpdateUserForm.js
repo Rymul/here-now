@@ -5,7 +5,7 @@ import { signup, clearSessionErrors } from '../../store/session';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { fetchUser, getUser, updateUser } from '../../store/users';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 function UpdateUserForm () {
     const [email, setEmail] = useState('');
@@ -17,6 +17,7 @@ function UpdateUserForm () {
     const errors = useSelector(state => state.errors.session);
     const dispatch = useDispatch();
     const { userId } = useParams();
+    const history = useHistory();
 
     useEffect(()=> {
         dispatch(fetchUser(userId))
@@ -78,10 +79,12 @@ function UpdateUserForm () {
       firstName,
       lastName,
       birthDay,
-      password
+      password,
+      _id: userId
+
     };
 
-    dispatch(updateUser(user)); 
+    dispatch(updateUser(user)).then(res => history.push(`/users/${userId}`)); 
   }
 
   if(!user) return null
@@ -159,7 +162,14 @@ function UpdateUserForm () {
           id="session-form-submit-button"
           type="submit"
           value="Update Profile"
-          disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
+          // disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
+        />
+        <input
+          id="session-form-submit-button"
+          type="button"
+          value="Cancel"
+          onClick={() => history.push(`/users/${userId}`)}
+          // disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
         />
     </form>
     </div>

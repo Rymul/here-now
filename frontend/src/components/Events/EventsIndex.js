@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllEvents } from '../../store/events';
+import { deleteEvent, fetchAllEvents } from '../../store/events';
 import EventsListItem from './EventsListItem';
 import './EventsIndex.css'
 import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
@@ -23,12 +23,25 @@ const EventsIndex = () => {
     const [denied, setDenied] = useState(false) 
 
     const eventsObj = useSelector(state => state.events)
+
+
+
     let events;
     if (eventsObj) {
-        events = Object.values(eventsObj);
+        events = Object.values(eventsObj).sort((a, b)=> new Date(a.eventTime) - new Date(b.eventTime));
+        console.log(events, "EVNEFNEJEFN")
     }
 
 
+    const deleteExpiredEvent = () => {
+        events.map(event => {
+            if (new Date().toLocaleDateString() > new Date(event.eventTime).toLocaleDateString()) {
+                dispatch(deleteEvent(event._id))
+            } 
+        })
+    }
+
+    deleteExpiredEvent()
 
     if (!events) {return null;}
 
