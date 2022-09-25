@@ -111,6 +111,22 @@ body {
     line-height: 1;
 }
 
+[type="button"] {
+    transition: 0.2s ease-in-out;
+}
+
+[type="submit"] {
+    transition: 0.2s ease-in-out;
+}
+
+[type="submit"] {
+    transition: 0.2s ease-in-out;
+}
+
+[type="button"]:hover {
+    cursor: pointer;
+}
+
 ol,
 ul {
     list-style: none;
