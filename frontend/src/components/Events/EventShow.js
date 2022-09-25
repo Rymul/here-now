@@ -51,7 +51,6 @@ const EventShow = () => {
 
     const handleAttend = (e) => {
         e.preventDefault();
-        const attending = (e.target.value === 'Leave Event')
         if (attending){
             delete event.attendees[sessionUser._id];
             setAttending(false)
@@ -69,29 +68,24 @@ const EventShow = () => {
     }
     
    
-
     const handleButton = (comment, body = 'Deleted comment') => {
-
         comment.body = body
         let commentId;
         let commentData;
-        let updatedEvent = event
+        let updatedEvent = event;
         dispatch(updateComment(comment)).then(res => {
-            commentId = res._id
-            commentData = res
+            commentId = res._id;
+            commentData = res;
         }).then(res => {
-            updatedEvent.comments[commentId] = commentData
-           
-            dispatch(updateEvent(updatedEvent))
+            updatedEvent.comments[commentId] = commentData;
+            dispatch(updateEvent(updatedEvent));
         })
-        // const bodyInput = document.getElementById('comment-body-input');
-        // bodyInput.value = ''
     }
 
     const commentEditSubmit = (e, comment) => {
-        e.preventDefault()
-        handleButton(comment, commentData)
-        setEdit(false)
+        e.preventDefault();
+        handleButton(comment, commentData);
+        setEdit(false);
     }
     
     
@@ -100,15 +94,9 @@ const EventShow = () => {
     
     return (
         <>
-            {/* {console.log(event)}
-            {console.log(event.owner.firstName)} */}
-            <div className="event-show-outter-container">
-                {/* <h1>Welcome to {event.owner.firstName}'s {event.title}</h1> */}
-                
+            <div className="event-show-outter-container">   
                 <div className='event-show-attendees-outter-container'>
                     <div className='event-show-attendees-container'>
-                        {/* <div className='event-show-owner-container'> */}
-                        {/* </div> */}
                         <div className='event-show-nonowner-container'>
                             <div className='show-attendees' id='event-show-owner'>
                                 <div className='hover-organizer'>  </div>
