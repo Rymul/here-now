@@ -1,38 +1,47 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteEvent, fetchAllEvents } from '../../store/events';
+import { deleteEvent, fetchAllEvents, createEvent } from '../../store/events';
 import EventsListItem from './EventsListItem';
 import './EventsIndex.css'
 import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
 import { updateGeolocation } from '../../store/geolocation';
 import { FaPlus } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom';
+import { event1 } from './seeds'
 
 const EventsIndex = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     
+    
+    const eventsObj = useSelector(state => state.events)
+
+
+    let events;
+    if (eventsObj) {
+        events = Object.values(eventsObj).sort((a, b)=> new Date(a.eventTime) - new Date(b.eventTime));
+    }
     useEffect(()=>{
         dispatch(fetchAllEvents());
     },[dispatch])
+    
+//     const banana = () => {
+//         if (events.length >= 5) {
+//          return null;
+//     } else {
+//          dispatch(createEvent(event1))
+//     }
+// }
 
+    // banana();
 
     const latlng = useSelector(state => state.geolocation)
 
     // const [latlng, setLatLng] = useState({lat:null, lng:null})
     const [denied, setDenied] = useState(false) 
 
-    const eventsObj = useSelector(state => state.events)
-
-
-
-    let events;
-    if (eventsObj) {
-        events = Object.values(eventsObj).sort((a, b)=> new Date(a.eventTime) - new Date(b.eventTime));
-        console.log(events, "EVNEFNEJEFN")
-    }
-
-
+    
+    
     const deleteExpiredEvent = () => {
         events.map(event => {
             if (new Date().toLocaleDateString() > new Date(event.eventTime).toLocaleDateString()) {
@@ -75,9 +84,15 @@ const EventsIndex = () => {
         history.push('/events/new')
     }
 
+    
+  
+       
+    
+    
     return (
         <>
         <div className='events-index-page'>
+        {console.log(events.length, "events length")}
                 <h1>Nearby Events</h1>
             <div className='events-index-list-container'>
                 <div className='events-index-list'>
