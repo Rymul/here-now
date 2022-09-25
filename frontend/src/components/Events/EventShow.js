@@ -29,12 +29,18 @@ const EventShow = () => {
  
     },[eventId])
 
-    useEffect(()=>{
-        if (event) {
-            Object.values(event.attendees).map(attendee => {
-                if (attendee._id === sessionUser._id) SetAttending(true)
+    const initializeAttending = () => {
+     if (event){
+         const attendants = Object.values(event.attendees)
+          if (attendants)  attendants.map( user => {
+                if (user._id === sessionUser._id){
+                    setAttending(true)
+                }
             })
-        }
+     }
+    }
+    useEffect(()=> {
+        initializeAttending();
     },[event])
 
     const handleDelete = (e) => {
@@ -43,8 +49,14 @@ const EventShow = () => {
 
     const handleAttend = (e) => {
         e.preventDefault();
-        e.target.value === 'Attending' ? delete event.attendees[sessionUser._id] && SetAttending(false):
-        event.attendees[sessionUser._id] = sessionUser;
+        const attending = (e.target.value === 'Leave Event')
+        if (attending){
+            delete event.attendees[sessionUser._id];
+            setAttending(false)
+        } else{
+            event.attendees[sessionUser._id] = sessionUser;
+            setAttending(true)
+        } 
         dispatch(updateEvent(event));
     }
 
@@ -151,7 +163,7 @@ const EventShow = () => {
                                     onClick={handleAttend}
                                     id="event-show-button"
                                     type="button"
-                                    value={ attending ? 'Attending' : 'Attend'}
+                                    value= {attending ? 'Leave Event' : 'Attend Event'}
                                 />
                             </div>
                             { sessionUser._id === event.owner._id ? 
@@ -183,15 +195,16 @@ const EventShow = () => {
                                     
                                     {sessionUser._id === comment.commenter._id && comment.body !== 'Deleted comment' ? 
                                         <div id="event-show-edit">
-                                            <button className='transparent-button' id={comment._id} value={comment._id} onClick={(e)=> handleCommentEditButton(e, comment)}>
-                                                <BiEdit id='event-show-edit-button' />
-                                            </button>
-                                            {edit ? null : 
-                                            
+                                            {edit ? null :
+                                                <button className='transparent-button' id={comment._id} value={comment._id} onClick={(e)=> handleCommentEditButton(e, comment)}>
+                                                    <BiEdit id='event-show-edit-button' />
+                                                </button>
+                                            }
+                                            {edit ? null :
                                                 <button className='transparent-button' onClick={()=> handleButton(comment)}>
                                                     <AiOutlineDelete id='event-show-delete-button' />
                                                 </button>
-                                            }
+                                             }
                                         </div>
                                     : null}
 

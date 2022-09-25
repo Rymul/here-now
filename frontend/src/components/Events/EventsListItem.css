@@ -26,6 +26,13 @@
     box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px 0px;
     color: #004049;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+
+
+.event-list-item-container:hover {
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px 0px
 }
 
 .event-list-item-container.active {
