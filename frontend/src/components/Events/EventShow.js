@@ -11,6 +11,8 @@ import EventShowMapWrapper from './EventsShowMapWrapper';
 import { createdAgoTimeParser } from '../../utils/utils';
 import { updateComment } from '../../store/comments';
 
+
+
 const EventShow = () => {
     const dispatch = useDispatch();
     const {eventId} = useParams();
@@ -20,7 +22,7 @@ const EventShow = () => {
     const [latlng, setLatLng] = useState({lat:null, lng:null})
     const [edit, setEdit] = useState(false)
     const [commentData,setCommentData] = useState('')
-    const [attending, SetAttending] = useState(false);
+    const [attending, setAttending] = useState(false);
     const [editId, setEditId] = useState();
     
 
