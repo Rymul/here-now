@@ -83,12 +83,14 @@
     font-size: 24px;
     font-weight: bolder;
     opacity: 0;
+    border-radius: 12px;
+    transition: ease-in-out 0.2s;
+    color: white;
 }
 
 
 .hover-text:hover{
     opacity: 1;
-    color: white;
     cursor: pointer;
     background-color: rgb(0 0 0 / 30%);
 }
