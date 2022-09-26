@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import { createEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
+import AutoComplete from './AutoComplete';
 import './NewEventForm.css'
 
 export const NewEventForm = (props) => {
@@ -13,12 +14,15 @@ export const NewEventForm = (props) => {
     const [address,setAddress] = useState(null);
     const [lat, setLat] = useState(37.8);
     const [lng, setLng] = useState(-122.4);
+    const [photoUrl, setPhotoUrl] = useState("/Calendar.svg")
     const user = useSelector(state=> state.session.user)
     const [eventTime, setEventTime] = useState('12:30');
     const [errors, setErrors] = useState(null)
     const [tomorrow, setTomorrow] = useState(false)
     const dispatch = useDispatch();
     const history = useHistory();
+    // const latlng = useSelector(state => state.geolocation);
+    // const [details, setDetails] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,12 +33,13 @@ export const NewEventForm = (props) => {
             address,
             lat,
             lng,
+            photoUrl,
             owner: user,
             attendees: {[user._id]: user},
             eventTime: updatedEventTime,
             comments: 'hello'
+            
         }
-        
         dispatch(createEvent(event))
             .then( res => {
                 if (res) {
@@ -56,6 +61,10 @@ export const NewEventForm = (props) => {
                             case 'eventTime':
                                 updatedErrors
                                 .push('Event time must be between 5 and 50 characters')
+                                break;
+                            case 'photoUrl':
+                                updatedErrors
+                                    .push('photo error')
                                 break;
                             default:
                                 break;
@@ -88,18 +97,15 @@ export const NewEventForm = (props) => {
                     onChange={e=>setDescription(e.target.value)}
                 />
               
+                <AutoComplete setLat={setLat} setLng={setLng} setAddress={setAddress} setPhotoUrl={setPhotoUrl} />
 
-                <input id="new-event-form-input"
-                    type="text" placeholder='Address' 
-                    onChange={e=>setAddress(e.target.value)}
-                />
 
                 <div id='new-event-when'>
-                    <label> Today
-                        <input type="radio" name="tomorrow" defaultChecked/>
+                    <label className='today-label' htmlFor='today'> Today
+                        <input id='today' type="radio" name="tomorrow" defaultChecked/>
                     </label> 
-                    <label for="">Tomorrow
-                        <input type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
+                    <label className='tomorrow-label' htmlFor='tomorrow'>Tomorrow
+                        <input id='tomorrow' type="radio" name="tomorrow" onChange={()=>setTomorrow(!tomorrow)} />
                     </label>
                 </div>
              

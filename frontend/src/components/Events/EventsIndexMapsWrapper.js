@@ -7,7 +7,7 @@ function EventsIndexMapWrapper({ apiKey, latlng }) {
 
     return (
         <>
-            <Wrapper apiKey={apiKey} latlng={latlng}>
+            <Wrapper apiKey={apiKey}>
                 <EventIndexMap latlng={latlng} />
             </Wrapper>
         </>

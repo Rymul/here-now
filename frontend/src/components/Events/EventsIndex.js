@@ -1,37 +1,47 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteEvent, fetchAllEvents } from '../../store/events';
+import { deleteEvent, fetchAllEvents, createEvent } from '../../store/events';
 import EventsListItem from './EventsListItem';
 import './EventsIndex.css'
 import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
 import { updateGeolocation } from '../../store/geolocation';
 import { FaPlus } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom';
+import { event1 } from './seeds'
 
 const EventsIndex = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     
+    
     useEffect(()=>{
-        dispatch(fetchAllEvents());
+        dispatch(fetchAllEvents())
     },[dispatch])
-
+    
 
     const latlng = useSelector(state => state.geolocation)
-
-    // const [latlng, setLatLng] = useState({lat:null, lng:null})
     const [denied, setDenied] = useState(false) 
 
+    
+    
+    
     const eventsObj = useSelector(state => state.events)
-
-
-
+    
+    
+    
     let events;
     if (eventsObj) {
         events = Object.values(eventsObj).sort((a, b)=> new Date(a.eventTime) - new Date(b.eventTime));
         console.log(events, "EVNEFNEJEFN")
     }
+    
+    const deleteAllEvents = () => {
+          if (events)  events.map(event => {
+                dispatch(deleteEvent(event._id))
+            })
+    }
 
+    // deleteAllEvents(); // If you want to delete all events, uncomment this line
 
     const deleteExpiredEvent = () => {
         events.map(event => {
@@ -75,6 +85,12 @@ const EventsIndex = () => {
         history.push('/events/new')
     }
 
+    
+  
+       
+    
+    
+
     return (
         <>
         <div className='events-index-page'>
@@ -97,7 +113,7 @@ const EventsIndex = () => {
                     </ul>
                 </div>
                 <div className='events-index-map-container'>
-                        <EventsIndexMapWrapper apiKey={process.env.MAPS_API_KEY} latlng={latlng}/>
+                        <EventsIndexMapWrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} latlng={latlng}/>
                 </div>
             </div>
         </div>
