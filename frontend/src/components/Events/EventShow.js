@@ -4,7 +4,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import CommentsForm from '../Comments/CommentsForm';
 import { deleteEvent, fetchEvent, updateEvent } from '../../store/events';
 import { AiOutlineDelete } from 'react-icons/ai'
-import { BiEdit } from 'react-icons/bi'
+import { FiUserPlus } from 'react-icons/fi'
 import './EventShow.css'
 import EventShowMapWrapper from './EventsShowMapWrapper';
 import { createdAgoTimeParser } from '../../utils/utils';
@@ -24,7 +24,8 @@ const EventShow = () => {
     const [commentData,setCommentData] = useState('')
     const [attending, setAttending] = useState(false);
     const [editId, setEditId] = useState();
-    
+    let attendees;
+    if (event) {attendees = Object.values(event.attendees)}
 
     useEffect(()=>{
         dispatch(fetchEvent(eventId))
@@ -100,27 +101,39 @@ const EventShow = () => {
                         <div className='event-show-nonowner-container'>
                             <div className='show-attendees' id='event-show-owner'>
                                 <div className='hover-text'>Event Organizer</div>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
+                                <img src={event.owner.photoUrl ? event.owner.photoUrl : "/male-profile-picture.jpeg"} className='event-show-attendee-photo' />
                             </div>
+                            {attendees ? attendees.map((attendee, i) => ( attendee._id !== event.owner._id && i <= 5 ?
+                            <div className='show-attendees'>
+                                    <img src={attendee.photoUrl ? attendee.photoUrl : "/male-profile-picture.jpeg"} className='event-show-attendee-photo' />
+                            </div> : null
+                            )) : null}
 
-                            <div className='show-attendees'>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
-                            </div>
-                            <div className='show-attendees'>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
-                            </div>
-                            <div className='show-attendees'>
-                                <img src="/demoprofpic.png" className='event-show-attendee-photo' />
-                            </div>
-                            <div className='show-attendees'>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
-                            </div>
-                            <div className='show-attendees'>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
-                            </div>
-                            <div className='show-attendees'>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
-                            </div>
+
+                            
+                            {/* {attendees.length <= 5 ? <div className='show-attendees'>
+                                
+                            </div> : null}
+                            {attendees.length <= 4 ? <div className='show-attendees'>
+                                
+                            </div> : null}
+                            {attendees.length <= 3 ? <div className='show-attendees'>
+                                
+                            </div> : null}
+                            {attendees.length <= 2 ? <div className='show-attendees'>
+                                
+                            </div> : null}
+                            {attendees.length <= 1 ? <div className='show-attendees'>
+                                
+                            </div> : null}
+                            {attendees.length === 0 ? <div className='show-attendees'>
+                                
+                            </div> : null} */}
+                            {sessionUser._id === event.owner._id || attending || attendees.length >= 6  ? null : 
+                                <div className='show-attendees show-attendees-add' onClick={handleAttend}>
+                                <FiUserPlus />
+                            </div>}
+
                         </div>
                     </div>
                 </div>
