@@ -37,6 +37,10 @@ const eventSchema = Schema({
     eventTime: {
         type: Date,
         required: true
+    },
+    photoUrl: {
+        type: String,
+        required:false
     }
     }, {
         timestamps: true
