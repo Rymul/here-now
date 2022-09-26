@@ -15,13 +15,7 @@ const EventsIndex = () => {
     
     
     useEffect(()=>{
-        dispatch(fetchAllEvents()).then(res => {
-            console.log(events.length, "this is events length")
-            for( let i = events.length; i < 5; i++) {
-                dispatch(createEvent(event1))
-            }
-        });
-    },[])
+        dispatch(fetchAllEvents(),[dispatch])
     
     //     const banana = () => {
         //         if (events.length >= 5) {
