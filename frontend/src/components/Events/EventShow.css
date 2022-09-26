@@ -70,6 +70,7 @@
 }
 
 
+
 .hover-text:hover{
     opacity: 1;
     cursor: pointer;
@@ -88,6 +89,7 @@
 }
 
 .show-attendees{
+    position: relative;
     height: 100%;
     width: 100%;   
     margin-top: 1px;
@@ -97,10 +99,14 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
-  
-    /* object-fit: cover; */
     border-radius: 12px;
-    /* clip-path: circle(); */
+}
+
+.event-show-organizer-photo{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
 }
 
 .event-show-page-splitter-parent {

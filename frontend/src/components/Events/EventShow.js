@@ -82,25 +82,31 @@ const EventShow = () => {
                         <div className='event-show-nonowner-container'>
                             <div className='show-attendees' id='event-show-owner'>
                                 <div className='hover-text'>Event Organizer</div>
-                                <img src={event.owner.photoUrl} className='event-show-attendee-photo' />
+                                <img src={event.owner.photoUrl} className='event-show-organizer-photo' />
                             </div>
 
                             <div className='show-attendees'>
+                                <div className='hover-text'>Atennding</div>
                                 <img src={photos[0] || "/blank_user.png"} alt=""  id='attend-one' className='event-show-attendee-photo' />
                             </div>
                             <div className='show-attendees'>
+                                <div className='hover-text'>Atennding</div>
                                 <img src={photos[1] || "/blank_user.png" } alt="" id='attend-two' className='event-show-attendee-photo' />
                             </div>
                             <div className='show-attendees'>
+                                <div className='hover-text'>Atennding</div>
                                 <img src={photos[2] || "/blank_user.png" } alt="" id='attend-three' className='event-show-attendee-photo' />
                             </div>
                             <div className='show-attendees'>
+                                <div className='hover-text'>Atennding</div>
                                 <img src={photos[3] || "/blank_user.png" } alt="" id='attend-four' className='event-show-attendee-photo' />
                             </div>
                             <div className='show-attendees'>
+                                <div className='hover-text'>Atennding</div>
                                 <img src={photos[4] || "/blank_user.png" } alt="" id='attend-five' className='event-show-attendee-photo' />
                             </div>
                             <div className='show-attendees'>
+                                <div className='hover-text'>Atennding</div>
                                 <img src={photos[5] || "/blank_user.png" } alt="" id='attend-six' className='event-show-attendee-photo' />
                             </div>
                         </div>
