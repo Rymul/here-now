@@ -15,21 +15,11 @@ const EventsIndex = () => {
     
     
     useEffect(()=>{
-        dispatch(fetchAllEvents(),[dispatch])
+        dispatch(fetchAllEvents())
+    },[dispatch])
     
-    //     const banana = () => {
-        //         if (events.length >= 5) {
-            //          return null;
-            //     } else {
-                //          dispatch(createEvent(event1))
-                //     }
-                // }
-                
-                // banana();
 
     const latlng = useSelector(state => state.geolocation)
-    
-    // const [latlng, setLatLng] = useState({lat:null, lng:null})
     const [denied, setDenied] = useState(false) 
 
     
