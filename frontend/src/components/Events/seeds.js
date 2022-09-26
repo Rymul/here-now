@@ -47,5 +47,6 @@
                 }
         },
         comments: "hello",
-        eventTime: rightNow
+        eventTime: rightNow,
+        photoUrl: "https://dogtime.com/assets/uploads/gallery/pembroke-welsh-corgi-dog-breed-pictures/prance-8.jpg"
     }

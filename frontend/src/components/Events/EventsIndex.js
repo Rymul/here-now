@@ -15,8 +15,13 @@ const EventsIndex = () => {
     
     
     useEffect(()=>{
-        dispatch(fetchAllEvents());
-    },[dispatch])
+        dispatch(fetchAllEvents()).then(res => {
+            console.log(events.length, "this is events length")
+            for( let i = events.length; i < 5; i++) {
+                dispatch(createEvent(event1))
+            }
+        });
+    },[])
     
     //     const banana = () => {
         //         if (events.length >= 5) {
@@ -105,7 +110,6 @@ const EventsIndex = () => {
     return (
         <>
         <div className='events-index-page'>
-        {console.log(events.length, "events length")}
                 <h1>Nearby Events</h1>
             <div className='events-index-list-container'>
                 <div className='events-index-list'>
