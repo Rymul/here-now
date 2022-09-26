@@ -23,8 +23,8 @@
 }
 
 #user-show-profile-pic {
-    width: 60%;
-    height: 100%;
+    width: 500px;
+    height: 500px;
     clip-path: circle();
     object-fit: cover;
     /* border-radius: 20px; */
