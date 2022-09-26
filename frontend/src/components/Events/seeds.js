@@ -22,6 +22,7 @@
             "firstName": "Ryan",
             "lastName": "Mullen",
             "email": "ryan@email.io",
+            "photoUrl": "/RyanMullen.jpeg",
             "events": []
             },
         attendees: {
@@ -30,6 +31,7 @@
             "firstName": "Ryan",
             "lastName": "Mullen",
             "email": "ryan@email.io",
+            "photoUrl": "/RyanMullen.jpeg",
             "events": []
             },
             "632cf98b142e9e8a7192da52": {
@@ -47,6 +49,7 @@
             "lastName": "Moshe",
             "email": "ari@email.io",
             "birthDay": "2022-09-20T07:00:00.000Z",
+            "photoUrl": "/AriMoshe.jpeg",
             "events": []
             },
             "632cf3f9167d8b826aafbc6b": {
@@ -54,6 +57,7 @@
             "firstName": "Jay",
             "lastName": "Reedy",
             "email": "jay@email.io",
+            "photoUrl": "/JayReddy.jpeg",
             "birthDay": "1701-04-12T07:52:58.000Z",
             "events": []
             },
@@ -62,6 +66,7 @@
             "firstName": "Garret",
             "lastName": "Grant",
             "email": "garret@user.io",
+            "photoUrl": "/GarretGrant.png",
             "birthDay": "2022-09-22T23:50:10.127Z",
             "events": []
             }
@@ -78,14 +83,15 @@
         lat: 37.8,
         lng: -122.4,
         owner: {
-            "632cf4d12ce53c50f1ec6ccb": {
+            
             "_id": "632cf4d12ce53c50f1ec6ccb",
             "firstName": "Garret",
             "lastName": "Grant",
             "email": "garret@user.io",
+            "photoUrl": "/GarretGrant.png",
             "birthDay": "2022-09-22T23:50:10.127Z",
             "events": []
-            }
+            
         },
         attendees: {
             "632cf4d12ce53c50f1ec6ccb": {
@@ -93,6 +99,7 @@
             "firstName": "Garret",
             "lastName": "Grant",
             "email": "garret@user.io",
+            "photoUrl": "/GarretGrant.png",
             "birthDay": "2022-09-22T23:50:10.127Z",
             "events": []
             },
@@ -110,13 +117,15 @@
             "firstName": "Jay",
             "lastName": "Reedy",
             "email": "jay@email.io",
+            "photoUrl": "/JayReddy.jpeg",
             "birthDay": "1701-04-12T07:52:58.000Z",
             "events": []
             },
             "632cfb723fee210de997a88a": {
             "_id": "632cfb723fee210de997a88a",
             "firstName": "Ryan",
-            "lastName": "Mullen",
+                "lastName": "Mullen",
+            "photoUrl": "/RyanMullen.jpeg",
             "email": "ryan@email.io",
             "events": []
             },
@@ -125,6 +134,7 @@
             "firstName": "Ari",
             "lastName": "Moshe",
             "email": "ari@email.io",
+            "photoUrl": "/AriMoshe.jpeg",
             "birthDay": "2022-09-20T07:00:00.000Z",
             "events": []
             }
@@ -141,14 +151,15 @@
         lat: 37.784,
         lng: -122.438,
         owner: {
-            "632cf3f9167d8b826aafbc6b": {
+            
             "_id": "632cf3f9167d8b826aafbc6b",
             "firstName": "Jay",
             "lastName": "Reedy",
             "email": "jay@email.io",
+            "photoUrl": "/JayReddy.jpeg",
             "birthDay": "1701-04-12T07:52:58.000Z",
             "events": []
-            }
+            
         },
         attendees: {
             "632cf3f9167d8b826aafbc6b": {
@@ -156,6 +167,7 @@
             "firstName": "Jay",
             "lastName": "Reedy",
             "email": "jay@email.io",
+            "photoUrl": "/JayReddy.jpeg",
             "birthDay": "1701-04-12T07:52:58.000Z",
             "events": []
             },
@@ -163,6 +175,7 @@
             "_id": "632cfb723fee210de997a88a",
             "firstName": "Ryan",
             "lastName": "Mullen",
+            "photoUrl": "/RyanMullen.jpeg",
             "email": "ryan@email.io",
             "events": []
             },
@@ -170,7 +183,8 @@
             "_id": "632cf3d7167d8b826aafbc67",
             "firstName": "Ari",
             "lastName": "Moshe",
-            "email": "ari@email.io",
+                "email": "ari@email.io",
+                "photoUrl": "/AriMoshe.jpeg",
             "birthDay": "2022-09-20T07:00:00.000Z",
             "events": []
             }
@@ -187,7 +201,7 @@
         lat: 37.78621,
         lng: -122.40683,
         owner: {
-                "632cf98b142e9e8a7192da52": {
+                
                 "_id": "632cf98b142e9e8a7192da52",
                 "firstName": "Demo",
                 "lastName": "User",
@@ -195,7 +209,7 @@
                 "birthDay": "1992-10-26T08:00:00.000Z",
                 "events": [],
                 "photoUrl": "/female-profile-picture.jpeg"
-                }
+                
         },
         attendees: {
             "632cf98b142e9e8a7192da52": {
@@ -212,6 +226,7 @@
             "firstName": "Jay",
             "lastName": "Reedy",
             "email": "jay@email.io",
+            "photoUrl": "/JayReddy.jpeg",
             "birthDay": "1701-04-12T07:52:58.000Z",
             "events": []
             },
@@ -219,6 +234,7 @@
             "_id": "632cfb723fee210de997a88a",
             "firstName": "Ryan",
             "lastName": "Mullen",
+            "photoUrl": "/RyanMullen.jpeg",
             "email": "ryan@email.io",
             "events": []
             },
@@ -227,6 +243,7 @@
             "firstName": "Ari",
             "lastName": "Moshe",
             "email": "ari@email.io",
+            "photoUrl": "/AriMoshe.jpeg",
             "birthDay": "2022-09-20T07:00:00.000Z",
             "events": []
             }
