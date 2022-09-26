@@ -7,11 +7,11 @@ import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
 import { updateGeolocation } from '../../store/geolocation';
 import { FaPlus } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom';
-import { event1 } from './seeds'
 
 const EventsIndex = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const eventsObj = useSelector(state => state.events)
     
     
     useEffect(()=>{
@@ -25,7 +25,6 @@ const EventsIndex = () => {
     
     
     
-    const eventsObj = useSelector(state => state.events)
     
     
     
