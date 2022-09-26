@@ -95,7 +95,8 @@ const UserShow = () => {
         <div className="user-show-component">
             <div className="user-show-info">
                 <div className="user-show-top">
-                    <img id="user-show-profile-pic" src="/male-profile-picture.jpeg" alt="" />
+                    <img id="user-show-profile-pic" src={user.photoUrl} alt=""/>
+                    {/* <img id="user-show-profile-pic" src="/male-profile-picture.jpeg" alt="" /> */}
                 </div>
                 <div className="user-show-bottom">
                     <h1 id="user-show-name">{user.firstName} {user.lastName[0]}.</h1>
@@ -120,9 +121,9 @@ const UserShow = () => {
                 </div>
             : null}
             </div>
-            <input type="file" id="file-input" /><button className="upload">Upload</button>
+            {/* <input type="file" id="file-input" /><button className="upload">Upload</button>
                 <p id="status">Please select a file</p>
-            <img id="preview" src="/images/default.png"/>
+            <img id="preview" src="/images/default.png"/> */}
         </div>
     )
 }

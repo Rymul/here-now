@@ -8,10 +8,10 @@ function EventShowMapWrapper({ apiKey, event }) {
 
     return (
         <>
-            <Wrapper apiKey={apiKey} latlng={latlng}>
+            {/* <Wrapper apiKey={apiKey} latlng={latlng}> */}
                 <EventShowMap latlng={latlng} />
                 {/* <EventIndexMap latlng={latlng} /> */}
-            </Wrapper>
+            {/* </Wrapper> */}
         </>
     )
 }

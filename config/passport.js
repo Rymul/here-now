@@ -31,7 +31,8 @@ exports.loginUser = async function(user) {
       _id: user._id,
       firstName: user.firstName,
       lastName: user.lastName,
-      email: user.email
+      email: user.email,
+      photoUrl: user.photoUrl  // used when we auto fill user photo
     };
     const token = await jwt.sign(
       userInfo, // payload
