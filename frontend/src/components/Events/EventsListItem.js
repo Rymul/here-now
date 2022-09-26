@@ -23,7 +23,7 @@ const EventsListItem = ({event}) => {
         <>
             <div className="event-list-item-container" id={event._id} onClick={handleClick}>
                 <div className="event-list-item-img">
-                    <img src="./ConservOfFlowers.jpg" alt="" />
+                    <img src={event.photoUrl} alt="" />
                 </div>
                 <div className="event-list-item-info">
                     <ul>

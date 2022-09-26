@@ -98,6 +98,7 @@ router.post('/',
         owner: req.body.owner,
         attendees:req.body.attendees,
         comments: {test: "test"},
+        photoUrl: req.body.photoUrl,
         eventTime: req.body.eventTime
       });
 
