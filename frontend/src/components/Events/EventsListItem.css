@@ -40,7 +40,7 @@ background-color: #c5553c;
 color: #FFFFFF;
 }
 
-.event-list-item-container.active li, .event-list-item-container.active span {
+.event-list-item-container.active * {
     color: #FFFFFF;
 }
 
