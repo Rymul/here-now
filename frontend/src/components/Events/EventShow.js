@@ -20,7 +20,7 @@ const EventShow = () => {
     const [latlng, setLatLng] = useState({lat:null, lng:null})
     const [edit, setEdit] = useState(false)
     const [commentData,setCommentData] = useState('')
-    const [attending, SetAttending] = useState(false);
+    const [attending, setAttending] = useState(false);
     const [editId, setEditId] = useState();
     
 
