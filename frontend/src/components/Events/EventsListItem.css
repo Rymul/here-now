@@ -13,7 +13,7 @@
 .event-list-item-img > img {
     object-fit: cover;
     width: 130px;
-
+    image-rendering:smooth;
     height: 130px;   
 }
 
