@@ -56,7 +56,7 @@ export const NewEventForm = (props) => {
                                 break;
                             case 'address':
                                 updatedErrors
-                                    .push(capitalizeFirstLetter(error) + ' must be between 5 and 50 characters')
+                                    .push(capitalizeFirstLetter(error) + ' is invalid')
                                 break;
                             case 'eventTime':
                                 updatedErrors

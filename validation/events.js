@@ -15,7 +15,7 @@ const validateEventInput = [
         .withMessage('Description must be between 5 and 150 characters'),
     check('address')
         .exists({ checkFalsy: true })
-        .isLength({ min: 5, max: 60 })
+        .isLength({ min: 5, max: 1000 })
         .withMessage('Address must be between 5 and 60 characters'),
     check('eventTime')
         .exists({ checkFalsy: true })
