@@ -72,7 +72,7 @@ export const fetchAllEvents = () => async dispatch => {
 }
 
 
-const eventsReducer = (state = {}, action) => {
+const eventsReducer = (state = null, action) => {
     Object.freeze(state);
     const nextState = { ...state };
   

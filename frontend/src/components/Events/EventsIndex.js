@@ -1,25 +1,45 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteEvent, fetchAllEvents } from '../../store/events';
+import { deleteEvent, fetchAllEvents, createEvent } from '../../store/events';
 import EventsListItem from './EventsListItem';
 import './EventsIndex.css'
 import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
 import { updateGeolocation } from '../../store/geolocation';
 import { FaPlus } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom';
+import { event1 } from './seeds'
 
 const EventsIndex = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     
+    
     useEffect(()=>{
-        dispatch(fetchAllEvents());
-    },[dispatch])
+        dispatch(fetchAllEvents()).then(res => {
+            console.log(events.length, "this is events length")
+            for( let i = events.length; i < 5; i++) {
+                dispatch(createEvent(event1))
+            }
+        });
+    },[])
+    
+    //     const banana = () => {
+        //         if (events.length >= 5) {
+            //          return null;
+            //     } else {
+                //          dispatch(createEvent(event1))
+                //     }
+                // }
+                
+                // banana();
 
     const latlng = useSelector(state => state.geolocation)
     
     // const [latlng, setLatLng] = useState({lat:null, lng:null})
     const [denied, setDenied] = useState(false) 
+
+    
+    
     
     const eventsObj = useSelector(state => state.events)
     
@@ -81,6 +101,10 @@ const EventsIndex = () => {
         history.push('/events/new')
     }
 
+    
+  
+       
+    
     
 
     return (
