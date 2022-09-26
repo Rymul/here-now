@@ -7,6 +7,7 @@ import { ImExit } from 'react-icons/im'
 import { useHistory } from 'react-router-dom';
 
 
+
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function NavBar () {
   //     );
   //   }
   // }
+if (!sessionUser) return null
 if (loggedIn) {
   return (
     <>
@@ -62,7 +64,9 @@ if (loggedIn) {
             <img className="nav-logo" src="/logo.svg" alt="logo"onClick={handleLogoClick}/>
           </div>
           <div id="nav-bar-subdiv-profpic" className="nav-bar-subdiv">
-            <button className='nav-bar-profpic' onClick={handleProfPicClick}><img className="nav-bar-huey" src="/demoprofpic.png" alt="prof" /></button>
+            {/* <button className='nav-bar-profpic' onClick={handleProfPicClick}><img className="nav-bar-huey" src="/demoprofpic.png" alt="prof" /></button> */}
+            <button className='nav-bar-profpic' onClick={handleProfPicClick}><img className="nav-bar-huey" src={sessionUser.photoUrl} alt="prof" /></button>
+
             <span className="nav-bar-profpic-name">{sessionUser.firstName}</span>
           </div>
           <div className="nav-bar-links-container">

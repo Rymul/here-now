@@ -22,9 +22,9 @@ const userSchema = Schema({
         type: Date,
         required: true
     },
-    events: {
-        type: Array,
-        required: false
+    photoUrl: {
+        type: String,
+        required:false
     }
     }, {
         timestamps: true
