@@ -27,6 +27,7 @@ router.get('/', async (req, res, next) => {
       .select('email')
       .select('events')
       .select('birthDay')
+      .select('photoUrl')
     return res.json(users);
   }
   catch(err) {
@@ -52,8 +53,9 @@ router.get('/current', restoreUser, (req, res) => {
     firstName: req.user.firstName,
     lastName: req.user.lastName,
     email: req.user.email,
-    events: req.user.events,
-    birthday: req.user.birthday
+    // events: req.user.events,
+    birthday: req.user.birthday,
+    photoUrl: req.user.photoUrl
   });
 })
 
@@ -68,6 +70,7 @@ router.get('/:userId', async (req, res, next) => {
       .select('events')
       .select('birthDay')
       .select('createdAt')
+      .select('photoUrl')
     return res.json(user);
   }
   catch(_err) {
@@ -102,7 +105,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     lastName: req.body.lastName,
     birthDay: req.body.birthDay,
     email: req.body.email,
-    events: []
+    // events: []
   });
 
   bcrypt.genSalt(10, (err, salt) => {
