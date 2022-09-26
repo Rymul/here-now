@@ -1,6 +1,9 @@
     const rightNow = new Date();
     const tomorrow = new Date(rightNow)
     tomorrow.setDate(tomorrow.getDate() + 1)
+    const twoHoursLater = new Date()
+    twoHoursLater.setHours(twoHoursLater.getHours() + 2)
+    twoHoursLater.setMinutes(0)
     const fourHoursLater = new Date()
     fourHoursLater.setHours(fourHoursLater.getHours() + 4)
     fourHoursLater.setMinutes(0)
@@ -28,6 +31,15 @@
             "lastName": "Mullen",
             "email": "ryan@email.io",
             "events": []
+            },
+            "632cf98b142e9e8a7192da52": {
+            "_id": "632cf98b142e9e8a7192da52",
+            "firstName": "Demo",
+            "lastName": "User",
+            "email": "demo@user.io",
+            "birthDay": "1992-10-26T08:00:00.000Z",
+            "events": [],
+            "photoUrl": "/female-profile-picture.jpeg"
             },
             "632cf3d7167d8b826aafbc67": {
             "_id": "632cf3d7167d8b826aafbc67",
@@ -83,7 +95,16 @@
             "email": "garret@user.io",
             "birthDay": "2022-09-22T23:50:10.127Z",
             "events": []
-            }, 
+            },
+            "632cf98b142e9e8a7192da52": {
+            "_id": "632cf98b142e9e8a7192da52",
+            "firstName": "Demo",
+            "lastName": "User",
+            "email": "demo@user.io",
+            "birthDay": "1992-10-26T08:00:00.000Z",
+            "events": [],
+            "photoUrl": "/female-profile-picture.jpeg"
+            },
             "632cf3f9167d8b826aafbc6b": {
             "_id": "632cf3f9167d8b826aafbc6b",
             "firstName": "Jay",
@@ -157,4 +178,60 @@
         comments: "hello",
         eventTime: fourHoursLater,
         photoUrl: "https://townsquare.media/site/801/files/2015/09/White-Men-Cant-Jump-basketball-scene.jpg?w=980&q=75"
+    }
+
+    export const event4 = {
+        title: 'VR Hangout at Sandbox VR',
+        description: "Whether you're new to VR games or a seasoned veteran, come play some games down at Sandbox over on Market",
+        address: "Sandbox VR, Market Street, San Francisco, CA",
+        lat: 37.78621,
+        lng: -122.40683,
+        owner: {
+                "632cf98b142e9e8a7192da52": {
+                "_id": "632cf98b142e9e8a7192da52",
+                "firstName": "Demo",
+                "lastName": "User",
+                "email": "demo@user.io",
+                "birthDay": "1992-10-26T08:00:00.000Z",
+                "events": [],
+                "photoUrl": "/female-profile-picture.jpeg"
+                }
+        },
+        attendees: {
+            "632cf98b142e9e8a7192da52": {
+            "_id": "632cf98b142e9e8a7192da52",
+            "firstName": "Demo",
+            "lastName": "User",
+            "email": "demo@user.io",
+            "birthDay": "1992-10-26T08:00:00.000Z",
+            "events": [],
+            "photoUrl": "/female-profile-picture.jpeg"
+            },
+            "632cf3f9167d8b826aafbc6b": {
+            "_id": "632cf3f9167d8b826aafbc6b",
+            "firstName": "Jay",
+            "lastName": "Reedy",
+            "email": "jay@email.io",
+            "birthDay": "1701-04-12T07:52:58.000Z",
+            "events": []
+            },
+            "632cfb723fee210de997a88a": {
+            "_id": "632cfb723fee210de997a88a",
+            "firstName": "Ryan",
+            "lastName": "Mullen",
+            "email": "ryan@email.io",
+            "events": []
+            },
+            "632cf3d7167d8b826aafbc67": {
+            "_id": "632cf3d7167d8b826aafbc67",
+            "firstName": "Ari",
+            "lastName": "Moshe",
+            "email": "ari@email.io",
+            "birthDay": "2022-09-20T07:00:00.000Z",
+            "events": []
+            }
+        },
+        comments: "hello",
+        eventTime: twoHoursLater,
+        photoUrl: "https://pbs.twimg.com/media/E93Q3K1WYAAFs-J.jpg"
     }
