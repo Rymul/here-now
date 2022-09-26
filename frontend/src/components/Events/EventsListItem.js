@@ -46,7 +46,11 @@ const EventsListItem = ({event}) => {
                         <div className='event-list-item-attendees-container'>
                             <li className='event-list-item-attendees'>{Object.values(event.attendees).length} attending </li>
                             {Object.values(event.attendees).map(person => {
-                                if (person._id === sessionUser._id) return <div className='attending-icon-container'><p className='event-list-item-you-attending'>Attending</p> <BsCheckCircleFill className='attending-icon'/></div>
+                                if (person._id === sessionUser._id && sessionUser._id === event.owner._id) {
+                                    return <div className='attending-icon-container'><p className='event-list-item-you-attending'>Owner</p> <BsCheckCircleFill className='attending-icon'/></div>
+                                } else if (person._id === sessionUser._id && sessionUser._id !== event.owner._id) {
+                                    return <div className='attending-icon-container'><p className='event-list-item-you-attending'>Attending</p> <BsCheckCircleFill className='attending-icon'/></div>
+                                }
                             })}
                         </div>
                     </ul>
