@@ -1,35 +1,29 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import {  useHistory, useParams } from 'react-router-dom';
 import CommentsForm from '../Comments/CommentsForm';
 import { deleteEvent, fetchEvent, updateEvent } from '../../store/events';
-import { AiOutlineDelete } from 'react-icons/ai'
-import { BiEdit } from 'react-icons/bi'
 import './EventShow.css'
 import EventShowMapWrapper from './EventsShowMapWrapper';
-import { createdAgoTimeParser } from '../../utils/utils';
-import { updateComment } from '../../store/comments';
 import CommentItem from '../Comments/CommentItem';
+
 
 
 
 const EventShow = () => {
     const dispatch = useDispatch();
     const {eventId} = useParams();
-    const event = useSelector(state=> state.events[eventId])
+    const event = useSelector(state=> state.events[eventId]);
     const sessionUser = useSelector(state => state.session.user);
     const history = useHistory();
-    const [latlng, setLatLng] = useState({lat:null, lng:null})
-    const [edit, setEdit] = useState(false)
-    const [commentData,setCommentData] = useState('')
+    const [latlng, ] = useState({lat:null, lng:null})
     const [attending, setAttending] = useState(false);
-    const [editId, setEditId] = useState();
+    const [photos, setPhotos] = useState([]);
     
 
     useEffect(()=>{
         dispatch(fetchEvent(eventId))
- 
-    },[eventId])
+    },[eventId, dispatch])
 
     const initializeAttending = () => {
      if (event){
@@ -37,13 +31,25 @@ const EventShow = () => {
           if (attendants)  attendants.map( user => {
                 if (user._id === sessionUser._id){
                     setAttending(true)
-                }
+                } return null;
             })
      }
     }
     useEffect(()=> {
         initializeAttending();
-    },[event])
+        if (event && event.attendees){
+            const attendees = Object.values(event.attendees);
+            attendees.map(attendee => {
+                if (attendee._id === event.owner._id) return null;
+                const photoSources = photos;
+                photoSources.push(attendee.photoUrl)
+                setPhotos(photoSources)
+                return null;
+            })
+            const photoSources = [...new Set(photos)].sort();
+            setPhotos(photoSources)
+        }
+    },[event, dispatch])
 
     const handleDelete = (e) => {
         dispatch(deleteEvent(eventId)).then(res => history.push('/events'))
@@ -54,6 +60,7 @@ const EventShow = () => {
         if (attending){
             delete event.attendees[sessionUser._id];
             setAttending(false)
+            setPhotos([])
         } else{
             event.attendees[sessionUser._id] = sessionUser;
             setAttending(true)
@@ -61,35 +68,10 @@ const EventShow = () => {
         dispatch(updateEvent(event));
     }
 
-    const handleCommentEditButton = (e, comment) => {
-        setEdit(true)
-        setEditId(e.target.id)
-        setCommentData(comment.body)
-    }
-    
-   
-    const handleButton = (comment, body = 'Deleted comment') => {
-        comment.body = body
-        let commentId;
-        let commentData;
-        let updatedEvent = event;
-        dispatch(updateComment(comment)).then(res => {
-            commentId = res._id;
-            commentData = res;
-        }).then(res => {
-            updatedEvent.comments[commentId] = commentData;
-            dispatch(updateEvent(updatedEvent));
-        })
-    }
 
-    const commentEditSubmit = (e, comment) => {
-        e.preventDefault();
-        handleButton(comment, commentData);
-        setEdit(false);
-    }
-    
-    
-    if (!event || !event.comments) return <h1>No comments on this event, delete it</h1> ;
+
+
+    if (!event || !event.comments) return null;
     let eventTime = new Date(event.eventTime)
     
     return (
@@ -100,26 +82,26 @@ const EventShow = () => {
                         <div className='event-show-nonowner-container'>
                             <div className='show-attendees' id='event-show-owner'>
                                 <div className='hover-text'>Event Organizer</div>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
+                                <img src={event.owner.photoUrl} className='event-show-attendee-photo' />
                             </div>
 
                             <div className='show-attendees'>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
+                                <img src={photos[0] || "/blank_user.png"} alt=""  id='attend-one' className='event-show-attendee-photo' />
                             </div>
                             <div className='show-attendees'>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
+                                <img src={photos[1] || "/blank_user.png" } alt="" id='attend-two' className='event-show-attendee-photo' />
                             </div>
                             <div className='show-attendees'>
-                                <img src="/demoprofpic.png" className='event-show-attendee-photo' />
+                                <img src={photos[2] || "/blank_user.png" } alt="" id='attend-three' className='event-show-attendee-photo' />
                             </div>
                             <div className='show-attendees'>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
+                                <img src={photos[3] || "/blank_user.png" } alt="" id='attend-four' className='event-show-attendee-photo' />
                             </div>
                             <div className='show-attendees'>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
+                                <img src={photos[4] || "/blank_user.png" } alt="" id='attend-five' className='event-show-attendee-photo' />
                             </div>
                             <div className='show-attendees'>
-                                <img src="/male-profile-picture.jpeg" className='event-show-attendee-photo' />
+                                <img src={photos[5] || "/blank_user.png" } alt="" id='attend-six' className='event-show-attendee-photo' />
                             </div>
                         </div>
                     </div>
