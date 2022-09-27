@@ -16,7 +16,6 @@ aws.config.update({
 })
 
 const fileFilter = (req, file, cb) => {
-    console.log('mimetype',file.mimetype)
     if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
       cb(null, true);
     } else {
@@ -34,7 +33,6 @@ const fileFilter = (req, file, cb) => {
         cb(null, { fieldName: "TESTING_METADATA" });
       },
       key: function (req, file, cb) {
-        console.log('mimetype', file.mimetype)
         cb(null, Date.now().toString());
       },
     }),
@@ -73,7 +71,6 @@ router.post("/add-profile-picture", function (req, res) {
     }
 
     let update = { profilePicture: req.file.location };
-    console.log(update);
     res.json(update)
 //     User.findByIdAndUpdate(uid, update, { new: true })
 //       .then((user) => res.status(200).json({ success: true, user: user }))

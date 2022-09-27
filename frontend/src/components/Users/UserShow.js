@@ -62,7 +62,6 @@ const UserShow = () => {
 
     const handleFileUpload = async (file) => {
         alert('uploading')
-        console.log(file)
         
         const imageData = new FormData();
         imageData.append("image", file);
@@ -78,13 +77,11 @@ const UserShow = () => {
             const req = await jwtFetch(url, config);
             if (req.ok) {
                 const res = await req.json();
-                console.log(res);
                 if (res.success) {
                     alert("success")// setURL(res.user.profilePicture);
                 }
             }
         } catch (err) {
-            console.log('error',err);
         }
     };
 

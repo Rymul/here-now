@@ -8,12 +8,7 @@ const EventsListItem = ({event}) => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const today = new Date()
-    // const attenders = Object.values(event.attendees)
-    // Object.values(event.attendees).map(person => {
-    //     console.log(person._id === sessionUser._id, "ATTEDNING THSI EFNTON")
-    // })
    
-
     const handleClick = (e) => {
         history.push(`/events/${event._id}`)
     }
@@ -24,7 +19,7 @@ const EventsListItem = ({event}) => {
     const todayDay = today.toLocaleDateString().slice(2,4)
     const eventTimeDay = eventTime.toLocaleDateString().slice(2,4)
     const dayDiff = todayDay - eventTimeDay
-    // console.log(new Date(), new Date(eventTime), new Date(today) > new Date(eventTime), event.title)
+    
     return(
         <>
             <div className="event-list-item-container" id={event._id} onClick={handleClick}>

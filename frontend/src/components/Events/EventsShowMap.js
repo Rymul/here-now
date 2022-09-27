@@ -86,11 +86,8 @@ const EventShowMap = ({latlng}) => {
         //     }
         // }
         if (marker.current !== null) {
-            // console.log("before", marker.current);
             marker.current.setMap(null);
             marker.current = null;
-
-            // console.log('after');
         }
 
         if (marker.current === null && !!map) {
