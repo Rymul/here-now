@@ -15,8 +15,8 @@
         title: 'Corgi Collective',
         description: "Let's go walk our corgi friends at Golden Gate Park together and talk about how great and difficult it can sometimes be to be a Corgi owner!",
         address: "Golden Gate Park Dog Play Area Main Entrance",
-        lat: 37.5,
-        lng: -122.3,
+        lat: 37.7694,
+        lng: -122.4862,
         owner: {
             "_id": "632cfb723fee210de997a88a",
             "firstName": "Ryan",
@@ -251,4 +251,82 @@
         comments: "hello",
         eventTime: twoHoursLater,
         photoUrl: "https://pbs.twimg.com/media/E93Q3K1WYAAFs-J.jpg"
+    }
+
+
+    export const event5 = {
+        title: 'Board Game Night @ A/a!!',
+        description: "CODDDEEEEEENAMEEEEEESSSSSSSSSS",
+        address: "825 Battery Street, San Francisco, CA",
+        lat: 37.7989666,
+        lng: -122.4013518,
+        owner: {
+
+            "_id": "6330f7996bd83e0bc0ef1d37",
+            "firstName": "Disnee",
+            "lastName": "Tamang",
+            "email": "disnee@email.io",
+            "birthDay": "1997-04-15T07:00:00.000Z",
+            "events": [],
+            "photoUrl": "/DisneeTamang.jpeg"
+
+            },
+        attendees: {
+            "632cf98b142e9e8a7192da52": {
+            "_id": "632cf98b142e9e8a7192da52",
+            "firstName": "Demo",
+            "lastName": "User",
+            "email": "demo@user.io",
+            "birthDay": "1992-10-26T08:00:00.000Z",
+            "events": [],
+            "photoUrl": "/female-profile-picture.jpeg"
+            },
+            "6330f7c46bd83e0bc0ef1d3b": {
+            "_id": "6330f7c46bd83e0bc0ef1d3b",
+            "firstName": "Karren",
+            "lastName": "Siu",
+            "email": "karren@email.io",
+            "birthDay": "1997-06-11T07:00:00.000Z",
+            "events": [],
+            "photoUrl": "/KarrenSiu.jpeg"
+            },
+            "632cfb723fee210de997a88a": {
+            "_id": "632cfb723fee210de997a88a",
+            "firstName": "Ryan",
+            "lastName": "Mullen",
+            "photoUrl": "/RyanMullen.jpeg",
+            "email": "ryan@email.io",
+            "events": []
+            },
+            "632cf3d7167d8b826aafbc67": {
+            "_id": "632cf3d7167d8b826aafbc67",
+            "firstName": "Ari",
+            "lastName": "Moshe",
+            "email": "ari@email.io",
+            "photoUrl": "/AriMoshe.jpeg",
+            "birthDay": "2022-09-20T07:00:00.000Z",
+            "events": []
+            },
+            "6330f8246bd83e0bc0ef1d43": {
+            "_id": "6330f8246bd83e0bc0ef1d43",
+            "firstName": "Mimi",
+            "lastName": "Ly",
+            "email": "mimi@email.io",
+            "birthDay": "1993-10-14T07:00:00.000Z",
+            "events": [],
+            "photoUrl": "/MimiLy.jpeg"
+            },
+            "6330f7f16bd83e0bc0ef1d3f": {
+            "_id": "6330f7f16bd83e0bc0ef1d3f",
+            "firstName": "Matt",
+            "lastName": "Teh",
+            "email": "matt@email.io",
+            "birthDay": "1997-02-07T08:00:00.000Z",
+            "events": [],
+            "photoUrl": "/MattTeh.png"
+            }
+        },
+        comments: "hello",
+        eventTime: fourHoursLater,
+        photoUrl: "https://miro.medium.com/max/1400/1*OwSz8qBtLFs2d7aqbR-Ufg.jpeg"
     }
