@@ -17,14 +17,14 @@ const EventsListItem = ({event}) => {
     const handleClick = (e) => {
         history.push(`/events/${event._id}`)
     }
-    // console.log(new Date().toLocaleDateString())
+
     let eventTime = new Date(event.eventTime)
-    // console.log(eventTime.toLocaleDateString(), "EVENT")
+
     if (!event || !event.attendees) return null;
     const todayDay = today.toLocaleDateString().slice(2,4)
     const eventTimeDay = eventTime.toLocaleDateString().slice(2,4)
     const dayDiff = todayDay - eventTimeDay
-    console.log(new Date(today), new Date(eventTime), new Date(today) > new Date(eventTime), event.title)
+    // console.log(new Date(), new Date(eventTime), new Date(today) > new Date(eventTime), event.title)
     return(
         <>
             <div className="event-list-item-container" id={event._id} onClick={handleClick}>
@@ -40,8 +40,9 @@ const EventsListItem = ({event}) => {
                         :  
                             <li className='event-list-item-when'><span>WHEN: </span>Tomorrow at {`${(eventTime.getUTCHours() % 12) === 0 ? 12 : eventTime.getUTCHours() % 12}:${('0' + eventTime.getUTCMinutes()).slice(-2) } ${eventTime.getUTCHours() >=12 ? "PM" : "AM"}`}</li>
                         }
-                        { Date.parse(today) > Date.parse(eventTime) ? 
-                            <li className='event-list-item-when-expired'>Expired</li> : null }
+                        {/* { Date.parse(today) > Date.parse(eventTime) ? 
+                            <li className='event-list-item-when-expired'>Expired</li> : null 
+                        } */}
                         <li className='event-list-item-description'><span>WHAT: </span>{event.description}</li>
                         <div className='event-list-item-attendees-container'>
                             <li className='event-list-item-attendees'>{Object.values(event.attendees).length} attending </li>
