@@ -73,7 +73,6 @@ export const fetchAllEvents = () => async dispatch => {
       dispatch(createEvent(events[0]))
       events.shift()
     }
-    console.log(payload, "THIS IS PAYLOAD");
     dispatch(setEvents(updatePayload(payload)))
     return response;
 }
