@@ -104,6 +104,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     lastName: req.body.lastName,
     birthDay: req.body.birthDay,
     email: req.body.email,
+    photoUrl: req.body.photoUrl
     // events: []
   });
 

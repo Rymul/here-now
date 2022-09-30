@@ -17,6 +17,8 @@ import { NewEventForm } from './components/Events/NewEventForm';
 import UpdateUserForm from './components/Users/UpdateUserForm';
 import EventShow from './components/Events/EventShow';
 import CommentsForm from './components/Comments/CommentsForm';
+import UpdateEventForm from './components/Events/UpdateEventForm';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -34,6 +36,7 @@ function App() {
         <ProtectedRoute exact path="/events/new" component={NewEventForm} />
         <ProtectedRoute exact path="/events" component={EventsIndex} />
         <ProtectedRoute exact path="/events/:eventId" component={EventShow} />
+        <ProtectedRoute exact path="/events/:eventId/update" component={UpdateEventForm} />
         <ProtectedRoute exact path="/events/:eventId/comment" component={CommentsForm} />
         {/* <ProtectedRoute exact path="/feed" component={EventsIndex}/>
         <ProtectedRoute exact path="/events/new" component={NewEventForm} /> */}

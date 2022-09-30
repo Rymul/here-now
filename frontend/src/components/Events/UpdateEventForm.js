@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import { updateEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
 import AutoComplete from './AutoComplete';
 import './NewEventForm.css'
 
-export const NewEventForm = (props) => {
+export const UpdateEventForm = (props) => {
+    const { eventId } = useParams();
+    const eventData = useSelector(state => state.events[eventId])
+
     const [title, setTitle] = useState(null);
     const [description, setDescription] = useState(null);
     const [address,setAddress] = useState(null);
@@ -23,6 +26,23 @@ export const NewEventForm = (props) => {
     const history = useHistory();
     // const latlng = useSelector(state => state.geolocation);
     // const [details, setDetails] = useState(null);
+
+
+    const initializeEventStates = () => {
+        if(eventData) {
+            setTitle(eventData.title)
+            setAddress(eventData.address)
+            setDescription(eventData.description)
+            setLat(eventData.lat)
+            setLng(eventData.lng)
+            setEventTime(eventData.eventTime)
+            // setPhotoUrl(eventData.photoUrl)
+        }
+    }
+
+    useEffect(()=> {
+        initializeEventStates()
+    },[eventData])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -127,4 +147,4 @@ export const NewEventForm = (props) => {
 }
 
 
-
+export default UpdateEventForm;

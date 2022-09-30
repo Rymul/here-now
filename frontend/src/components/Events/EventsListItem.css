@@ -103,6 +103,10 @@ color: #FFFFFF;
 .event-list-item-description {
     /* color: #728F93; */
     color: #004049;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 
 }
 
