@@ -1,5 +1,6 @@
 import jwtFetch from './jwt';
 import { updatePayload } from "../utils/utils"
+import { RECEIVE_USER_LOGOUT } from './session';
 
 export const RECEIVE_USER = "users/RECEIVE_USER";
 export const RECEIVE_USERS = "users/RECEIVE_USERS";
@@ -91,8 +92,8 @@ export const deleteUser = (userId) => async dispatch => {
     const res = await jwtFetch(`/api/users/${userId}`, {
         method: 'DELETE',
     });
-    const data = await res.json();
-    dispatch(removeUser(data));
+    // const data = await res.json();
+    dispatch(removeUser(userId));
     return res;
 }
 
@@ -102,6 +103,7 @@ export const deleteUser = (userId) => async dispatch => {
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);
     const newState = { ...state }
+    let userId;
     switch (action.type) {
         case RECEIVE_USER:
             const user = action.payload;
@@ -112,9 +114,11 @@ const usersReducer = (state = {}, action) => {
             const users = action.payload;
             return { ...newState, ...users }
         case REMOVE_USER:
-            const userId = action.payload;
+            userId = action.payload;
             delete newState[userId];
             return newState;
+        // case RECEIVE_USER_LOGOUT:
+        //     return {};
         default:
             return state;
     }

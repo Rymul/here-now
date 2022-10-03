@@ -18,7 +18,7 @@ const receiveErrors = errors => ({
 });
 
 // Dispatch logoutUser to clear the session user when a user logs out.
-const logoutUser = () => ({
+export const logoutUser = () => ({
   type: RECEIVE_USER_LOGOUT
 });
 

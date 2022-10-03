@@ -31,7 +31,6 @@ const EventsIndex = () => {
     let events;
     if (eventsObj) {
         events = Object.values(eventsObj).sort((a, b)=> new Date(a.eventTime) - new Date(b.eventTime));
-        console.log(events, "EVNEFNEJEFN")
     }
     
     const deleteAllEvents = () => {
@@ -43,14 +42,17 @@ const EventsIndex = () => {
     // deleteAllEvents(); // If you want to delete all events, uncomment this line
 
     const deleteExpiredEvent = () => {
+        // debugger
         events.map(event => {
             if (new Date().toLocaleDateString() > new Date(event.eventTime).toLocaleDateString()) {
                 dispatch(deleteEvent(event._id))
             } 
         })
     }
-
     deleteExpiredEvent()
+    // useEffect(()=> {
+    //     deleteExpiredEvent()
+    // }, [])
 
     if (!events) {return null;}
 

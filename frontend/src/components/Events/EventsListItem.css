@@ -95,12 +95,18 @@ color: #FFFFFF;
     /* color: #728F93; */
     color: #004049;
 }
-/* .event-list-item-when-expired{
-    color: rgb(157, 3, 3);
-} */
+
+.event-list-item-when-expired{
+    color: #c5553c;
+}
+
 .event-list-item-description {
     /* color: #728F93; */
     color: #004049;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 
 }
 

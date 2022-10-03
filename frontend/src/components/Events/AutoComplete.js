@@ -30,8 +30,6 @@ const AutoComplete = ({ setAddress, setLat, setLng, setPhotoUrl })  => {
 
         AutoCompleteRef.current.addListener("place_changed", async function () {
             const place = await AutoCompleteRef.current.getPlace();
-            console.log(place);
-            console.log(place.photos[0].getUrl())
             setAddress(place.formatted_address)
             setLat((place.geometry.viewport.Ab.hi + place.geometry.viewport.Ab.lo)/2)
             setLng((place.geometry.viewport.Va.hi + place.geometry.viewport.Va.lo) / 2)

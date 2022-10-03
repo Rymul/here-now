@@ -45,7 +45,6 @@ router.get('/current', restoreUser, (req, res) => {
     const csrfToken = req.csrfToken();
     res.cookie("CSRF-TOKEN", csrfToken);
   }
-  // console.log(req.user)
 
   if (!req.user) return res.json(null);
   res.json({
@@ -105,6 +104,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     lastName: req.body.lastName,
     birthDay: req.body.birthDay,
     email: req.body.email,
+    photoUrl: req.body.photoUrl
     // events: []
   });
 
