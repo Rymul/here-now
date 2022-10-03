@@ -5,6 +5,7 @@ import { signup, clearSessionErrors } from '../../store/session';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { Link } from 'react-router-dom';
+import { calcAge } from '../../utils/utils';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -15,6 +16,9 @@ function SignupForm () {
   const [password2, setPassword2] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+  const date = new Date();
+  const limit = new Date(date.setFullYear(date.getFullYear() - 18));
+  const start =  new Date(limit - (24 * 60 * 60 * 1000));
   
   useEffect(() => {
     return () => {
@@ -51,6 +55,11 @@ function SignupForm () {
   }
 
   const handleDate = (nextValue) => {
+    console.log(calcAge(nextValue))
+    // if (calcAge(nextValue) < 18) {
+    //   alert("Age can't be below 18")
+    //   return null
+    // }
     setBirthDay(nextValue)
   }
 
@@ -61,11 +70,14 @@ function SignupForm () {
       firstName,
       lastName,
       birthDay,
-      password
+      password,
+      photoUrl: '/blank_user.png'
     };
 
     dispatch(signup(user)); 
   }
+  
+  
 
   return (
     <div className='session-form-container'>
@@ -133,6 +145,8 @@ function SignupForm () {
           <span id="birthday-text">Select your Birthday</span>
           <Calendar 
             onChange={handleDate}
+            maxDate={limit}
+            defaultActiveStartDate={start}
             id="calendar"
           />
         </div>

@@ -18,6 +18,9 @@ function UpdateUserForm () {
     const dispatch = useDispatch();
     const { userId } = useParams();
     const history = useHistory();
+    const date = new Date();
+    const limit = new Date(date.setFullYear(date.getFullYear() - 18));
+    const start =  new Date(limit - (24 * 60 * 60 * 1000));
 
     useEffect(()=> {
         dispatch(fetchUser(userId))
@@ -154,6 +157,8 @@ function UpdateUserForm () {
           <span id="birthday-text">Select your Birthday</span>
           <Calendar 
             onChange={handleDate}
+            maxDate={limit}
+            defaultActiveStartDate={start}
             id="calendar"
             defaultValue={birthDay}
           />
