@@ -1,6 +1,6 @@
 import { updatePayload } from "../utils/utils";
 import jwtFetch from "./jwt";
-import { event1, event2, event3, event4 } from "../components/Events/seeds";
+import { event1, event2, event3, event4, event5 } from "../components/Events/seeds";
 
 
 export const REMOVE_EVENT = 'REMOVE_EVENT';
@@ -68,7 +68,7 @@ export const fetchEvent = (eventId) => async dispatch => {
 export const fetchAllEvents = () => async dispatch => {
     const response = await jwtFetch(`/api/events`);
     const payload = await response.json();
-    const events = [event4, event1, event2, event3]
+    const events = [event1, event5, event2, event4, event3]
     for (let i = Object.values(payload).length; i < 5; i++) {
       dispatch(createEvent(events[0]))
       events.shift()
