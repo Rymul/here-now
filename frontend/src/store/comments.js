@@ -14,12 +14,12 @@ const SET_EVENT = 'SET_EVENT'
 
 const makeComment = payload => {
 
-   return (
-    {
-    type: CREATE_COMMENT,
-    payload
-    }
-    
+    return (
+        {
+            type: CREATE_COMMENT,
+            payload
+        }
+
     )
 }
 
@@ -61,9 +61,9 @@ export const createComment = comment => async dispatch => {
     })
 
     if (res.ok) {
-    const payload = await res.json();
-    dispatch(makeComment(payload));
-    return payload
+        const payload = await res.json();
+        dispatch(makeComment(payload));
+        return payload
     }
 }
 
@@ -78,10 +78,10 @@ export const updateComment = comment => async dispatch => {
             "Accepted": "application/json"
         }
     })
-    
+
     if (res.ok) {
         const payload = await res.json();
-        // debugger
+        // 
         // dispatch(changeComment(payload));
         return payload
     }
@@ -101,7 +101,7 @@ const commentsReducer = (state = {}, action) => {
     //     case 
 
     //     default:
-        return state
+    return state
     // }
 }
 

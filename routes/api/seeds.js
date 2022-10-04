@@ -11,7 +11,7 @@
     sixHoursLater.setHours(sixHoursLater.getHours() + 6)
 
 
-    export const event1 = {
+    const event1 = {
         title: 'Corgi Collective',
         description: "Let's go walk our corgi friends at Golden Gate Park together and talk about how great and difficult it can sometimes be to be a Corgi owner!",
         address: "Golden Gate Park Dog Play Area Main Entrance",
@@ -71,12 +71,12 @@
             "events": []
             }
         },
-        comments: "hello",
+        comments: {test: "test"},
         eventTime: tomorrow,
         photoUrl: "https://dogtime.com/assets/uploads/gallery/pembroke-welsh-corgi-dog-breed-pictures/prance-8.jpg"
     }
 
-    export const event2 = {
+    const event2 = {
         title: 'Tea Time',
         description: "From bitter green tea to milky chai, come enjoy your favorite brewed leaf stews with friends!",
         address: "Tea Hut, California Street, San Francisco, CA",
@@ -139,12 +139,12 @@
             "events": []
             }
         },
-        comments: "hello",
+        comments: {test: "test"},
         eventTime: sixHoursLater,
         photoUrl: "https://catercow.imgix.net/uploads/photo/image/54247/Q5b0fcCxRECPn7BiiJLf_2Bpackages-9390-rQVkQwZLTO4RQm8ZHnSZ_Frozen_20Fruit_20Teas_010.jpg?q=80&fit=crop&crop=faces&mark-align=right&mark-pad=0&mark-y=10&mark-h=0.11&mark=https%3A%2F%2Fcatercow.s3.amazonaws.com%2Fverifiedphoto%402x.png&w=639&h=426&auto=compress%2Cformat&s=ee4a7351fc9ca660f05df9159051046b"
     }
 
-    export const event3 = {
+    const event3 = {
         title: 'Pickup at the Park',
         description: "stop playing 2k and acting like your nice wit it; lace up, scrub",
         address: "Hamilton Park, Geary Boulevard, San Francisco, CA",
@@ -189,12 +189,12 @@
             "events": []
             }
         },
-        comments: "hello",
+        comments: {test: "test"},
         eventTime: fourHoursLater,
         photoUrl: "https://townsquare.media/site/801/files/2015/09/White-Men-Cant-Jump-basketball-scene.jpg?w=980&q=75"
     }
 
-    export const event4 = {
+    const event4 = {
         title: 'VR Hangout at Sandbox VR',
         description: "Whether you're new to VR games or a seasoned veteran, come play some games down at Sandbox over on Market",
         address: "Sandbox VR, Market Street, San Francisco, CA",
@@ -248,13 +248,13 @@
             "events": []
             }
         },
-        comments: "hello",
+        comments: {test: "test"},
         eventTime: twoHoursLater,
         photoUrl: "https://pbs.twimg.com/media/E93Q3K1WYAAFs-J.jpg"
     }
 
 
-    export const event5 = {
+    const event5 = {
         title: 'Board Game Night @ A/a!!',
         description: "CODDDEEEEEENAMEEEEEESSSSSSSSSS",
         address: "825 Battery Street, San Francisco, CA",
@@ -326,7 +326,10 @@
             "photoUrl": "/MattTeh.png"
             }
         },
-        comments: "hello",
+        comments: {test: "test"},
         eventTime: fourHoursLater,
         photoUrl: "https://miro.medium.com/max/1400/1*OwSz8qBtLFs2d7aqbR-Ufg.jpeg"
     }
+
+    const eventsArray = [event1, event2, event3, event4, event5];
+    module.exports = eventsArray;

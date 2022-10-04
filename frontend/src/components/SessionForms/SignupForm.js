@@ -55,7 +55,7 @@ function SignupForm () {
   }
 
   const handleDate = (nextValue) => {
-    console.log(calcAge(nextValue))
+    
     // if (calcAge(nextValue) < 18) {
     //   alert("Age can't be below 18")
     //   return null

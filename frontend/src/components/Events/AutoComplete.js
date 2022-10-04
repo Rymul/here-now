@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import './AutoComplete.css'
 
 
-const AutoComplete = ({ setAddress, setLat, setLng, setPhotoUrl })  => {
+const AutoComplete = ({address, setAddress, setLat, setLng, setPhotoUrl })  => {
 
     const latlng = useSelector(state => state.geolocation)
 
@@ -19,6 +19,7 @@ const AutoComplete = ({ setAddress, setLat, setLng, setPhotoUrl })  => {
         types: ['establishment'],
         fields: ['formatted_address', 'geometry', 'photos'],
         bounds: bounds,
+        input: address,
         componentRestrictions: { 'country': ['US'] }
     }
 
@@ -31,8 +32,8 @@ const AutoComplete = ({ setAddress, setLat, setLng, setPhotoUrl })  => {
         AutoCompleteRef.current.addListener("place_changed", async function () {
             const place = await AutoCompleteRef.current.getPlace();
             setAddress(place.formatted_address)
-            setLat((place.geometry.viewport.Ab.hi + place.geometry.viewport.Ab.lo)/2)
-            setLng((place.geometry.viewport.Va.hi + place.geometry.viewport.Va.lo) / 2)
+            setLat((place.geometry.location.lat()))
+            setLng((place.geometry.location.lng()))
             setPhotoUrl(place.photos[0].getUrl())
         })
     },[])
