@@ -32,7 +32,9 @@
 
 
 .event-list-item-container:hover {
-    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px 0px
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px 0px;
+    background-color: #c5553c48;
+    cursor: pointer;
 }
 
 .event-list-item-container.active {
