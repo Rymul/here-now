@@ -84,7 +84,8 @@ if (loggedIn) {
           <div className='nav-bar-links-phone'>
             <button className='nav-bar-links-phone-home' onClick={handleLogoClick}><AiOutlineHome className='nav-bar-phone-icon'/></button>
           </div>
-            {/* <NavLink className="nav-bar-links" to={"/messages"}>Inbox</NavLink> */}
+            <NavLink className="nav-bar-links" to={"/events/hosting"}>Hosting</NavLink>
+            <NavLink className="nav-bar-links" to={"/events/attending"}>Attending</NavLink>
           </div>
           <div className="nav-bar-logout">
             <div id="nav-bar-logout" onClick={logoutUser}><button className='nav-bar-logout-button'><RiLogoutBoxRLine /></button>Log Out</div>
