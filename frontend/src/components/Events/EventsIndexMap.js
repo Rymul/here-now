@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
-const EventIndexMap = ({latlng}) => {
+const EventIndexMap = ({latlng, events}) => {
     const [map, setMap] = useState(null);
     const [pinsDropped, setPinsDropped] = useState(false);
 
     
-    const eventsObj = useSelector(state => state.events)
-    let events;
-    if (eventsObj) {
-        events = Object.values(eventsObj);
-    }
+    // const eventsObj = useSelector(state => state.events)
+    // let events;
+    // if (eventsObj) {
+    //     events = Object.values(eventsObj);
+    // }
     const marker = useRef(null)
     window.marker = marker.current
 

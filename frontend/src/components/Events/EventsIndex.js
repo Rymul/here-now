@@ -8,11 +8,12 @@ import { updateGeolocation } from '../../store/geolocation';
 import { FaPlus } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom';
 
-const EventsIndex = () => {
+const EventsIndex = (props) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const eventsObj = useSelector(state => state.events)
-
+    const sessionUserId = useSelector(state => state.session.user._id)
+    
 
     useEffect(() => {
         dispatch(fetchAllEvents())
@@ -31,6 +32,18 @@ const EventsIndex = () => {
     let events;
     if (eventsObj) {
         events = Object.values(eventsObj).sort((a, b) => new Date(a.eventTime) - new Date(b.eventTime));
+    }
+
+    if (props.filter === "owned") {
+        events = events.filter( event => {
+            return sessionUserId === event.owner._id
+        })
+    } else if (props.filter === "attending") {
+        events = events.filter( event => {
+            return (
+                event.attendees[sessionUserId]
+            )
+        })
     }
 
     const deleteAllEvents = () => {
@@ -89,8 +102,7 @@ const EventsIndex = () => {
 
 
 
-
-
+   
 
     return (
         <>
@@ -114,7 +126,7 @@ const EventsIndex = () => {
                         </ul>
                     </div>
                     <div className='events-index-map-container'>
-                        <EventsIndexMapWrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} latlng={latlng} />
+                        <EventsIndexMapWrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} latlng={latlng} events={events}/>
                     </div>
                 </div>
             </div>
