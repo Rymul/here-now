@@ -32,6 +32,13 @@ function NavBar () {
     history.push(`/users/${sessionUser._id}`)
   }
 
+  const handleOwnerClick = () => {
+    history.push('/events/hosting')
+  }
+
+  const handleAttendingClick = () => {
+    history.push('/events/attending')
+  }
   // const getLinks = () => {
   //   if (loggedIn) {
   //     return (
@@ -92,10 +99,10 @@ if (loggedIn) {
               <button className='nav-bar-links-phone-home' onClick={handleLogoClick}><AiOutlineHome className='nav-bar-phone-icon'/></button>
             </div>
             <div className='nav-bar-links-phone'>
-              <button className='nav-bar-links-phone-owner' onClick={handleLogoClick}><BsPerson className='nav-bar-phone-icon'/></button>
+              <button className='nav-bar-links-phone-owner' onClick={handleOwnerClick}><BsPerson className='nav-bar-phone-icon'/></button>
             </div>
             <div className='nav-bar-links-phone'>
-              <button className='nav-bar-links-phone-attending' onClick={handleLogoClick}><BsPeople className='nav-bar-phone-icon'/></button>
+              <button className='nav-bar-links-phone-attending' onClick={handleAttendingClick}><BsPeople className='nav-bar-phone-icon'/></button>
             </div>
           </div>
           <div className="nav-bar-logout">
