@@ -97,11 +97,11 @@
     }
 
     .events-index-page {
-        padding-left: 80px;
+        padding-left: 65px;
     }
 
     .events-index-page h1 {
-        width: 80vw;
+        width: calc(100vw - 65px);
     }
     .events-index-list {
         width: 100%;
@@ -121,8 +121,5 @@
         transition: 0.2s ease-in-out
     }
 
-    .event-list-item-info {
-        padding-left: 20px;
-        width: calc( 100% - 125px);
-    }
+    
 }
