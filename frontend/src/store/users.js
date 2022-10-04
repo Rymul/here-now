@@ -7,18 +7,24 @@ export const RECEIVE_USERS = "users/RECEIVE_USERS";
 export const REMOVE_USER = "users/REMOVE_USER";
 
 const addUser = user => {
-    return { type: RECEIVE_USER,
-        payload: user }
+    return {
+        type: RECEIVE_USER,
+        payload: user
+    }
 };
 
 const addUsers = users => {
-    return { type: RECEIVE_USERS,
-        payload: users }
+    return {
+        type: RECEIVE_USERS,
+        payload: users
+    }
 };
 
 const removeUser = userId => {
-    return { type: REMOVE_USER,
-        payload: userId }
+    return {
+        type: REMOVE_USER,
+        payload: userId
+    }
 }
 
 export const getUser = userId => state => {
@@ -57,7 +63,7 @@ export const fetchUser = (userId) => async dispatch => {
 
 
 export const fetchUsers = () => async dispatch => {
-    const res = await fetch(`/api/users`,{
+    const res = await fetch(`/api/users`, {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -83,7 +89,7 @@ export const updateUser = (user) => async dispatch => {
     const data = await res.json();
 
     dispatch(addUser(data));
-    
+
     return res;
 }
 
@@ -107,7 +113,7 @@ const usersReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_USER:
             const user = action.payload;
-            // debugger
+            // 
             newState[user._id] = user;
             return newState;
         case RECEIVE_USERS:

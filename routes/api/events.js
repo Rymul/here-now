@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const { requireUser } = require('../../config/passport');
 const validateEventInput = require('../../validation/events');
+const eventsArray = require("./seeds");
 
 require('../../models/User')
 const User = mongoose.model('User');
@@ -16,6 +17,11 @@ router.get('/', async (_req, res) => {
     const events = await Event.find()
                               .populate()
                               .sort({ createdAt: -1 });
+      while (events.length < 5) {
+        let newEvent = new Event(eventsArray.pop())
+        await newEvent.save()
+        events.push(newEvent)
+      }
     return res.json(events);
   }
   catch(_err) {
@@ -117,7 +123,6 @@ validateEventInput,
 async (req, res, next) => {
   try {
     const event = await Event.findById(req.params.id)
-   
     if (event){
       event.title = req.body.title || event.title;
       event.description = req.body.description || event.description;

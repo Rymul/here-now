@@ -34,7 +34,8 @@ export const getNewDate = (tomorrow, eventTime) => {
     const dateObj = new Date();
     let month = dateObj.getMonth() + 1; //months from 1-12
     if (month < 10) month = '0' + month;
-    const day = !tomorrow ? dateObj.getDate() : dateObj.getDate()+ 1 ;
+    let day = !tomorrow ? dateObj.getDate() : dateObj.getDate()+ 1 ;
+    if (day < 10) day = '0' + day;
     const year = dateObj.getFullYear();
     
     return year + "-" + month + "-" + day + 'T' + eventTime + ':00Z';

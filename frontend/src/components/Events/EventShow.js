@@ -10,6 +10,7 @@ import EventShowMapWrapper from './EventsShowMapWrapper';
 import { createdAgoTimeParser } from '../../utils/utils';
 import { updateComment } from '../../store/comments';
 import CommentItem from '../Comments/CommentItem';
+import UpdateEventForm from './UpdateEventForm';
 
 
 
@@ -159,7 +160,8 @@ const EventShow = () => {
                                     id="event-show-button"
                                     type="button"
                                     value="Cancel Event"
-                                /> 
+                                />
+                                <Link id='event-show-button' to={`/events/${event._id}/update`}>Update Event</Link>
                             </div>
                             : null }
                         </div>

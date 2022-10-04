@@ -90,6 +90,10 @@
     outline: none;
 }
 
+#new-event-location:focus {
+    outline: none;
+}
+
 #new-event-button {
     margin-top: 15px;
     display: flex;
