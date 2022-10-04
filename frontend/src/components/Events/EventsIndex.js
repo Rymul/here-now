@@ -23,7 +23,7 @@ const EventsIndex = () => {
     const [denied, setDenied] = useState(false)
 
 
-
+    
 
 
 
