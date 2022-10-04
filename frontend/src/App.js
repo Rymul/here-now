@@ -35,6 +35,12 @@ function App() {
         <AuthRoute exact path="/signup" component={SignupForm} />
         <ProtectedRoute exact path="/events/new" component={NewEventForm} />
         <ProtectedRoute exact path="/events" component={EventsIndex} />
+        <ProtectedRoute exact path="/events/hosting">
+          <EventsIndex filter="owned" />
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/events/attending">
+          <EventsIndex filter="attending" />
+        </ProtectedRoute>
         <ProtectedRoute exact path="/events/:eventId" component={EventShow} />
         <ProtectedRoute exact path="/events/:eventId/update" component={UpdateEventForm} />
         <ProtectedRoute exact path="/events/:eventId/comment" component={CommentsForm} />

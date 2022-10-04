@@ -76,7 +76,8 @@ if (loggedIn) {
 
             <NavLink className="nav-bar-links" to='/events'>Home</NavLink>
             <NavLink className="nav-bar-links" to={`/users/${sessionUser._id}`}>Profile</NavLink>
-            {/* <NavLink className="nav-bar-links" to={"/messages"}>Inbox</NavLink> */}
+            <NavLink className="nav-bar-links" to={"/events/hosting"}>Hosting</NavLink>
+            <NavLink className="nav-bar-links" to={"/events/attending"}>Attending</NavLink>
           </div>
           <div className="nav-bar-logout">
             <div id="nav-bar-logout" onClick={logoutUser}><button className='nav-bar-logout-button'><ImExit /></button>Log Out</div>
