@@ -105,8 +105,16 @@
     font-size: 50px;
 }
 
-.nav-bar-links, .nav-bar-links-spacer {
+.nav-bar-links-laptop {
     height: 30%;
+}
+
+.nav-bar-links-phone {
+    display: none;
+}
+
+.nav-bar-links, .nav-bar-links-spacer {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -171,8 +179,96 @@
     cursor: pointer;
 }
 
+.nav-bar-logout-phone {
+    display: none;
+}
 
 
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .nav-bar{
+        width: 80px;
+        align-items: center;
+    }
+    .nav-bar-text-container {
+        width: 100%;
+        height: 100%;
+        justify-content: flex-start;
+    }
+    #nav-bar-subdiv-logo {
+        display: none;
+    }
+    /* .nav-bar-subdiv {
+        margin-top: 50px;
+        height: 100%;
+    } */
+
+    #nav-bar-subdiv-profpic {
+        margin-top: 25px;
+        height: 75px;
+        
+    }
+
+    .nav-bar-profpic {
+        /* margin-top: 50px; */
+    }
+    .nav-bar-profpic-name {
+        display: none;
+    }
+    .nav-bar-links-container{
+        width: 100%;
+        height: 60px;
+    }
+    .nav-bar-links-laptop {
+        display: none;
+    }
+    .nav-bar-links-phone {
+        width: 100%;
+        display: flex;
+    }
+    .nav-bar-links-phone-home {
+        width: 100%;
+        height: 50px;
+        background-color: inherit;
+        border: none;
+    }
+    .nav-bar-phone-icon {
+        height: 35px;
+        width: 35px;
+    }
+    .nav-bar-phone-icon:hover {
+
+    }
+
+    .nav-bar-logout {
+        display: none;
+    }
+
+    .nav-bar-logout-phone {
+        display: flex;
+    }
+
+    .nav-bar-logout-button {
+        border: none;
+        width: 100%;
+        height: 50px;
+        border: none;
+        background-color: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav-bar-logout-button:hover {
+        opacity: 1.0;
+    }
+}
 
 
 
