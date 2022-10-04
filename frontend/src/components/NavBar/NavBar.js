@@ -6,6 +6,7 @@ import { FcMenu } from 'react-icons/fc'
 import { ImExit } from 'react-icons/im'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { AiOutlineHome } from 'react-icons/ai'
+import { BsPeople, BsPerson } from 'react-icons/bs'
 import { useHistory } from 'react-router-dom';
 
 
@@ -75,22 +76,32 @@ if (loggedIn) {
             {/* <div className="nav-bar-links-spacer"></div>
             <div className="nav-bar-links-spacer"></div>
             <div className="nav-bar-links-spacer"></div> */}
-          <div className='nav-bar-links-laptop'>
-            <NavLink className="nav-bar-links" to='/events'>Home</NavLink>
-          </div>
-          <div className='nav-bar-links-laptop'>
-            <NavLink className="nav-bar-links" to={`/users/${sessionUser._id}`}>Profile</NavLink>
-          </div>
-          <div className='nav-bar-links-phone'>
-            <button className='nav-bar-links-phone-home' onClick={handleLogoClick}><AiOutlineHome className='nav-bar-phone-icon'/></button>
-          </div>
-            <NavLink className="nav-bar-links" to={"/events/hosting"}>Hosting</NavLink>
-            <NavLink className="nav-bar-links" to={"/events/attending"}>Attending</NavLink>
+            <div className='nav-bar-links-laptop'>
+              <NavLink className="nav-bar-links" to='/events'>Home</NavLink>
+            </div>
+            <div className='nav-bar-links-laptop'>
+              <NavLink className="nav-bar-links" to={`/users/${sessionUser._id}`}>Profile</NavLink>
+            </div>
+            <div className='nav-bar-links-laptop'>
+              <NavLink className="nav-bar-links" to={"/events/hosting"}>Hosting</NavLink>
+            </div>
+            <div className='nav-bar-links-laptop'>
+              <NavLink className="nav-bar-links" to={"/events/attending"}>Attending</NavLink>
+            </div>
+            <div className='nav-bar-links-phone'>
+              <button className='nav-bar-links-phone-home' onClick={handleLogoClick}><AiOutlineHome className='nav-bar-phone-icon'/></button>
+            </div>
+            <div className='nav-bar-links-phone'>
+              <button className='nav-bar-links-phone-owner' onClick={handleLogoClick}><BsPerson className='nav-bar-phone-icon'/></button>
+            </div>
+            <div className='nav-bar-links-phone'>
+              <button className='nav-bar-links-phone-attending' onClick={handleLogoClick}><BsPeople className='nav-bar-phone-icon'/></button>
+            </div>
           </div>
           <div className="nav-bar-logout">
             <div id="nav-bar-logout" onClick={logoutUser}><button className='nav-bar-logout-button'><RiLogoutBoxRLine /></button>Log Out</div>
           </div>
-          <div className='nav-bar-logout-phone'>
+          <div className='nav-bar-links-phone'>
             <button className='nav-bar-logout-button' onClick={logoutUser}><RiLogoutBoxRLine className='nav-bar-phone-icon'/></button>
           </div>
         </div>

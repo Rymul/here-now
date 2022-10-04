@@ -199,7 +199,7 @@
     .nav-bar-text-container {
         width: 100%;
         height: 100%;
-        justify-content: flex-start;
+        justify-content: space-between;
     }
     #nav-bar-subdiv-logo {
         display: none;
@@ -228,8 +228,10 @@
     }
     .nav-bar-links-container{
         width: 100%;
-        height: 50px;
+        height: 54%;
         margin-bottom: 50px;
+        display: flex;
+        justify-content: space-between;
     }
     .nav-bar-links-laptop {
         display: none;
@@ -244,6 +246,21 @@
         background-color: inherit;
         border: none;
     }
+
+    .nav-bar-links-phone-owner {
+        width: 100%;
+        height: 50px;
+        background-color: inherit;
+        border: none;
+    }
+
+    .nav-bar-links-phone-attending {
+        width: 100%;
+        height: 50px;
+        background-color: inherit;
+        border: none;
+    }
+
     .nav-bar-phone-icon {
         height: 35px;
         width: 35px;
