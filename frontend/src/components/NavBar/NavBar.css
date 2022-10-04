@@ -27,8 +27,12 @@
 }
 
 .nav-bar-profpic-name {
+    /* width: 70%; */
     color: rgb(40,40,40);
     font-size: 20px;
+    /* overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; */
 }
 
 #nav-bar-subdiv-logo {

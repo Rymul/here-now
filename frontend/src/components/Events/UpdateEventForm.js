@@ -112,6 +112,12 @@ export const UpdateEventForm = (props) => {
                 <input id="new-event-time" type="time" value={eventTimeData} onChange={(e)=>setEventTime(e.target.value)} />
             
                 <button id='new-event-button'>Update event</button>
+                <input
+                        id="new-event-button"
+                        type="button"
+                        value="Cancel"
+                        onClick={() => history.push(`/events/${eventId}`)}
+                    />
                 {errors ? 
                     errors.map( (error, i) => 
                     <div key={i}>

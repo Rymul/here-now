@@ -113,6 +113,12 @@ export const NewEventForm = (props) => {
                     <input id="new-event-time" type="time" value={eventTime} onChange={(e) => setEventTime(e.target.value)} />
 
                     <button id='new-event-button'>Create your event!</button>
+                    <input
+                        id="new-event-button"
+                        type="button"
+                        value="Cancel"
+                        onClick={() => history.push(`/events`)}
+                    />
                     {errors ?
                         errors.map((error, i) =>
                             <div key={i}>
