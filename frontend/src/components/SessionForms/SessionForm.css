@@ -130,3 +130,12 @@
     cursor: pointer;
     /* text-decoration: none; */
 } 
+
+.errors-div {
+    height: 50px;
+    width: 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}

@@ -1,5 +1,5 @@
 /* TODO Add site wide styles */
-form > .errors {
+.errors {
     color: red;
     font-size: 0.875em;
     height: 15px;

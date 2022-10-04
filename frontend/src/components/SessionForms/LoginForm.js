@@ -37,7 +37,7 @@ function LoginForm () {
     <div className='session-form-container'>
     <form className="session-form" onSubmit={handleSubmit}>
       <h2 id="session-form-title">Log In</h2>
-      { errors ? <div className="errors">{errors?.email}</div> : null }
+      {/* { errors ? <div className="errors">{errors?.email}</div> : null } */}
       {/* <label>
         <span>Email</span> */}
         <input 
@@ -48,7 +48,7 @@ function LoginForm () {
           placeholder="Email"
         />
       {/* </label> */}
-      { errors ? <div className="errors">{errors?.password}</div> : null }
+      
       {/* <label> */}
         {/* <span>Password</span> */}
         <input 
@@ -73,6 +73,11 @@ function LoginForm () {
     <div className="session-form-footer">
         <span className='session-form-footer-title'>Don't have an account? </span>
         <Link className="to-signup-button" to={'/signup'}>Sign up!</Link>
+    </div>
+    <div className='errors-div'>
+      { errors ? <div className="errors">{errors?.email}</div> : null }
+      { errors ? <div className="errors">{errors?.password}</div> : null }
+
     </div>
     </div>
   );
