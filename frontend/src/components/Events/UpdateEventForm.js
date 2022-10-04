@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-
 import { updateEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
 import AutoComplete from './AutoComplete';
@@ -26,7 +24,14 @@ export const UpdateEventForm = (props) => {
     const history = useHistory();
     // const latlng = useSelector(state => state.geolocation);
     // const [details, setDetails] = useState(null);
-
+    let eventTimeData = new Date(eventTime).getUTCHours() + ":" + new Date(eventTime).getUTCMinutes()
+    const splitTime = eventTimeData.split(":")
+    if (splitTime[0].length < 2) {
+        eventTimeData = "0" + eventTimeData
+    } 
+    if (splitTime[1].length < 2) {
+        eventTimeData = "0" + eventTimeData
+    }
 
     const initializeEventStates = () => {
         if(eventData) {
@@ -46,8 +51,8 @@ export const UpdateEventForm = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const updatedEventTime = getNewDate(tomorrow, eventTime)
         const event = {
+            _id: eventId,
             title,
             description,
             address,
@@ -56,41 +61,14 @@ export const UpdateEventForm = (props) => {
             photoUrl,
             owner: user,
             attendees: {[user._id]: user},
-            eventTime: updatedEventTime,
-            comments: 'hello'
-        
+            eventTime: eventTime,
+            comments: eventData.comments
         }
         
         dispatch(updateEvent(event))
             .then( res => {
-                if (res) {
-                    const updatedErrors = [];
-                    Object.keys(res.errors).forEach( error => {
-                        switch (error){
-                            case 'title':
-                                updatedErrors
-                                    .push(capitalizeFirstLetter(error) + ' must be between 5 and 50 characters')
-                                break;
-                            case 'description':
-                                updatedErrors
-                                    .push(capitalizeFirstLetter(error) + ' must be between 5 and 150 characters')
-                                break;
-                            case 'address':
-                                updatedErrors
-                                    .push(capitalizeFirstLetter(error) + ' is invalid')
-                                break;
-                            case 'eventTime':
-                                updatedErrors
-                                .push('Event time must be between 5 and 50 characters')
-                                break;
-                            case 'photoUrl':
-                                updatedErrors
-                                    .push('photo error')
-                                break;
-                            default:
-                                break;
-                        }
-                    })
+                if (res.errors) {
+                    const updatedErrors = Object.values(res.errors)
                     setErrors(updatedErrors)
                 } else {
                     history.push(`/events/${event._id}`)
@@ -115,10 +93,11 @@ export const UpdateEventForm = (props) => {
   
                 <textarea id="new-event-form-description" 
                     cols="40" rows="5" placeholder='Description' 
+                    value={description}
                     onChange={e=>setDescription(e.target.value)}
                 />
               
-                <AutoComplete setLat={setLat} setLng={setLng} setAddress={setAddress} setPhotoUrl={setPhotoUrl} />
+                <AutoComplete address={address} setLat={setLat} setLng={setLng} setAddress={setAddress} setPhotoUrl={setPhotoUrl} />
 
 
                 <div id='new-event-when'>
@@ -130,7 +109,7 @@ export const UpdateEventForm = (props) => {
                     </label>
                 </div>
              
-                <input id="new-event-time" type="time" value={eventTime} onChange={(e)=>setEventTime(e.target.value)} />
+                <input id="new-event-time" type="time" value={eventTimeData} onChange={(e)=>setEventTime(e.target.value)} />
             
                 <button id='new-event-button'>Update event</button>
                 {errors ? 

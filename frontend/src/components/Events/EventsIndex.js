@@ -12,41 +12,41 @@ const EventsIndex = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const eventsObj = useSelector(state => state.events)
-    
-    
-    useEffect(()=>{
+
+
+    useEffect(() => {
         dispatch(fetchAllEvents())
-    },[dispatch])
-    
+    }, [dispatch])
+
 
     const latlng = useSelector(state => state.geolocation)
-    const [denied, setDenied] = useState(false) 
+    const [denied, setDenied] = useState(false)
 
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     let events;
     if (eventsObj) {
-        events = Object.values(eventsObj).sort((a, b)=> new Date(a.eventTime) - new Date(b.eventTime));
+        events = Object.values(eventsObj).sort((a, b) => new Date(a.eventTime) - new Date(b.eventTime));
     }
-    
+
     const deleteAllEvents = () => {
-          if (events)  events.map(event => {
-                dispatch(deleteEvent(event._id))
-            })
+        if (events) events.map(event => {
+            dispatch(deleteEvent(event._id))
+        })
     }
 
     // deleteAllEvents(); // If you want to delete all events, uncomment this line
 
     const deleteExpiredEvent = () => {
-        // debugger
+        // 
         events.map(event => {
             if (new Date().toLocaleDateString() > new Date(event.eventTime).toLocaleDateString()) {
                 dispatch(deleteEvent(event._id))
-            } 
+            }
         })
     }
     deleteExpiredEvent()
@@ -54,7 +54,7 @@ const EventsIndex = () => {
     //     deleteExpiredEvent()
     // }, [])
 
-    if (!events) {return null;}
+    if (!events) { return null; }
 
     // if (latlng.lat===null) {
     //     navigator.geolocation.getCurrentPosition(function (position) {
@@ -68,8 +68,8 @@ const EventsIndex = () => {
     // }
     navigator.geolocation.getCurrentPosition(function (position) {
         // setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude })
-        dispatch(updateGeolocation({ lat: position.coords.latitude, lng: position.coords.longitude}))
-    }, (error)=>{
+        dispatch(updateGeolocation({ lat: position.coords.latitude, lng: position.coords.longitude }))
+    }, (error) => {
         if (error.code == error.PERMISSION_DENIED) {
             setDenied(true);
         }
@@ -86,38 +86,38 @@ const EventsIndex = () => {
         history.push('/events/new')
     }
 
-    
-  
-       
-    
-    
+
+
+
+
+
 
     return (
         <>
-        <div className='events-index-page'>
+            <div className='events-index-page'>
                 <h1>Nearby Events</h1>
-            <div className='events-index-list-container'>
-                <div className='events-index-list'>
-                    
-                    <ul>
-                        <li>
-                            <div className="event-index-container" onClick={handleClick}>
-                                <div className="event-list-item-info">
-                                    <ul>
+                <div className='events-index-list-container'>
+                    <div className='events-index-list'>
+
+                        <ul>
+                            <li>
+                                <div className="event-index-container" onClick={handleClick}>
+                                    <div className="event-list-item-info">
+                                        <ul>
                                             <li className='event-list-item-title'><FaPlus /> <h2>Create an Event</h2></li>
-                                        
-                                    </ul>
+
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                            {events.map((event) => (<li key={event['_id']}><EventsListItem event={event}/></li>))}
-                    </ul>
-                </div>
-                <div className='events-index-map-container'>
-                        <EventsIndexMapWrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} latlng={latlng}/>
+                            </li>
+                            {events.map((event) => (<li key={event['_id']}><EventsListItem event={event} /></li>))}
+                        </ul>
+                    </div>
+                    <div className='events-index-map-container'>
+                        <EventsIndexMapWrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} latlng={latlng} />
+                    </div>
                 </div>
             </div>
-        </div>
         </>
     )
 }
