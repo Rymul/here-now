@@ -94,3 +94,27 @@
     50% { opacity: 1;}
     100% {opacity: 0;}
 }
+
+
+@media only screen and (max-width: 600px) {
+
+    .splash-page-here {
+        height: 50px;
+    }
+
+    .splash-page-pin {
+        height: 50px;
+        transform: translate(0, 5px);
+    }
+
+    .pin-shadow {
+        width: 45px;
+        height: 25px;
+        transform: translate(0, 5px);
+    }
+
+    .splash-page-now {
+        height: 40px;
+        transform: translate(0, 5px);
+    }
+}

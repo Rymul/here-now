@@ -89,3 +89,37 @@
     padding-right: 10px;
 }
 
+
+
+@media only screen and (max-width: 450px) {
+    .events-index-map-container {
+        display: none;
+    }
+
+    .events-index-page {
+        padding-left: 65px;
+    }
+
+    .events-index-page h1 {
+        width: calc(100vw - 65px);
+    }
+    .events-index-list {
+        width: 100%;
+    }
+
+    .event-index-container {
+        display: flex;
+        height: 30px;
+        padding: 10px;
+        align-items: center;
+        margin: 0 20px 20px 20px;
+        border-radius: 12px;
+        box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px 0px;
+        color: white;
+        cursor: pointer;
+        background-color: #c5553c;
+        transition: 0.2s ease-in-out
+    }
+
+    
+}
