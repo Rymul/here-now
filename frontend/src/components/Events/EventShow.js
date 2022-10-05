@@ -165,6 +165,11 @@ const EventShow = () => {
                             </div>
                             : null }
                         </div>
+                        <div className='event-show-map-phone'>
+                            <div className='event-show-map-container-phone'>
+                                <EventShowMapWrapper apiKey={process.env.MAPS_API_KEY} latlng={latlng} event={event}/>
+                            </div>
+                        </div>
                         <div className='event-show-comments'>
                             <CommentsForm id="event-show-comments-form" event={event}/>
                             {Object.values(event.comments).reverse().map(comment =>(

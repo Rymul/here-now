@@ -167,3 +167,66 @@
     clip-path: circle();
     object-fit: cover; */
 }
+
+@media only screen and (max-width: 450px) { 
+
+    .user-show-component {
+        height: 100vh;
+
+    }
+
+    .user-show-info {
+        margin-top: 12%;
+        height: 85%;
+        width: 70vw;
+        justify-content: space-around;
+    }
+
+    #user-show-profile-pic {
+        width: 250px;
+        height: 250px;
+        clip-path: circle();
+        object-fit: cover;
+        /* border-radius: 20px; */
+    }
+
+    .user-show-top {
+        margin: 0;
+    }
+
+    .user-show-bottom {
+        height: 20%;
+        margin: 0;
+        justify-content: space-around;
+    }
+
+    .user-show-button-container {
+        width: 100%;
+        height: 14%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .user-show-buttons {
+        flex-direction: column;
+        height: 110%;
+        width: 50%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #user-show-update {
+        width: 100%;
+        height: 40px;
+        /* margin-bottom: 5%; */
+    }
+
+    #user-show-delete {
+        width: 100%;
+        height: 40px;
+    }
+    
+    
+}
+

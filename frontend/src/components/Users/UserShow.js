@@ -122,20 +122,37 @@ const UserShow = () => {
                     <p id="user-show-join-date">Member Since: {user.createdAt.slice(0,4)}</p>
                 </div>
             {user._id === sessionUser._id ? 
-                <div className="user-show-buttons">
-                    <button 
-                        id='user-show-update'
-                        onClick={handleUpdate}
-                    >
-                        Edit Profile
-                    </button>
-                    <button
-                        onClick={handleDelete}
-                        id="user-show-delete"
-                    >
-                        Delete Profile
-                    </button>
+                <div className="user-show-button-container">
+                    <div className="user-show-buttons">
+                        <button 
+                            id='user-show-update'
+                            onClick={handleUpdate}
+                        >
+                            Edit Profile
+                        </button>
+                        <button
+                            onClick={handleDelete}
+                            id="user-show-delete"
+                        >
+                            Delete Profile
+                        </button>
+                    </div>
+                    {/* <div className="user-show-buttons-phone">
+                        <button 
+                            id='user-show-update'
+                            onClick={handleUpdate}
+                        >
+                            Edit Profile
+                        </button>
+                        <button
+                            onClick={handleDelete}
+                            id="user-show-delete"
+                        >
+                            Delete Profile
+                        </button>
+                    </div> */}
                 </div>
+                
             : null}
             </div>
             {/* <input type="file" id="file-input" /><button className="upload">Upload</button>

@@ -33,12 +33,14 @@ const EventsIndex = (props) => {
     if (eventsObj) {
         events = Object.values(eventsObj).sort((a, b) => new Date(a.eventTime) - new Date(b.eventTime));
     }
-
+    let title = "Nearby Events";
     if (props.filter === "owned") {
+        title = "Hosting";
         events = events.filter( event => {
             return sessionUserId === event.owner._id
         })
     } else if (props.filter === "attending") {
+        title = "Attending";
         events = events.filter( event => {
             return (
                 event.attendees[sessionUserId]
@@ -107,7 +109,7 @@ const EventsIndex = (props) => {
     return (
         <>
             <div className='events-index-page'>
-                <h1>Nearby Events</h1>
+                <h1>{title}</h1>
                 <div className='events-index-list-container'>
                     <div className='events-index-list'>
 
