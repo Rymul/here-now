@@ -371,10 +371,19 @@
 
 @media only screen and (max-width: 450px) {
     .event-show-outter-container {
-        margin-left: 65px;
+        /* margin-left: 65px; */
+        margin-left: 50px;
         margin-top: 30px;
         width: calc(100% - 65px);
         max-width: calc(100% - 65px) ;
+    }
+
+    .event-show-attendees-container {
+        height: 140px;
+    }
+
+    #event-show-owner {
+        height: 15vh;
     }
 
     .event-show-right {
@@ -409,5 +418,9 @@
 
     .event-show-left {
         width: 100%;
+    }
+
+    .event-show-details-right {
+        max-width: 250px;
     }
 }
