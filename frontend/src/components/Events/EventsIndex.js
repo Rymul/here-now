@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteEvent, fetchAllEvents, createEvent } from '../../store/events';
 import EventsListItem from './EventsListItem';
 import './EventsIndex.css'
 import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
 import { updateGeolocation } from '../../store/geolocation';
-import { FaPlus } from 'react-icons/fa'
+import { FaPlus, FaSpinner } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom';
+import EventsIndexNoEvents from './EventsIndexNoEvents';
+
+
 
 const EventsIndex = (props) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const eventsObj = useSelector(state => state.events)
     const sessionUserId = useSelector(state => state.session.user._id)
-    
+    const pins = useRef({});
 
     useEffect(() => {
         dispatch(fetchAllEvents())
@@ -24,7 +27,7 @@ const EventsIndex = (props) => {
     const [denied, setDenied] = useState(false)
 
 
-
+    
 
 
 
@@ -33,6 +36,9 @@ const EventsIndex = (props) => {
     if (eventsObj) {
         events = Object.values(eventsObj).sort((a, b) => new Date(a.eventTime) - new Date(b.eventTime));
     }
+    
+    events = events.filter(event => (Math.abs(event.lat - latlng.lat) < 1) && (Math.abs(event.lng - latlng.lng) < 1))
+    
     let title = "Nearby Events";
     if (props.filter === "owned") {
         title = "Hosting";
@@ -116,7 +122,15 @@ const EventsIndex = (props) => {
     }
 
 
-
+    const eventsList = () => {
+        if (!latlng.lat) {
+            return (<div> <img className='event-index-loading' src="./loading.gif" alt="loading" /> </div>)
+        } else if (events.length === 0) {
+            return (<EventsIndexNoEvents filter={props.filter}/>)
+        } else {
+            return events.map((event) => (<li key={event['_id']}><EventsListItem event={event} pins={pins}/></li>))
+        }
+    }
 
    
 
@@ -138,11 +152,11 @@ const EventsIndex = (props) => {
                                     </div>
                                 </div>
                             </li>
-                            {events.map((event) => (<li key={event['_id']}><EventsListItem event={event} /></li>))}
+                            {eventsList()}
                         </ul>
                     </div>
                     <div className='events-index-map-container'>
-                        <EventsIndexMapWrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} latlng={latlng} events={events}/>
+                        <EventsIndexMapWrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} latlng={latlng} events={events} pins={pins}/>
                     </div>
                 </div>
             </div>
