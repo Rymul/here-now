@@ -80,18 +80,7 @@
 .react-calendar {
     margin-top: 5px;
     border-radius: 20px;
-}
-
-.react-calendar__navigation__prev2-button {
-    border-radius: 20px 0 0 0;
-}
-
-.react-calendar__navigation__next2-button {
-    border-radius: 0 20px 0 0;
-}
-
-.react-calendar__month-view__days__day {
-    border-radius: 15px;
+    overflow: hidden;
 }
 
 
@@ -176,7 +165,7 @@
 
     }
 
-    .react-calendar__navigation__prev2-button {
+    /* .react-calendar__navigation__prev2-button {
         border-radius: 20px;
-    }
+    } */
 }
