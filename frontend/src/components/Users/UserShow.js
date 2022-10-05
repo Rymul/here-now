@@ -122,7 +122,7 @@ const UserShow = () => {
                     <p id="user-show-join-date">Member Since: {user.createdAt.slice(0,4)}</p>
                 </div>
             {user._id === sessionUser._id ? 
-                <div>
+                <div className="user-show-button-container">
                     <div className="user-show-buttons">
                         <button 
                             id='user-show-update'
@@ -137,7 +137,7 @@ const UserShow = () => {
                             Delete Profile
                         </button>
                     </div>
-                    <div className="user-show-buttons-phone">
+                    {/* <div className="user-show-buttons-phone">
                         <button 
                             id='user-show-update'
                             onClick={handleUpdate}
@@ -150,7 +150,7 @@ const UserShow = () => {
                         >
                             Delete Profile
                         </button>
-                    </div>
+                    </div> */}
                 </div>
                 
             : null}
