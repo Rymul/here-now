@@ -3,8 +3,9 @@ import { useHistory } from 'react-router-dom'
 import blankProfilePic from '../../blank-profile-picture.svg'
 import { BsCheckCircleFill } from 'react-icons/bs'
 import './EventsListItem.css'
+import { useEffect } from 'react';
 
-const EventsListItem = ({event}) => {
+const EventsListItem = ({event, pins}) => {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const today = new Date()
@@ -12,6 +13,28 @@ const EventsListItem = ({event}) => {
     const handleClick = (e) => {
         history.push(`/events/${event._id}`)
     }
+
+    const handleMouseOver = () => {
+        if (pins.current[event._id]) {
+            const icon = {
+                url: '/pin.svg',
+                scaledSize: new window.google.maps.Size(60, 60),
+                anchor: new window.google.maps.Point(30, 60)
+            }
+            pins.current[event._id].setIcon(icon)
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (pins.current[event._id]) {
+            const icon = {
+                url: '/pin.svg',
+                scaledSize: new window.google.maps.Size(40, 40),
+                anchor: new window.google.maps.Point(20, 40)
+            }
+            pins.current[event._id].setIcon(icon)
+        }
+    };
 
     let eventTime = new Date(event.eventTime)
 
@@ -22,7 +45,7 @@ const EventsListItem = ({event}) => {
     
     return(
         <>
-            <div className="event-list-item-container" id={event._id} onClick={handleClick}>
+            <div className="event-list-item-container" id={event._id} onClick={handleClick} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
                 <div className="event-list-item-img">
                     <img src={event.photoUrl} alt="" />
                 </div>
@@ -58,7 +81,7 @@ const EventsListItem = ({event}) => {
                         <img src={event.photoUrl} alt="" />
                     </div>
                     <div className='event-list-item-title-div'>
-                        <li className='event-list-item-title'>{event.title}</li>
+                        <div className='event-list-item-title'>{event.title}</div>
                     </div>
                 </div>
                 <div className="event-list-item-info">
