@@ -16,6 +16,8 @@ const EventIndexMap = ({latlng, events}) => {
 
     const pins = useRef([]);
 
+    window.pins = pins;
+
     const mapRef = useRef(null)
 
     const handleNavigateBack = () => {

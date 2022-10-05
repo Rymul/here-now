@@ -68,6 +68,23 @@ const EventsIndex = (props) => {
     // useEffect(()=> {
     //     deleteExpiredEvent()
     // }, [])
+    useEffect(() => {
+        if (sessionUserId === '632cf98b142e9e8a7192da52') {
+            dispatch(updateGeolocation({ lat: 37.776329964303194, lng: -122.43474034071976 }))
+        } else {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                // setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude })
+
+                dispatch(updateGeolocation({ lat: position.coords.latitude, lng: position.coords.longitude }))
+
+            }, (error) => {
+                if (error.code == error.PERMISSION_DENIED) {
+                    setDenied(true);
+                }
+            })
+        }
+    }, [])
+
 
     if (!events) { return null; }
 
@@ -81,14 +98,11 @@ const EventsIndex = (props) => {
     //         </div>
     //     )
     // }
-    navigator.geolocation.getCurrentPosition(function (position) {
-        // setLatLng({ lat: position.coords.latitude, lng: position.coords.longitude })
-        dispatch(updateGeolocation({ lat: position.coords.latitude, lng: position.coords.longitude }))
-    }, (error) => {
-        if (error.code == error.PERMISSION_DENIED) {
-            setDenied(true);
-        }
-    })
+
+   
+
+
+    
     if (denied) {
         return (
             <div className='events-index-geolocate-request'>
