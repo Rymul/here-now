@@ -17,14 +17,15 @@ router.get('/', async (_req, res) => {
     const events = await Event.find()
                               .populate()
                               .sort({ createdAt: -1 });
-      while (events.length < 5) {
-        let newEvent = new Event(eventsArray.pop())
+    for (let event of eventsArray) {
+      if (!events.some(e => e.title === event.title)) {
+        let newEvent = new Event(event)
         await newEvent.save()
-        events.push(newEvent)
       }
+    }
     return res.json(events);
   }
-  catch(_err) {
+  catch (_err) {
     return res.json([]);
   }
 })

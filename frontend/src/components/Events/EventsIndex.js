@@ -25,7 +25,7 @@ const EventsIndex = (props) => {
     const [denied, setDenied] = useState(false)
 
 
-
+    
 
 
 
@@ -35,6 +35,8 @@ const EventsIndex = (props) => {
         events = Object.values(eventsObj).sort((a, b) => new Date(a.eventTime) - new Date(b.eventTime));
     }
     let title = "Nearby Events";
+    events = events.filter(event => (Math.abs(event.lat - latlng.lat) < 1) && (Math.abs(event.lng - latlng.lng) < 1));
+
     if (props.filter === "owned") {
         title = "Hosting";
         events = events.filter( event => {

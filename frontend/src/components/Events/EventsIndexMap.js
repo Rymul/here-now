@@ -12,7 +12,6 @@ const EventIndexMap = ({latlng, events}) => {
     //     events = Object.values(eventsObj);
     // }
     const marker = useRef(null)
-    window.marker = marker.current
 
     const pins = useRef([]);
 
@@ -33,6 +32,7 @@ const EventIndexMap = ({latlng, events}) => {
 
     
     useEffect(() => {
+        // alert(pinsDropped)
         if (mapRef.current && !map) {
             setMap(new window.google.maps.Map(mapRef.current, {
                 center: { lat: 39.8283, lng: -98.5795 },
@@ -51,8 +51,8 @@ const EventIndexMap = ({latlng, events}) => {
             if (map.getZoom() === 3) {map.setZoom(12);}
             if (pins.current.length === 0 && !pinsDropped) {
                 setPinsDropped(true);
-                setTimeout(
-                    () => { 
+                // setTimeout(
+                //     () => { 
                         
                         events.map((event) => {
                             let marker;
@@ -82,8 +82,8 @@ const EventIndexMap = ({latlng, events}) => {
                             map.fitBounds(bounds);
                             
                         }
-                    }, 500
-                )
+                //     }, 500
+                // )
 
             }
         }
@@ -113,7 +113,7 @@ const EventIndexMap = ({latlng, events}) => {
         //         anchor: new window.google.maps.Point(30, 30),
         //     },
         // });
-    }, [latlng])
+    }, [latlng, events])
 
     
 
