@@ -105,7 +105,7 @@ const EventShow = () => {
                                 <img src={event.owner.photoUrl ? event.owner.photoUrl : "/male-profile-picture.jpeg"} className='event-show-attendee-photo' />
                             </div>
                             {attendees ? attendees.map((attendee, i) => ( attendee._id !== event.owner._id && i <= 6 ?
-                            <div className='show-attendees'>
+                            <div className='show-attendees' key={attendee._id}>
                                     <div className='hover-text' onClick={()=> history.push(`/users/${attendee._id}`)}>{attendee.firstName}</div>
                                     <img src={attendee.photoUrl ? attendee.photoUrl : "/male-profile-picture.jpeg"} className='event-show-attendee-photo' />
                             </div> : null

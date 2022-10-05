@@ -34,6 +34,8 @@ const EventsIndex = (props) => {
         events = Object.values(eventsObj).sort((a, b) => new Date(a.eventTime) - new Date(b.eventTime));
     }
 
+    events = events.filter(event => (Math.abs(event.lat - latlng.lat) < 1) && (Math.abs(event.lng - latlng.lng) < 1));
+
     if (props.filter === "owned") {
         events = events.filter( event => {
             return sessionUserId === event.owner._id
