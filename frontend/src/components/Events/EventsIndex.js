@@ -7,6 +7,7 @@ import EventsIndexMapWrapper from './EventsIndexMapsWrapper';
 import { updateGeolocation } from '../../store/geolocation';
 import { FaPlus } from 'react-icons/fa'
 import { useHistory } from 'react-router-dom';
+import EventsIndexNoEvents from './EventsIndexNoEvents';
 
 const EventsIndex = (props) => {
     const history = useHistory();
@@ -138,7 +139,7 @@ const EventsIndex = (props) => {
                                     </div>
                                 </div>
                             </li>
-                            {events.map((event) => (<li key={event['_id']}><EventsListItem event={event} /></li>))}
+                            {events.length > 0 ? events.map((event) => (<li key={event['_id']}><EventsListItem event={event} /></li>)) : <EventsIndexNoEvents />}
                         </ul>
                     </div>
                     <div className='events-index-map-container'>
