@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
 import { logout } from '../../store/session';
 import { FcMenu } from 'react-icons/fc'
-import { ImExit } from 'react-icons/im'
+import { ImExit, ImInfo } from 'react-icons/im'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { AiOutlineHome } from 'react-icons/ai'
 import { BsPeople, BsPerson } from 'react-icons/bs'
@@ -38,6 +38,10 @@ function NavBar () {
 
   const handleAttendingClick = () => {
     history.push('/events/attending')
+  }
+
+  const handleAboutClick = () => {
+    history.push('/about')
   }
   // const getLinks = () => {
   //   if (loggedIn) {
@@ -95,6 +99,9 @@ if (loggedIn) {
             <div className='nav-bar-links-laptop'>
               <NavLink className="nav-bar-links" to={"/events/attending"}>Attending</NavLink>
             </div>
+            <div className='nav-bar-links-laptop'>
+              <NavLink className="nav-bar-links" to={"/about"}>About</NavLink>
+            </div>
             <div className='nav-bar-links-phone'>
               <button className='nav-bar-links-phone-home' onClick={handleLogoClick}><AiOutlineHome className='nav-bar-phone-icon'/></button>
             </div>
@@ -103,6 +110,9 @@ if (loggedIn) {
             </div>
             <div className='nav-bar-links-phone'>
               <button className='nav-bar-links-phone-attending' onClick={handleAttendingClick}><BsPeople className='nav-bar-phone-icon'/></button>
+            </div>
+            <div className='nav-bar-links-phone'>
+              <button className='nav-bar-links-phone-attending' onClick={handleAboutClick}><ImInfo className='nav-bar-phone-icon'/></button>
             </div>
           </div>
           <div className="nav-bar-logout">
