@@ -151,7 +151,7 @@ function SignupForm () {
           />
         </div>
         <input
-          id="session-form-submit-button"
+          id="session-form-submit-button1"
           type="submit"
           value="Sign Up"
           disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
