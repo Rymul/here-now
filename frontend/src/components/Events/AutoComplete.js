@@ -16,7 +16,7 @@ const AutoComplete = ({address, setAddress, setLat, setLng, setPhotoUrl })  => {
     bounds.extend(new window.google.maps.LatLng(latlng.lat - 1, latlng.lng - 1))
 
     const options = {
-        types: ['establishment'],
+        // types: ['street_address', 'establishment'],
         fields: ['formatted_address', 'geometry', 'photos'],
         bounds: bounds,
         input: address,

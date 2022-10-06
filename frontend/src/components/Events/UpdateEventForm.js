@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { updateEvent } from '../../store/events';
+import { fetchEvent, updateEvent } from '../../store/events';
 import { capitalizeFirstLetter, getNewDate } from '../../utils/utils';
 import AutoComplete from './AutoComplete';
 import './NewEventForm.css'
@@ -10,13 +10,13 @@ export const UpdateEventForm = (props) => {
     const { eventId } = useParams();
     const eventData = useSelector(state => state.events[eventId])
 
-    const [title, setTitle] = useState(null);
-    const [description, setDescription] = useState(null);
+    const [title, setTitle] = useState("Loading");
+    const [description, setDescription] = useState("Loading");
     const [address,setAddress] = useState(null);
     const [lat, setLat] = useState(37.8);
     const [lng, setLng] = useState(-122.4);
     const [photoUrl, setPhotoUrl] = useState("/Calendar.svg")
-    const user = useSelector(state=> state.session.user)
+    const user = useSelector(state => state.session.user)
     const [eventTime, setEventTime] = useState('12:30');
     const [errors, setErrors] = useState(null)
     const [tomorrow, setTomorrow] = useState(false)
@@ -24,17 +24,13 @@ export const UpdateEventForm = (props) => {
     const history = useHistory();
     // const latlng = useSelector(state => state.geolocation);
     // const [details, setDetails] = useState(null);
-    let eventTimeData = new Date(eventTime).getUTCHours() + ":" + new Date(eventTime).getUTCMinutes()
-    const splitTime = eventTimeData.split(":")
-    if (splitTime[0].length < 2) {
-        eventTimeData = "0" + eventTimeData
-    } 
-    if (splitTime[1].length < 2) {
-        eventTimeData = "0" + eventTimeData
-    }
-
+    
+    useEffect(() => {
+        dispatch(fetchEvent(eventId))
+    } , [])
+  
     const initializeEventStates = () => {
-        if(eventData) {
+        if (eventData) {
             setTitle(eventData.title)
             setAddress(eventData.address)
             setDescription(eventData.description)
@@ -44,9 +40,23 @@ export const UpdateEventForm = (props) => {
             // setPhotoUrl(eventData.photoUrl)
         }
     }
+    let eventTimeData;
+    
 
     useEffect(()=> {
-        initializeEventStates()
+        initializeEventStates();
+        if (eventData) {
+            let eventTimeHours = new Date(eventData.eventTime).getUTCHours();
+            let eventTimeMin = new Date(eventData.eventTime).getUTCMinutes();
+            if (eventTimeHours < 10) {
+                eventTimeHours = `0${eventTimeHours}`;
+            }
+            if (eventTimeMin < 10) {
+                eventTimeMin = `0${eventTimeMin}`;
+            }
+            eventTimeData = eventTimeHours + ":" + eventTimeMin;
+            setEventTime(eventTimeData);
+        }
     },[eventData])
 
     const handleSubmit = async (e) => {
@@ -109,7 +119,7 @@ export const UpdateEventForm = (props) => {
                     </label>
                 </div>
              
-                <input id="new-event-time" type="time" value={eventTimeData} onChange={(e)=>setEventTime(e.target.value)} />
+                    <input id="new-event-time" type="time" value={eventTime} onChange={(e)=>setEventTime(e.target.value)} />
             
                 <button id='new-event-button'>Update event</button>
                 <input

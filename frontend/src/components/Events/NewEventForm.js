@@ -9,8 +9,8 @@ import AutoComplete from './AutoComplete';
 import './NewEventForm.css'
 
 export const NewEventForm = (props) => {
-    const [title, setTitle] = useState(null);
-    const [description, setDescription] = useState(null);
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
     const [address, setAddress] = useState(null);
     const [lat, setLat] = useState(37.8);
     const [lng, setLng] = useState(-122.4);
