@@ -89,6 +89,33 @@
     padding-right: 10px;
 }
 
+.fa-spin {
+    animation: spin 1s infinite linear;
+    font-size: 60px;
+    text-align: center;
+    margin-top: 40px;
+    transform-origin: center;
+}
+
+.events-index-no-event-container {
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+@keyframes spin {
+    from {
+        transform:  scale(1) rotate(0deg);
+    }
+
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
+.event-index-loading {
+    width: 100%;
+}
 
 
 @media only screen and (max-width: 450px) {
@@ -119,6 +146,9 @@
         cursor: pointer;
         background-color: #c5553c;
         transition: 0.2s ease-in-out
+    }
+    .event-index-loading {
+        width: 100%;
     }
 
     

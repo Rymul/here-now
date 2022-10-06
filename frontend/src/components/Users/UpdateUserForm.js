@@ -164,13 +164,13 @@ function UpdateUserForm () {
           />
         </div>
         <input
-          id="session-form-submit-button"
+          id="session-form-submit-button2"
           type="submit"
           value="Update Profile"
           // disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
         />
         <input
-          id="session-form-submit-button"
+          id="session-form-submit-button3"
           type="button"
           value="Cancel"
           onClick={() => history.push(`/users/${userId}`)}
