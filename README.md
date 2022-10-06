@@ -51,39 +51,3 @@ Comments:
 * At the bottom right of the event show page, users will see all comments created for that event.
 * If they have left a comment, they will be able to edit their comment in-line or delete their comment.
 
-
-Implementation Timeline:
----
----
-
-1. Hosing on Heroku (09/19/2022)
-
-2. New account creation, login, and guest/demo login (09/19/2022, 2 Days)
-* Users can sign up, sign in, and log out
-* Users can use a demo login to try the site
-* Users will have a currentUser show page that displays their information while allowing them to update or delete their profile.
-* Users can't enter the site without logging in or signing up.
-
-3. Events (09/19/2022, 2 Days)
-* Events will show information such a title, description, list of attendees, and comments.
-
-4. Comments (09/21/2022, 1 Days)
-* Logged in users can create, uodate, and destroy comments.
-
-5. Google Maps API, Google Places API (09/21/2022, 2 days)
-* All created events will be displayed on a goggle map on the event index page.
-* Clicking on a pin on the google map will highlight the associated link.
-* When creating an event, users will provide an address for the event which will auto populate as they type.
-* Once the event is created an event photo will be assigned from google places.
-
-6. AWS S3 (09/21/2022, 2 Days)
-* Users can upload a profile picture which will be displayed on their profile page and in a grid of attendees on the event show page.
-
-7. Production README (09/21/2022, 0.5 Days) 
-
-
-To Do:
----
----
-
-* Fix AWS S3 photo uploading
