@@ -18,6 +18,7 @@ import UpdateUserForm from './components/Users/UpdateUserForm';
 import EventShow from './components/Events/EventShow';
 import CommentsForm from './components/Comments/CommentsForm';
 import UpdateEventForm from './components/Events/UpdateEventForm';
+import About from './components/About/About';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -25,7 +26,7 @@ function App() {
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
-
+  
   return loaded && (
     <>
       <NavBar />
@@ -50,6 +51,7 @@ function App() {
         <ProtectedRoute exact path="/users/update/:userId" component={UpdateUserForm} />
         {/* <ProtectedRoute exact path="/users/:userId/messages" component={UserMessages} />
         {/* <ProtectedRoute exact path="/users/:userId/messages/:senderId" component={Conversation} /> */}
+        <Route exact path="/about" component={About} />
         <Redirect to="/" />
       </Switch>
     </>
