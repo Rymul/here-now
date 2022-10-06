@@ -28,7 +28,7 @@
 
 
 
-#session-form-input {
+#session-form-input1, #session-form-input2 {
     width: 25vw;
     height: 40px;
     border-radius: 20px;
@@ -84,7 +84,7 @@
 }
 
 
-#session-form-submit-button {
+#session-form-submit-button, #session-form-submit-button1, #session-form-submit-button2, #session-form-submit-button3 {
     margin-top: 15px;
     display: flex;
     align-items: center;
@@ -102,7 +102,7 @@
     border-radius: 20px;
 }
 
-#session-form-submit-button:hover {
+#session-form-submit-button:hover, #session-form-submit-button1:hover, #session-form-submit-button2:hover, #session-form-submit-button3:hover {
     background-color: #f9f9f9;
     color:#12ADC1;
     border: 1px solid #12ADC1;
@@ -151,7 +151,7 @@
 
     } 
     
-    #session-form-submit-button {
+    #session-form-submit-button, #session-form-submit-button1, #session-form-submit-button2, #session-form-submit-button3 {
         width: 81%;
     }
 

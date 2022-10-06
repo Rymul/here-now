@@ -41,7 +41,7 @@ function LoginForm () {
       {/* <label>
         <span>Email</span> */}
         <input 
-          id="session-form-input"
+          id="session-form-input1"
           type="text"
           value={email}
           onChange={update('email')}
@@ -52,7 +52,7 @@ function LoginForm () {
       {/* <label> */}
         {/* <span>Password</span> */}
         <input 
-          id="session-form-input"
+          id="session-form-input2"
           type="password"
           value={password}
           onChange={update('password')}
