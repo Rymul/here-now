@@ -1,0 +1,51 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contributor-container {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.contributor-top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+
+}
+
+.contributor-profile-pic {
+    width: 250px;
+    height: 250px;
+    clip-path: circle();
+    object-fit: cover;
+    /* border-radius: 20px; */
+}
+
+.contributor-info {
+
+}
+
+.contributor-name {
+
+}
+
+.contributor-links {
+
+}
+
+.contributor-LinkedIn {
+
+}
+
+.contributor-GitHub {
+
+}
