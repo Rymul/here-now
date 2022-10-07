@@ -18,17 +18,14 @@
 
 }
 
-
-
-
-#session-form-title {
+.session-form-title {
     font-size: 30px;
     color: #004049;
 }
 
 
 
-#session-form-input1, #session-form-input2 {
+.session-form-input {
     width: 25vw;
     height: 40px;
     border-radius: 20px;
@@ -39,29 +36,29 @@
     
 }
 
-#session-form-input::placeholder {
+.session-form-input::placeholder {
     color:#728F93;
 }
 
-#session-form-input:focus {
+.session-form-input:focus {
     outline: none;
 }
 
-#signin-form-input {
+.signin-form-input {
     width: 25vw;
     height: 40px;
     border-radius: 20px;
     border: #a8a8a8 solid 1px;
     align-items: center;
-    /* margin: 5px; */
+    margin: 10px;
     padding-left: 20px;
 }
 
-#signin-form-input::placeholder {
+.signin-form-input::placeholder {
     color:#728F93;
 }
 
-#signin-form-input:focus {
+.signin-form-input:focus {
     outline: none;
 }
 
@@ -72,7 +69,7 @@
     align-items: center;
 }
 
-#birthday-text {
+.birthday-text {
     color: #004049;
     margin-left: 5px;
 }
@@ -84,7 +81,7 @@
 }
 
 
-#session-form-submit-button, #session-form-submit-button1, #session-form-submit-button2, #session-form-submit-button3 {
+.session-form-submit-button {
     margin-top: 15px;
     display: flex;
     align-items: center;
@@ -102,7 +99,7 @@
     border-radius: 20px;
 }
 
-#session-form-submit-button:hover, #session-form-submit-button1:hover, #session-form-submit-button2:hover, #session-form-submit-button3:hover {
+.session-form-submit-button:hover {
     background-color: #f9f9f9;
     color:#12ADC1;
     border: 1px solid #12ADC1;
@@ -146,16 +143,16 @@
 
 @media only screen and (max-width: 450px) { 
 
-    #session-form-input {
+    .session-form-input {
         width: 75%;
 
     } 
     
-    #session-form-submit-button, #session-form-submit-button1, #session-form-submit-button2, #session-form-submit-button3 {
+    .session-form-submit-button {
         width: 81%;
     }
 
-    #signin-form-input {
+    .signin-form-input {
         width: 75%;
 
     } 

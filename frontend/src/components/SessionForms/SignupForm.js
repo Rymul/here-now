@@ -81,86 +81,74 @@ function SignupForm () {
 
   return (
     <div className='session-form-container'>
-    <form className="session-form" onSubmit={userSubmit}>
-      <h2 id="session-form-title">Sign Up</h2>
-      <div className="errors">{errors?.firstName}</div>
-      
-      
-        {/* <span>First Name</span> */}
-        <input 
-          id="signin-form-input"
-          type="text"
-          value={firstName}
-          onChange={update('firstName')}
-          placeholder="First Name"
-        />
-      <div className="errors">{errors?.lastName}</div>
-      
-      
-        {/* <span>Last Name</span> */}
-        <input 
-          id="signin-form-input"
-          type="text"
-          value={lastName}
-          onChange={update('lastName')}
-          placeholder="Last Name"
-        />
-      <div className="errors">{errors?.email}</div>
-      
-      
-        {/* <span>Email</span> */}
-        <input 
-          id="signin-form-input"
-          type="text"
-          value={email}
-          onChange={update('email')}
-          placeholder="Email"
-        />
-      
-      <div className="errors">{errors?.password}</div>
-      
-      
-        {/* <span>Password</span> */}
-        <input 
-          id="signin-form-input"
-          type="password"
-          value={password}
-          onChange={update('password')}
-          placeholder="Password"
-        />
-      <div className="errors">
-        {password !== password2 && 'Confirm Password field must match'}
-      </div>
-      
-      
-        {/* <span>Confirm Password</span> */}
-        <input 
-          id="signin-form-input"
-          type="password"
-          value={password2}
-          onChange={update('password2')}
-          placeholder="Confirm Password"
-        />
-        <div className='birthday'>
-          <span id="birthday-text">Select your Birthday</span>
-          <Calendar 
-            onChange={handleDate}
-            maxDate={limit}
-            defaultActiveStartDate={start}
-            id="calendar"
+      <form className="session-form" onSubmit={userSubmit}>
+        <h2 className="session-form-title">Sign Up</h2>
+          <input 
+          className="signin-form-input"
+            type="text"
+            value={firstName}
+            onChange={update('firstName')}
+            placeholder="First Name"
           />
-        </div>
-        <input
-          id="session-form-submit-button1"
-          type="submit"
-          value="Sign Up"
-          disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
-        />
-    </form>
-    <div className="session-form-footer">
-        <span className='session-form-footer-title'>Have an account?</span>
-        <Link className="to-signup-button" to={'/login'}> Log in!</Link>
-    </div>
+          <input 
+          className="signin-form-input"
+            type="text"
+            value={lastName}
+            onChange={update('lastName')}
+            placeholder="Last Name"
+          />
+          <input 
+          className="signin-form-input"
+            type="text"
+            value={email}
+            onChange={update('email')}
+            placeholder="Email"
+          />
+          <input 
+          className="signin-form-input"
+            type="password"
+            value={password}
+            onChange={update('password')}
+            placeholder="Password"
+          />
+          <input 
+          className="signin-form-input"
+            type="password"
+            value={password2}
+            onChange={update('password2')}
+            placeholder="Confirm Password"
+          />
+          <div className='birthday'>
+            <span className="birthday-text">Select your Birthday</span>
+            <Calendar 
+              onChange={handleDate}
+              maxDate={limit}
+              defaultActiveStartDate={start}
+            className="calendar"
+            />
+          </div>
+          <input
+          className="session-form-submit-button"
+            type="submit"
+            value="Sign Up"
+            // disabled={!email || !firstName || !lastName || !birthDay || !password || password !== password2}
+          />
+      </form>
+      <br/>
+      <br/>
+      <div className="session-form-footer">
+          <span className='session-form-footer-title'>Have an account?</span>
+          <Link className="to-signup-button" to={'/login'}> Log in!</Link>
+      </div>
+      <div className='errors-div'>
+        {password !== password2 ? <div className='errors'>Confirm Password field must match</div> : null}
+        { errors ? <div className="errors">{errors?.firstName}</div> : null } 
+        { errors ? <div className="errors">{errors?.lastName}</div> : null }
+        { errors ? <div className="errors">{errors?.email}</div> : null }
+        { errors ? <div className="errors">{errors?.password}</div> : null }
+        { errors ? <div className="errors">{errors?.birthDay}</div> : null }
+
+      </div>
     </div>
   );
 }
