@@ -36,37 +36,29 @@ function LoginForm () {
   return (
     <div className='session-form-container'>
     <form className="session-form" onSubmit={handleSubmit}>
-      <h2 id="session-form-title">Log In</h2>
-      {/* { errors ? <div className="errors">{errors?.email}</div> : null } */}
-      {/* <label>
-        <span>Email</span> */}
+      <h2 className="session-form-title">Log In</h2>
         <input 
-          id="session-form-input1"
+          className="session-form-input"
           type="text"
           value={email}
           onChange={update('email')}
           placeholder="Email"
         />
-      {/* </label> */}
-      
-      {/* <label> */}
-        {/* <span>Password</span> */}
         <input 
-          id="session-form-input2"
+          className="session-form-input"
           type="password"
           value={password}
           onChange={update('password')}
           placeholder="Password"
         />
-      {/* </label> */}
       <input
-        id="session-form-submit-button"
+        className="session-form-submit-button"
         type="submit"
         value="Log In"
         disabled={!email || !password}
       />
 
-      <input type="button" value='Demo Log In' id="session-form-submit-button" onClick={handleDemoLogin}/>
+      <input type="button" value='Demo Log In' className="session-form-submit-button" onClick={handleDemoLogin}/>
     </form>
     <br />
     <br />
