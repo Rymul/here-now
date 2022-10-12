@@ -20,7 +20,8 @@ router.get('/', async (_req, res) => {
     for (let event of eventsArray) {
       if (!events.some(e => e.title === event.title)) {
         let newEvent = new Event(event)
-        await newEvent.save()
+        await newEvent.save();
+        events.push(newEvent);
       }
     }
     return res.json(events);
