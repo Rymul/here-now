@@ -73,7 +73,7 @@
         },
         comments: {test: "test"},
         eventTime: tomorrow,
-        photoUrl: "https://dogtime.com/assets/uploads/gallery/pembroke-welsh-corgi-dog-breed-pictures/prance-8.jpg"
+        photoUrl: "/Corgi.jpg"
     }
 
     const event2 = {
@@ -141,7 +141,7 @@
         },
         comments: {test: "test"},
         eventTime: sixHoursLater,
-        photoUrl: "https://catercow.imgix.net/uploads/photo/image/54247/Q5b0fcCxRECPn7BiiJLf_2Bpackages-9390-rQVkQwZLTO4RQm8ZHnSZ_Frozen_20Fruit_20Teas_010.jpg?q=80&fit=crop&crop=faces&mark-align=right&mark-pad=0&mark-y=10&mark-h=0.11&mark=https%3A%2F%2Fcatercow.s3.amazonaws.com%2Fverifiedphoto%402x.png&w=639&h=426&auto=compress%2Cformat&s=ee4a7351fc9ca660f05df9159051046b"
+        photoUrl: "/TeaTime.jpg"
     }
 
     const event3 = {
@@ -191,7 +191,7 @@
         },
         comments: {test: "test"},
         eventTime: fourHoursLater,
-        photoUrl: "https://townsquare.media/site/801/files/2015/09/White-Men-Cant-Jump-basketball-scene.jpg?w=980&q=75"
+        photoUrl: "/HamiltonPark.jpg"
     }
 
     const event4 = {
@@ -250,7 +250,7 @@
         },
         comments: {test: "test"},
         eventTime: twoHoursLater,
-        photoUrl: "https://pbs.twimg.com/media/E93Q3K1WYAAFs-J.jpg"
+        photoUrl: "/Sandbox.jpg"
     }
 
 
@@ -328,7 +328,7 @@
         },
         comments: {test: "test"},
         eventTime: fourHoursLater,
-        photoUrl: "https://miro.medium.com/max/1400/1*OwSz8qBtLFs2d7aqbR-Ufg.jpeg"
+        photoUrl: "/Boardgames.jpg"
     }
 
 
@@ -402,7 +402,7 @@ const event6 = {
     },
     comments: { test: "test" },
     eventTime: tomorrow,
-    photoUrl: "https://dogtime.com/assets/uploads/gallery/pembroke-welsh-corgi-dog-breed-pictures/prance-8.jpg"
+    photoUrl: "/Shibe.jpg"
 }
 
 const event7 = {
@@ -470,7 +470,7 @@ const event7 = {
     },
     comments: { test: "test" },
     eventTime: sixHoursLater,
-    photoUrl: "https://catercow.imgix.net/uploads/photo/image/54247/Q5b0fcCxRECPn7BiiJLf_2Bpackages-9390-rQVkQwZLTO4RQm8ZHnSZ_Frozen_20Fruit_20Teas_010.jpg?q=80&fit=crop&crop=faces&mark-align=right&mark-pad=0&mark-y=10&mark-h=0.11&mark=https%3A%2F%2Fcatercow.s3.amazonaws.com%2Fverifiedphoto%402x.png&w=639&h=426&auto=compress%2Cformat&s=ee4a7351fc9ca660f05df9159051046b"
+    photoUrl: "/TeaTime.jpg"
 }
 
 const event8 = {
@@ -520,7 +520,7 @@ const event8 = {
     },
     comments: { test: "test" },
     eventTime: fourHoursLater,
-    photoUrl: "https://townsquare.media/site/801/files/2015/09/White-Men-Cant-Jump-basketball-scene.jpg?w=980&q=75"
+    photoUrl: "/HamiltonPark.jpg"
 }
 
 const event9 = {
@@ -579,7 +579,7 @@ const event9 = {
     },
     comments: { test: "test" },
     eventTime: twoHoursLater,
-    photoUrl: "https://pbs.twimg.com/media/E93Q3K1WYAAFs-J.jpg"
+    photoUrl: "/Sandbox.jpg"
 }
 
 
@@ -657,7 +657,7 @@ const event10 = {
     },
     comments: { test: "test" },
     eventTime: fourHoursLater,
-    photoUrl: "https://miro.medium.com/max/1400/1*OwSz8qBtLFs2d7aqbR-Ufg.jpeg"
+    photoUrl: "/Boardgames.jpg"
 }
 
 
