@@ -1,15 +1,17 @@
-    const rightNow = new Date();
-    const tomorrow = new Date(rightNow)
-    tomorrow.setDate(tomorrow.getDate() + 1)
-    const twoHoursLater = new Date()
-    twoHoursLater.setHours(twoHoursLater.getHours() + 2)
-    twoHoursLater.setMinutes(0)
-    const fourHoursLater = new Date()
-    fourHoursLater.setHours(fourHoursLater.getHours() + 4)
-    fourHoursLater.setMinutes(0)
-    const sixHoursLater = new Date()
-    sixHoursLater.setHours(sixHoursLater.getHours() + 6)
-
+    const updateTime = () => {
+        const rightNow = new Date();
+        const tomorrow = new Date(rightNow)
+        tomorrow.setDate(tomorrow.getDate() + 1)
+        const twoHoursLater = new Date()
+        twoHoursLater.setHours(twoHoursLater.getHours() + 2)
+        twoHoursLater.setMinutes(0)
+        const fourHoursLater = new Date()
+        fourHoursLater.setHours(fourHoursLater.getHours() + 4)
+        fourHoursLater.setMinutes(0)
+        const sixHoursLater = new Date()
+        sixHoursLater.setHours(sixHoursLater.getHours() + 6)
+    }
+    updateTime();
 
     const event1 = {
         title: 'Corgi Collective',
@@ -671,4 +673,6 @@ const event10 = {
 
 
 const eventsArray = [event1, event2, event3, event4, event5, event6, event7, event8, event9, event10];
-    module.exports = eventsArray;
+   
+module.exports = { eventsArray, updateTime};
+
