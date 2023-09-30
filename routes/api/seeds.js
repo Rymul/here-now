@@ -16,7 +16,7 @@ const updateTime = () => {
     fourHoursLater.setHours(fourHoursLater.getHours() + 4 - 7)
     fourHoursLater.setMinutes(0)
     sixHoursLater = new Date()
-    sixHoursLater.setHours(sixHoursLater.getHours() + 6)
+    sixHoursLater.setHours(sixHoursLater.getHours() + 6 - 7)
     sixHoursLater.setMinutes(0)
 }   
 
