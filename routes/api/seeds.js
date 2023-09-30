@@ -1,15 +1,22 @@
+
+let tomorrow 
+let twoHoursLater
+let fourHoursLater 
+let sixHoursLater
+
 const updateTime = () => {    
-    const rightNow = new Date();
-    const tomorrow = new Date(rightNow)
+    tomorrow = new Date()
     tomorrow.setDate(tomorrow.getDate() + 1)
-    const twoHoursLater = new Date()
+    tomorrow.setMinutes(0)
+    twoHoursLater = new Date()
     twoHoursLater.setHours(twoHoursLater.getHours() + 2)
     twoHoursLater.setMinutes(0)
-    const fourHoursLater = new Date()
+    fourHoursLater = new Date()
     fourHoursLater.setHours(fourHoursLater.getHours() + 4)
     fourHoursLater.setMinutes(0)
-    const sixHoursLater = new Date()
+    sixHoursLater = new Date()
     sixHoursLater.setHours(sixHoursLater.getHours() + 6)
+    sixHoursLater.setMinutes(0)
 }
 
 updateTime()
