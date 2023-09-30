@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const { requireUser } = require('../../config/passport');
 const validateEventInput = require('../../validation/events');
-const {eventsArray , updateTime} = require("./seeds");
+const {eventsArray, updateTime} = require("./seeds");
 
 require('../../models/User')
 const User = mongoose.model('User');
@@ -14,7 +14,7 @@ const Event = mongoose.model('Event');
 // Get all of the events
 router.get('/', async (_req, res) => {
   try {
-    updateTime();
+    updateTime()
     const events = await Event.find()
                               .populate()
                               .sort({ createdAt: -1 });
